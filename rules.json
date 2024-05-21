@@ -1,0 +1,44 @@
+{
+  "tiles": [
+    {
+      "index": 0,
+      "image": "/tiles/road/tile0.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ]
+    },
+    {
+      "index": 1,
+      "image": "/tiles/road/tile1.png",
+      "edges": [
+        "ABA",
+        "ABA",
+        "AAA",
+        "AAA"
+      ]
+    },
+    {
+      "index": 2,
+      "image": "/tiles/road/tile2.png",
+      "edges": [
+        "AAA",
+        "ABA",
+        "AAA",
+        "ABA"
+      ]
+    },
+    {
+      "index": 3,
+      "image": "/tiles/road/tile3.png",
+      "edges": [
+        "ABA",
+        "ABA",
+        "AAA",
+        "ABA"
+      ]
+    }
+  ]
+}
