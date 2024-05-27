@@ -3,6 +3,7 @@ let tiles = [];
 let grid = [];
 const DIM = 25;
 
+// Preloads the JSON data and images for the tiles
 function preload() {
     loadJSON('rules.json', data => {
         jsonData = data;
@@ -12,14 +13,15 @@ function preload() {
     });
 }
 
+// Sets up the canvas and initializes the tiles and grid
 function setup() {
     createCanvas(800, 800);
     initializeTiles();
     initializeGrid();
 }
 
+// Creates Tile objects from jsonData, adds unique rotations, and generates adjacency rules
 function initializeTiles() {
-    // Create Tile objects from jsonData and add them to the tiles array
     jsonData.tiles.forEach(data => {
         let tile = new Tile(data.image, data.edges, data.rules, data.index);
         tiles.push(tile);
@@ -43,7 +45,7 @@ function initializeTiles() {
     tiles.forEach(tile => tile.analyze(tiles));
 }
 
-// Function to remove duplicate tiles based on their edge patterns
+// Removes duplicate tiles based on their edge patterns
 function removeDuplicatedTiles(tiles) {
     const uniqueTilesMap = {};
     tiles.forEach(tile => {
@@ -53,15 +55,17 @@ function removeDuplicatedTiles(tiles) {
     return Object.values(uniqueTilesMap); // Return unique tiles as an array
 }
 
-// Function to initialize the grid with empty cells
+// Initializes the grid with empty cells
 function initializeGrid() {
     grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
 }
 
+// Reinitializes the grid when the mouse is pressed
 function mousePressed() {
     initializeGrid();
 }
 
+// Main draw loop that handles drawing the grid, collapsing cells, and propagating constraints
 function draw() {
     background(0);
     drawGrid();
@@ -69,6 +73,7 @@ function draw() {
     propagateConstraints();
 }
 
+// Draws the current state of the grid
 function drawGrid() {
     const w = width / DIM;
     const h = height / DIM;
@@ -85,6 +90,7 @@ function drawGrid() {
     });
 }
 
+// Handles collapsing the least entropic cell and starts the propagation of constraints
 function collapseGrid() {
     let gridCopy = grid.filter(cell => !cell.collapsed); // Get non-collapsed cells
     if (gridCopy.length === 0) return; // Stop if all cells are collapsed
@@ -103,6 +109,7 @@ function collapseGrid() {
     propagateConstraints(cell); // Start propagation from the collapsed cell
 }
 
+// Uses the adjacency information to update the options of neighboring cells
 function propagateConstraints(cell) {
     let stack = [cell];
     while (stack.length > 0) {
@@ -141,7 +148,7 @@ function propagateConstraints(cell) {
     }
 }
 
-// Function to filter valid options based on neighboring cells
+// Filters valid options based on neighboring cells
 function checkValid(arr, valid) {
     for (let i = arr.length - 1; i >= 0; i--) {
         if (!valid.includes(arr[i])) {
@@ -150,6 +157,7 @@ function checkValid(arr, valid) {
     }
 }
 
+// Returns the indices of the neighboring cells for a given index
 function getNeighbors(index) {
     const i = index % DIM;
     const j = Math.floor(index / DIM);
