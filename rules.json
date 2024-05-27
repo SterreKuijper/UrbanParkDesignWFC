@@ -39,6 +39,19 @@
         "AAA",
         "ABA"
       ]
+    },
+    {
+      "index": 4,
+      "image": "/tiles/road/tile4.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "minimumAdjacent": "2"
+      }
     }
   ]
 }
