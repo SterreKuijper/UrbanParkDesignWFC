@@ -30,7 +30,7 @@ function initializeTiles() {
     for (let i = 0; i < initialTileCount; i++) {
         let tempTiles = [];
         for (let j = 0; j < 4; j++) {
-            tempTiles.push(tiles[i].rotate(j)); // Rotate tile j times
+            tempTiles.push(tiles[i].rotate(j));
         }
         tempTiles = removeDuplicatedTiles(tempTiles); // Remove duplicate rotations
         tiles = tiles.concat(tempTiles); // Add unique rotations to the tiles array
@@ -56,15 +56,6 @@ function removeDuplicatedTiles(tiles) {
 // Function to initialize the grid with empty cells
 function initializeGrid() {
     grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
-}
-
-// Function to filter valid options based on neighboring cells
-function checkValid(arr, valid) {
-    for (let i = arr.length - 1; i >= 0; i--) {
-        if (!valid.includes(arr[i])) {
-            arr.splice(i, 1); // Remove invalid option
-        }
-    }
 }
 
 function mousePressed() {
@@ -147,6 +138,15 @@ function propagateConstraints(cell) {
                 }
             }
         });
+    }
+}
+
+// Function to filter valid options based on neighboring cells
+function checkValid(arr, valid) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+        if (!valid.includes(arr[i])) {
+            arr.splice(i, 1); // Remove invalid option
+        }
     }
 }
 
