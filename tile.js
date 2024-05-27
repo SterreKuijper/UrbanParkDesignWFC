@@ -9,7 +9,7 @@ function compareEdge(a, b) {
 }
 
 class Tile {
-    constructor(img, edges, i, rules = {}) {
+    constructor(img, edges, rules = {}, index) {
         this.img = img;
         this.edges = edges;
         this.up = [];
@@ -17,10 +17,7 @@ class Tile {
         this.down = [];
         this.left = [];
         this.rules = rules;
-
-        if (i !== undefined) {
-            this.index = i;
-        }
+        this.index = index;
     }
 
     analyze(tiles) {

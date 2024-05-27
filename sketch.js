@@ -16,19 +16,13 @@ function setup() {
     createCanvas(800, 800);
     initializeTiles();
     initializeGrid();
-    startOver();
 }
 
 function initializeTiles() {
     // Create Tile objects from jsonData and add them to the tiles array
     jsonData.tiles.forEach(data => {
-        let tile = new Tile(data.image, data.edges, data.index);
+        let tile = new Tile(data.image, data.edges, data.rules, data.index);
         tiles.push(tile);
-    });
-
-    // Assign indices to each tile
-    tiles.forEach((tile, i) => {
-        tile.index = i;
     });
 
     // Generate rotated versions of each tile and add unique rotations to the tiles array
@@ -64,11 +58,6 @@ function initializeGrid() {
     grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
 }
 
-function startOver() {
-    // Reset the grid with new cells
-    grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
-}
-
 // Function to filter valid options based on neighboring cells
 function checkValid(arr, valid) {
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -79,7 +68,7 @@ function checkValid(arr, valid) {
 }
 
 function mousePressed() {
-    startOver();
+    initializeGrid();
 }
 
 function draw() {
@@ -110,45 +99,66 @@ function collapseGrid() {
     if (gridCopy.length === 0) return; // Stop if all cells are collapsed
 
     gridCopy.sort((a, b) => a.options.length - b.options.length); // Sort by entropy
-
-    const len = gridCopy[0].options.length;
-    const stopIndex = gridCopy.findIndex(cell => cell.options.length > len);
-    if (stopIndex > 0) gridCopy = gridCopy.slice(0, stopIndex); // Get cells with the least entropy
-
-    const cell = random(gridCopy);
+    const cell = random(gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length));
     cell.collapsed = true;
+
     const pick = random(cell.options);
     if (pick === undefined) {
-        startOver(); // Restart if no valid option
+        initializeGrid(); // Restart if no valid option
         return;
     }
-    cell.options = [pick]; // Collapse cell to the picked option
+
+    cell.options = [pick];
+    propagateConstraints(cell); // Start propagation from the collapsed cell
 }
 
-function propagateConstraints() {
-    grid = grid.map((cell, index) => {
-        if (cell.collapsed) return cell;
+function propagateConstraints(cell) {
+    let stack = [cell];
+    while (stack.length > 0) {
+        let current = stack.pop();
+        let index = grid.indexOf(current);
+        let neighbors = getNeighbors(index);
 
-        let options = Array.from({length: tiles.length}, (_, i) => i);
+        neighbors.forEach(neighborIndex => {
+            let neighbor = grid[neighborIndex];
+            if (!neighbor.collapsed) {
+                let options = Array.from({length: tiles.length}, (_, i) => i);
+                const directions = [
+                    {x: 0, y: -1, getValid: tile => tile.down}, // up
+                    {x: 1, y: 0, getValid: tile => tile.left}, // right
+                    {x: 0, y: 1, getValid: tile => tile.up}, // down
+                    {x: -1, y: 0, getValid: tile => tile.right} // left
+                ];
 
-        const directions = [
-            {x: 0, y: -1, getValid: tile => tile.down}, // up
-            {x: 1, y: 0, getValid: tile => tile.left}, // right
-            {x: 0, y: 1, getValid: tile => tile.up}, // down
-            {x: -1, y: 0, getValid: tile => tile.right} // left
-        ];
+                directions.forEach(({x, y, getValid}) => {
+                    const neighborNeighborIndex = neighborIndex + x + y * DIM;
+                    if (neighborNeighborIndex >= 0 && neighborNeighborIndex < DIM * DIM) {
+                        const neighborNeighbor = grid[neighborNeighborIndex];
+                        if (neighborNeighbor.collapsed) {
+                            const validOptions = neighborNeighbor.options.flatMap(option => getValid(tiles[option]));
+                            checkValid(options, validOptions);
+                        }
+                    }
+                });
 
-        directions.forEach(({x, y, getValid}) => {
-            const neighborIndex = index + x + y * DIM;
-            if (neighborIndex >= 0 && neighborIndex < DIM * DIM) {
-                const neighbor = grid[neighborIndex];
-                if (neighbor.collapsed) {
-                    const validOptions = neighbor.options.flatMap(option => getValid(tiles[option]));
-                    checkValid(options, validOptions);
+                if (options.length < neighbor.options.length) {
+                    neighbor.options = options;
+                    stack.push(neighbor); // Add the neighbor to the stack for further propagation
                 }
             }
         });
+    }
+}
 
-        return new Cell(options); // Return new cell with valid options
-    });
+function getNeighbors(index) {
+    const i = index % DIM;
+    const j = Math.floor(index / DIM);
+    let neighbors = [];
+
+    if (j > 0) neighbors.push(index - DIM); // up
+    if (i < DIM - 1) neighbors.push(index + 1); // right
+    if (j < DIM - 1) neighbors.push(index + DIM); // down
+    if (i > 0) neighbors.push(index - 1); // left
+
+    return neighbors;
 }
