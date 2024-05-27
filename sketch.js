@@ -22,20 +22,22 @@ function setup() {
 
 // Creates Tile objects from jsonData, adds unique rotations, and generates adjacency rules
 function initializeTiles() {
+    let tempTiles = [];
     jsonData.tiles.forEach(data => {
-        let tile = new Tile(data.image, data.edges, data.rules, data.index);
-        tiles.push(tile);
+        let tile = new Tile(data.image, data.type, data.edges, data.rules, data.index);
+        tempTiles.push(tile);
     });
 
     // Generate rotated versions of each tile and add unique rotations to the tiles array
-    let initialTileCount = tiles.length;
-    for (let i = 0; i < initialTileCount; i++) {
-        let tempTiles = [];
+    for (let i = 0; i < tempTiles.length; i++) {
+        let allTiles = [];
         for (let j = 0; j < 4; j++) {
-            tempTiles.push(tiles[i].rotate(j));
+            allTiles.push(tempTiles[i].rotate(j));
         }
-        tempTiles = removeDuplicatedTiles(tempTiles); // Remove duplicate rotations
-        tiles = tiles.concat(tempTiles); // Add unique rotations to the tiles array
+        if (!tempTiles[i].rules.allowRotation) {
+            allTiles = removeDuplicatedTiles(allTiles); // Remove duplicate rotations
+        }
+        tiles = tiles.concat(allTiles); // Add unique rotations to the tiles array
     }
 
     console.log(tiles.length);
