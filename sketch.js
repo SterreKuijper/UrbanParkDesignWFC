@@ -1,7 +1,7 @@
 let jsonData;
 let tiles = [];
 let grid = [];
-const DIM = 25;
+const DIM = 10;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
@@ -99,14 +99,35 @@ function collapseGrid() {
 
     gridCopy.sort((a, b) => a.options.length - b.options.length); // Sort by entropy
     const cell = random(gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length));
-    cell.collapsed = true;
 
-    const pick = random(cell.options);
+    let pick = random(cell.options);
+
     if (pick === undefined) {
         initializeGrid(); // Restart if no valid option
         return;
     }
 
+    let isValid = false;
+    while (!isValid) {
+        if (enforceMaxAmount(tiles[pick]) && enforceMaxCluster(tiles[pick], grid.indexOf(cell))) {
+            isValid = true;
+        } else {
+            const pickIndex = cell.options.indexOf(pick);
+            if (pickIndex > -1) { // only splice array when item is found
+                cell.options.splice(pickIndex, 1); // 2nd parameter means remove one item only
+            }
+
+            // If no valid pick is left, reinitialize the grid and return
+            if (cell.options.length === 0) {
+                initializeGrid();
+                return;
+            }
+            // Get a new pick
+            pick = random(cell.options);
+        }
+    }
+
+    cell.collapsed = true;
     cell.options = [pick];
     propagateConstraints(cell); // Start propagation from the collapsed cell
 }
@@ -171,4 +192,53 @@ function getNeighbors(index) {
     if (i > 0) neighbors.push(index - 1); // left
 
     return neighbors;
+}
+
+function enforceMaxAmount(tile) {
+    if (tile.rules && tile.rules.maxAmount) {
+        let amount = 0;
+        let maxAmount = tile.rules.maxAmount
+        for (let i = 0; i < grid.length; i++) {
+            if (grid[i].collapsed) {
+                if (tiles[grid[i].options] === tile) {
+                    amount++
+                }
+            }
+            if (amount >= maxAmount) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function enforceMaxCluster(tile, startIndex) {
+    if (tile.rules && tile.rules.maxCluster) {
+        const maxCluster = tile.rules.maxCluster;
+        const visited = new Set();
+
+        function countClusterSize(index) {
+            if (visited.has(index)) return 0;
+            visited.add(index);
+
+            let count = 1;
+            const neighbors = getNeighbors(index);
+
+            for (const neighborIndex of neighbors) {
+                const neighborTile = grid[neighborIndex];
+                console.log("type neighbor " + tiles[neighborTile.options[0]].index + " and type tile " + tile.index)
+                if (neighborTile.collapsed && tiles[neighborTile.options[0]].index === tile.index) {
+                    count += countClusterSize(neighborIndex);
+                    if (count > maxCluster) return count; // Early exit if maxCluster is exceeded
+                }
+            }
+
+            return count;
+        }
+
+        const clusterSize = countClusterSize(startIndex);
+        return clusterSize <= maxCluster;
+    }
+
+    return true;
 }
