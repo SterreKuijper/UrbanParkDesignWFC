@@ -25,7 +25,7 @@
       ],
       "rules": {
         "maxCluster": "",
-        "maxAmount": "0"
+        "maxAmount": ""
       }
     },
     {
@@ -38,7 +38,7 @@
         "ABA"
       ],
       "rules": {
-        "maxCluster": "3",
+        "maxCluster": "",
         "maxAmount": ""
       }
     },
@@ -67,7 +67,7 @@
       ],
       "rules": {
         "allowRotation": "true",
-        "maxCluster": "3",
+        "maxCluster": "1",
         "maxAmount": ""
       }
     }

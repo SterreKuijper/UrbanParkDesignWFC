@@ -24,7 +24,7 @@ function setup() {
 function initializeTiles() {
     let tempTiles = [];
     jsonData.tiles.forEach(data => {
-        let tile = new Tile(data.image, data.type, data.edges, data.rules, data.index);
+        let tile = new Tile(data.image, data.edges, data.rules, data.index);
         tempTiles.push(tile);
     });
 
@@ -226,7 +226,6 @@ function enforceMaxCluster(tile, startIndex) {
 
             for (const neighborIndex of neighbors) {
                 const neighborTile = grid[neighborIndex];
-                console.log("type neighbor " + tiles[neighborTile.options[0]].index + " and type tile " + tile.index)
                 if (neighborTile.collapsed && tiles[neighborTile.options[0]].index === tile.index) {
                     count += countClusterSize(neighborIndex);
                     if (count > maxCluster) return count; // Early exit if maxCluster is exceeded
