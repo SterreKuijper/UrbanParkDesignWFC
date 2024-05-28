@@ -1,21 +1,21 @@
 let jsonData;
 let tiles = [];
 let grid = [];
-const DIM = 50;
+const DIM = 25;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
     loadJSON('rules.json', data => {
         jsonData = data;
         jsonData.tiles.forEach(tile => {
-            tile.image = loadImage(tile.image); // Load the image for the tile
+            tile.image = loadImage(tile.imagePath); // Load the image for the tile
         });
     });
 }
 
 // Sets up the canvas and initializes the tiles and grid
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(900, 900);
     initializeTiles();
     initializeGrid();
 }
@@ -95,10 +95,11 @@ function collapseGrid() {
     let gridCopy = grid.filter(cell => !cell.collapsed); // Get non-collapsed cells
     if (gridCopy.length === 0) return; // Stop if all cells are collapsed
 
-    gridCopy.sort((a, b) => a.options.length - b.options.length); // Sort by entropy
-    const cell = random(gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length));
+    // Sort grid cells by entropy considering frequency
+    gridCopy.sort((a, b) => calculateEntropy(a.options) - calculateEntropy(b.options));
+    const cell = random(gridCopy.filter(cell => calculateEntropy(cell.options) === calculateEntropy(gridCopy[0].options)));
 
-    let pick = random(cell.options);
+    let pick = weightedRandom(cell.options);
 
     if (pick === undefined) {
         initializeGrid(); // Restart if no valid option
@@ -121,13 +122,39 @@ function collapseGrid() {
                 return;
             }
             // Get a new pick
-            pick = random(cell.options);
+            pick = weightedRandom(cell.options);
         }
     }
 
     cell.collapsed = true;
     cell.options = [pick];
     propagateConstraints(cell); // Start propagation from the collapsed cell
+}
+
+// Helper function to calculate adjusted entropy
+function calculateEntropy(options) {
+    const totalFrequency = options.reduce((sum, option) => sum + (tiles[option].rules.frequency || 1), 0);
+    return -options.reduce((sum, option) => {
+        const frequency = tiles[option].rules.frequency || 1;
+        const probability = frequency / totalFrequency;
+        return sum + probability * Math.log(probability);
+    }, 0);
+}
+
+// Helper function to select a tile based on frequency weights
+function weightedRandom(options) {
+    const weights = options.map(option => tiles[option].rules.frequency || 1);
+    const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+    const randomValue = Math.random() * totalWeight;
+
+    let cumulativeWeight = 0;
+    for (let i = 0; i < options.length; i++) {
+        cumulativeWeight += weights[i];
+        if (randomValue < cumulativeWeight) {
+            return options[i];
+        }
+    }
+    return options[options.length - 1];
 }
 
 // Uses the adjacency information to update the options of neighboring cells

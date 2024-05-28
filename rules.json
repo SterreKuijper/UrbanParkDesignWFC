@@ -1,8 +1,9 @@
 {
   "tiles": [
     {
+      "title": "Grass",
       "index": 0,
-      "image": "/tiles/road/tile0.png",
+      "imagePath": "/tiles/road/tile0.png",
       "edges": [
         "AAA",
         "AAA",
@@ -13,12 +14,13 @@
         "maxAmount": "",
         "maxCluster": "",
         "allowRotation": false,
-        "frequency": "1"
+        "frequency": 10
       }
     },
     {
+      "title": "Corner Road",
       "index": 1,
-      "image": "/tiles/road/tile1.png",
+      "imagePath": "/tiles/road/tile1.png",
       "edges": [
         "ABA",
         "ABA",
@@ -29,12 +31,13 @@
         "maxAmount": "",
         "maxCluster": "",
         "allowRotation": false,
-        "frequency": "1"
+        "frequency": 0.1
       }
     },
     {
+      "title": "Straight Road",
       "index": 2,
-      "image": "/tiles/road/tile2.png",
+      "imagePath": "/tiles/road/tile2.png",
       "edges": [
         "AAA",
         "ABA",
@@ -45,12 +48,13 @@
         "maxAmount": "",
         "maxCluster": "",
         "allowRotation": false,
-        "frequency": "1"
+        "frequency": 1
       }
     },
     {
+      "title": "T Section",
       "index": 3,
-      "image": "/tiles/road/tile3.png",
+      "imagePath": "/tiles/road/tile3.png",
       "edges": [
         "ABA",
         "ABA",
@@ -61,44 +65,13 @@
         "maxAmount": "",
         "maxCluster": "",
         "allowRotation": false,
-        "frequency": "1"
+        "frequency": 1
       }
     },
     {
+      "title": "Flowers",
       "index": 4,
-      "image": "/tiles/road/tile4.png",
-      "edges": [
-        "AAA",
-        "AAA",
-        "AAA",
-        "AAA"
-      ],
-      "rules": {
-        "maxAmount": "",
-        "maxCluster": "",
-        "allowRotation": true,
-        "frequency": "1"
-      }
-    },
-    {
-      "index": 5,
-      "image": "/tiles/road/tile5.png",
-      "edges": [
-        "AAA",
-        "AAA",
-        "AAA",
-        "AAA"
-      ],
-      "rules": {
-        "maxAmount": "",
-        "maxCluster": "",
-        "allowRotation": true,
-        "frequency": "1"
-      }
-    },
-    {
-      "index": 6,
-      "image": "/tiles/road/tile6.png",
+      "imagePath": "/tiles/road/tile4.png",
       "edges": [
         "AAA",
         "AAA",
@@ -109,7 +82,41 @@
         "maxAmount": "",
         "maxCluster": "",
         "allowRotation": false,
-        "frequency": "1"
+        "frequency": 1
+      }
+    },
+    {
+      "title": "Bench",
+      "index": 5,
+      "imagePath": "/tiles/road/tile5.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.5
+      }
+    },
+    {
+      "title": "Bush",
+      "index": 6,
+      "imagePath": "/tiles/road/tile6.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.2
       }
     }
   ]

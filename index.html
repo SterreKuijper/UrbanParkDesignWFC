@@ -11,6 +11,12 @@
             font-weight: 700;
             font-style: normal;
         }
+        .open-sans-500 {
+            font-family: "Open Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
 
         * {
             margin: 0;
@@ -28,12 +34,59 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-        }
-
-        .content {
             text-align: center;
         }
 
+        .content-container {
+            display: flex;
+        }
+
+        .rules-form {
+            text-align: left;
+        }
+
+        .rules-form label {
+            display: block;
+        }
+
+        .rules-form input {
+            width: 100%;
+        }
+
+        .rules-form button {
+            font-size: 16px;
+        }
+
+        .tile-image {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .tile-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tile-inputs {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .row input {
+            width: 128px;
+        }
+
+        .row label {
+            width: 128px;
+        }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,13 +97,82 @@
 
 <body>
 <div class="container">
-    <div class="content">
-        <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
+    <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
+    <div class="content-container">
+        <div>
+            <div class="rules-form" id="rulesFormContainer"></div>
+            <button onclick="applyRules()">Apply Rules</button>
+        </div>
         <main></main>
     </div>
 </div>
-<script src="sketch.js"></script>
 <script src="cell.js"></script>
 <script src="tile.js"></script>
+<script src="sketch.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (jsonData) {
+            displayRulesForm();
+        } else {
+            setTimeout(displayRulesForm, 1000); // Adjust the delay as needed
+        }
+    });
+
+    function displayRulesForm() {
+        const container = document.getElementById('rulesFormContainer');
+        container.innerHTML = '';
+
+        jsonData.tiles.forEach((tile, index) => {
+            const tileDiv = document.createElement('div');
+            tileDiv.className = 'tile-container';
+            const img = document.createElement('img');
+            img.src = tile.imagePath;
+            img.className = 'tile-image';
+            tileDiv.appendChild(img);
+
+            const tileInfoDiv = document.createElement('div');
+            tileInfoDiv.innerHTML = `<h3>${tile.title}</h3>`;
+            tileInfoDiv.className = 'open-sans-500'
+
+            const tileInputsDiv = document.createElement('div');
+            tileInputsDiv.className = 'tile-inputs';
+
+            Object.keys(tile.rules).forEach(rule => {
+                const inputContainer = document.createElement('div');
+                inputContainer.className = 'row';
+
+                const label = document.createElement('label');
+                label.innerText = `${rule}: `;
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = tile.rules[rule];
+                input.dataset.tileIndex = index;
+                input.dataset.rule = rule;
+
+                inputContainer.appendChild(label);
+                inputContainer.appendChild(input);
+                tileInputsDiv.appendChild(inputContainer)
+            });
+
+            tileDiv.appendChild(tileInfoDiv);
+            tileInfoDiv.appendChild(tileInputsDiv);
+            container.appendChild(tileDiv);
+        });
+    }
+
+    function applyRules() {
+        const inputs = document.querySelectorAll('.rules-form input');
+
+        inputs.forEach(input => {
+            const tileIndex = input.dataset.tileIndex;
+            const rule = input.dataset.rule;
+            jsonData.tiles[tileIndex].rules[rule] = parseFloat(input.value) || input.value;
+        });
+
+        initializeTiles();
+        initializeGrid();
+    }
+</script>
 </body>
 </html>
