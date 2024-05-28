@@ -28,6 +28,7 @@
         }
 
         .container {
+            margin-top: 32px;
             width: 100%;
             height: 100%;
             display: flex;
@@ -35,14 +36,27 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
+            gap: 16px;
         }
 
         .content-container {
+            width: 100%;
             display: flex;
+            justify-content: center;
+            gap: 32px;
         }
 
+        /*.content-container div {*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*}*/
+
         .rules-form {
+            width: 1016px;
             text-align: left;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .rules-form label {
@@ -51,29 +65,37 @@
 
         .rules-form input {
             width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        .rules-form button {
-            font-size: 16px;
+        button {
+            font-size: 20px;
+            background-color: #66AA22; /* Green */
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 100px;
         }
 
         .tile-image {
-            width: 50px;
+            width: 56px;
             height: 50px;
             object-fit: contain;
-            margin-right: 10px;
+            margin-right: 16px;
         }
 
         .tile-container {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
         }
 
         .tile-inputs {
             display: flex;
             flex-direction: column;
-
+            gap: 8px;
         }
 
         .row {
@@ -99,7 +121,7 @@
 <div class="container">
     <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
     <div class="content-container">
-        <div>
+        <div style="display: flex; flex-direction: column; height: 800px; justify-content: space-between">
             <div class="rules-form" id="rulesFormContainer"></div>
             <button onclick="applyRules()">Apply Rules</button>
         </div>

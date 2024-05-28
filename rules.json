@@ -118,6 +118,74 @@
         "allowRotation": false,
         "frequency": 0.2
       }
+    },
+    {
+      "title": "Water",
+      "index": 7,
+      "imagePath": "/tiles/road/tile7.png",
+      "edges": [
+        "CCC",
+        "CCC",
+        "CCC",
+        "CCC"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.1
+      }
+    },
+    {
+      "title": "Water with Land",
+      "index": 8,
+      "imagePath": "/tiles/road/tile8.png",
+      "edges": [
+        "ACC",
+        "CCC",
+        "CCA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.2
+      }
+    },
+    {
+      "title": "Water with Land Corner",
+      "index": 9,
+      "imagePath": "/tiles/road/tile9.png",
+      "edges": [
+        "ACC",
+        "CCA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.2
+      }
+    },
+    {
+      "title": "Water Corner",
+      "index": 10,
+      "imagePath": "/tiles/road/tile10.png",
+      "edges": [
+        "CCC",
+        "CCC",
+        "CCA",
+        "ACC"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": 0.2
+      }
     }
   ]
 }

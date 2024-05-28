@@ -15,7 +15,7 @@ function preload() {
 
 // Sets up the canvas and initializes the tiles and grid
 function setup() {
-    createCanvas(900, 900);
+    createCanvas(800, 800);
     initializeTiles();
     initializeGrid();
 }
