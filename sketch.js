@@ -1,7 +1,7 @@
 let jsonData;
 let tiles = [];
 let grid = [];
-const DIM = 10;
+const DIM = 50;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
@@ -34,9 +34,7 @@ function initializeTiles() {
         for (let j = 0; j < 4; j++) {
             allTiles.push(tempTiles[i].rotate(j));
         }
-        if (!tempTiles[i].rules.allowRotation) {
-            allTiles = removeDuplicatedTiles(allTiles); // Remove duplicate rotations
-        }
+        allTiles = removeDuplicatedTiles(allTiles); // Remove duplicate rotations
         tiles = tiles.concat(allTiles); // Add unique rotations to the tiles array
     }
 
@@ -62,10 +60,10 @@ function initializeGrid() {
     grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
 }
 
-// Reinitializes the grid when the mouse is pressed
-function mousePressed() {
-    initializeGrid();
-}
+// // Reinitializes the grid when the mouse is pressed
+// function mousePressed() {
+//     initializeGrid();
+// }
 
 // Main draw loop that handles drawing the grid, collapsing cells, and propagating constraints
 function draw() {
@@ -200,7 +198,7 @@ function enforceMaxAmount(tile) {
         let maxAmount = tile.rules.maxAmount
         for (let i = 0; i < grid.length; i++) {
             if (grid[i].collapsed) {
-                if (tiles[grid[i].options] === tile) {
+                if (tiles[grid[i].options].index === tile.index) {
                     amount++
                 }
             }

@@ -10,8 +10,10 @@
         "AAA"
       ],
       "rules": {
+        "maxAmount": "",
         "maxCluster": "",
-        "maxAmount": ""
+        "allowRotation": false,
+        "frequency": "1"
       }
     },
     {
@@ -24,8 +26,10 @@
         "AAA"
       ],
       "rules": {
+        "maxAmount": "",
         "maxCluster": "",
-        "maxAmount": ""
+        "allowRotation": false,
+        "frequency": "1"
       }
     },
     {
@@ -38,8 +42,10 @@
         "ABA"
       ],
       "rules": {
+        "maxAmount": "",
         "maxCluster": "",
-        "maxAmount": ""
+        "allowRotation": false,
+        "frequency": "1"
       }
     },
     {
@@ -52,8 +58,10 @@
         "ABA"
       ],
       "rules": {
+        "maxAmount": "",
         "maxCluster": "",
-        "maxAmount": ""
+        "allowRotation": false,
+        "frequency": "1"
       }
     },
     {
@@ -66,9 +74,42 @@
         "AAA"
       ],
       "rules": {
-        "allowRotation": "true",
-        "maxCluster": "1",
-        "maxAmount": ""
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": true,
+        "frequency": "1"
+      }
+    },
+    {
+      "index": 5,
+      "image": "/tiles/road/tile5.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": true,
+        "frequency": "1"
+      }
+    },
+    {
+      "index": 6,
+      "image": "/tiles/road/tile6.png",
+      "edges": [
+        "AAA",
+        "AAA",
+        "AAA",
+        "AAA"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "allowRotation": false,
+        "frequency": "1"
       }
     }
   ]
