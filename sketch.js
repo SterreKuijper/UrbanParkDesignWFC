@@ -5,7 +5,7 @@ const DIM = 25;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
-    loadJSON('rules.json', data => {
+    loadJSON('/tiles/pavement/rules.json', data => {
         jsonData = data;
         jsonData.tiles.forEach(tile => {
             tile.image = loadImage(tile.imagePath); // Load the image for the tile
@@ -57,13 +57,14 @@ function removeDuplicatedTiles(tiles) {
 
 // Initializes the grid with empty cells
 function initializeGrid() {
-    grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
+    if (grid.length === 0) {
+        // Initialize new cells if the grid is empty
+        grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
+    } else {
+        // Update existing cells or initialize new ones if cell state is 0
+        grid = grid.map(cell => (cell.state === 0 ? new Cell(tiles.length) : cell));
+    }
 }
-
-// // Reinitializes the grid when the mouse is pressed
-// function mousePressed() {
-//     initializeGrid();
-// }
 
 // Main draw loop that handles drawing the grid, collapsing cells, and propagating constraints
 function draw() {
@@ -78,14 +79,47 @@ function drawGrid() {
     const w = width / DIM;
     const h = height / DIM;
     grid.forEach((cell, index) => {
-        const i = index % DIM;
-        const j = Math.floor(index / DIM);
-        if (cell.collapsed) {
-            image(tiles[cell.options[0]].img, i * w, j * h, w, h); // Draw collapsed tile
-        } else {
+        const x = (index % DIM) * w;
+        const y = Math.floor(index / DIM) * h;
+
+        if (cell.state === 0) {
+            if (cell.collapsed) {
+                image(tiles[cell.options[0]].img, x, y, w, h); // Draw collapsed tile
+            } else {
+                noFill();
+                stroke(51);
+                rect(x, y, w, h); // Draw empty cell
+            }
+        } else if (cell.state === 1) {
             noFill();
             stroke(51);
-            rect(i * w, j * h, w, h); // Draw empty cell
+            rect(x, y, w, h); // Draw empty cell
+        } else {
+            image(tiles[cell.state - 2].img, x, y, w, h);
+            fill(255, 255, 255, 50);
+            noStroke();
+            rect(x, y, w, h);
+        }
+
+        if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+            fill(255, 255, 255, 50);
+            noStroke();
+            rect(x, y, w, h);
+        }
+
+    });
+}
+
+function mouseClicked() {
+    const w = width / DIM;
+    const h = height / DIM;
+    grid.forEach((cell, index) => {
+        const x = (index % DIM) * w;
+        const y = Math.floor(index / DIM) * h;
+
+        if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+            console.log("clicked");
+            cell.updateState();
         }
     });
 }
