@@ -9,15 +9,15 @@ class Cell {
                 this.options[i] = i;
             }
         }
-        this.state = 0;
+        this.state = -1;
     }
 
-    updateState() {
-        this.maxState = tiles.length + 1;
-        this.state++;
-        if (this.state > this.maxState) this.state = 0;
-
-        this.collapsed = this.state !== 0;
-        if (this.state > 1) this.options = [this.state - 2];
+    // -1 normal state
+    // -2 empty state
+    // 1+ other state
+    updateState(state) {
+        this.state = state;
+        if (this.state >= 0) this.options = [this.state];
+        this.collapsed = state !== -1;
     }
 }

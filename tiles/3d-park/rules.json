@@ -3,12 +3,12 @@
     {
       "title": "grass",
       "index": 0,
-      "imagePath": "/tiles/3d-park/grass.png",
+      "imagePath": "/tiles/3d-park/grass-high.png",
       "edges": [
-        "HHH",
-        "HHH",
-        "HHH",
-        "HHH"
+        "GGG",
+        "GGG",
+        "GGG",
+        "GGG"
       ],
       "rules": {
         "maxAmount": "",
@@ -81,24 +81,8 @@
       }
     },
     {
-      "title": "grass-high",
-      "index": 5,
-      "imagePath": "/tiles/3d-park/grass-high.png",
-      "edges": [
-        "GGG",
-        "GGG",
-        "GGG",
-        "GGG"
-      ],
-      "rules": {
-        "maxAmount": "",
-        "maxCluster": "",
-        "frequency": 1
-      }
-    },
-    {
       "title": "road-0",
-      "index": 14,
+      "index": 5,
       "imagePath": "/tiles/3d-park/road-0.png",
       "edges": [
         "GGG",
@@ -114,7 +98,7 @@
     },
     {
       "title": "road-1",
-      "index": 15,
+      "index": 6,
       "imagePath": "/tiles/3d-park/road-1.png",
       "edges": [
         "GRG",
@@ -130,7 +114,7 @@
     },
     {
       "title": "road-corner-0",
-      "index": 16,
+      "index": 7,
       "imagePath": "/tiles/3d-park/road-corner-0.png",
       "edges": [
         "GRG",
@@ -146,7 +130,7 @@
     },
     {
       "title": "road-corner-1",
-      "index": 17,
+      "index": 8,
       "imagePath": "/tiles/3d-park/road-corner-1.png",
       "edges": [
         "GGG",
@@ -162,7 +146,7 @@
     },
     {
       "title": "road-corner-2",
-      "index": 18,
+      "index": 9,
       "imagePath": "/tiles/3d-park/road-corner-2.png",
       "edges": [
         "GGG",
@@ -178,7 +162,7 @@
     },
     {
       "title": "road-corner-3",
-      "index": 19,
+      "index": 10,
       "imagePath": "/tiles/3d-park/road-corner-3.png",
       "edges": [
         "GRG",
@@ -194,7 +178,7 @@
     },
     {
       "title": "road-cross",
-      "index": 20,
+      "index": 11,
       "imagePath": "/tiles/3d-park/road-cross.png",
       "edges": [
         "GHG",
@@ -210,7 +194,7 @@
     },
     {
       "title": "road-t-0",
-      "index": 21,
+      "index": 12,
       "imagePath": "/tiles/3d-park/road-t-0.png",
       "edges": [
         "GGG",
@@ -226,7 +210,7 @@
     },
     {
       "title": "road-t-1",
-      "index": 22,
+      "index": 13,
       "imagePath": "/tiles/3d-park/road-t-1.png",
       "edges": [
         "GRG",
@@ -242,7 +226,7 @@
     },
     {
       "title": "road-t-2",
-      "index": 23,
+      "index": 14,
       "imagePath": "/tiles/3d-park/road-t-2.png",
       "edges": [
         "GRG",
@@ -258,7 +242,7 @@
     },
     {
       "title": "road-t-3",
-      "index": 24,
+      "index": 15,
       "imagePath": "/tiles/3d-park/road-t-3.png",
       "edges": [
         "GRG",
@@ -273,24 +257,8 @@
       }
     },
     {
-      "title": "sand",
-      "index": 25,
-      "imagePath": "/tiles/3d-park/sand.png",
-      "edges": [
-        "SSS",
-        "SSS",
-        "SSS",
-        "SSS"
-      ],
-      "rules": {
-        "maxAmount": "0",
-        "maxCluster": "",
-        "frequency": 0
-      }
-    },
-    {
       "title": "water",
-      "index": 26,
+      "index": 16,
       "imagePath": "/tiles/3d-park/water.png",
       "edges": [
         "WWW",
@@ -306,7 +274,7 @@
     },
     {
       "title": "water-corner-0",
-      "index": 27,
+      "index": 17,
       "imagePath": "/tiles/3d-park/water-corner-0.png",
       "edges": [
         "WWG",
@@ -322,7 +290,7 @@
     },
     {
       "title": "water-corner-1",
-      "index": 28,
+      "index": 18,
       "imagePath": "/tiles/3d-park/water-corner-1.png",
       "edges": [
         "WWW",
@@ -338,7 +306,7 @@
     },
     {
       "title": "water-corner-2",
-      "index": 29,
+      "index": 19,
       "imagePath": "/tiles/3d-park/water-corner-2.png",
       "edges": [
         "GWW",
@@ -354,7 +322,7 @@
     },
     {
       "title": "water-corner-3",
-      "index": 30,
+      "index": 20,
       "imagePath": "/tiles/3d-park/water-corner-3.png",
       "edges": [
         "WWW",
@@ -370,7 +338,7 @@
     },
     {
       "title": "water-grass-0",
-      "index": 31,
+      "index": 21,
       "imagePath": "/tiles/3d-park/water-grass-0.png",
       "edges": [
         "GGG",
@@ -386,7 +354,7 @@
     },
     {
       "title": "water-grass-1",
-      "index": 32,
+      "index": 22,
       "imagePath": "/tiles/3d-park/water-grass-1.png",
       "edges": [
         "WWW",
@@ -402,7 +370,7 @@
     },
     {
       "title": "water-grass-2",
-      "index": 33,
+      "index": 23,
       "imagePath": "/tiles/3d-park/water-grass-2.png",
       "edges": [
         "GWW",
@@ -418,7 +386,7 @@
     },
     {
       "title": "water-grass-3",
-      "index": 34,
+      "index": 24,
       "imagePath": "/tiles/3d-park/water-grass-3.png",
       "edges": [
         "WWG",

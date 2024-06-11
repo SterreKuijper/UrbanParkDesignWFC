@@ -109,6 +109,27 @@
         .row label {
             width: 128px;
         }
+
+        .cell-options {
+            width: 796px;
+            display: flex;
+            gap: 16px;
+            color: black;
+            flex-wrap: wrap;
+        }
+
+        .cell-options div {
+            width: 100px;
+            height: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cell-options img:hover {
+            cursor: pointer;
+        }
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,80 +142,88 @@
 <div class="container">
     <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
     <div class="content-container">
-        <div style="display: flex; flex-direction: column; height: 800px; justify-content: space-between">
-            <div class="rules-form" id="rulesFormContainer"></div>
-            <button onclick="applyRules()">Apply Rules</button>
-        </div>
+        <!--        <div style="display: flex; flex-direction: column; height: 800px; justify-content: space-between">-->
+        <!--            <div class="rules-form" id="rulesFormContainer"></div>-->
+        <!--            <button onclick="applyRules()">Apply Rules</button>-->
+        <!--        </div>-->
         <main></main>
     </div>
+    <button onClick="resetGrid()">Reset grid</button>
+    <div id="cellOptions" class="cell-options"></div>
 </div>
 <script src="cell.js"></script>
 <script src="tile.js"></script>
 <script src="sketch.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (jsonData) {
-            displayRulesForm();
-        } else {
-            setTimeout(displayRulesForm, 1000); // Adjust the delay as needed
-        }
-    });
 
-    function displayRulesForm() {
-        const container = document.getElementById('rulesFormContainer');
-        container.innerHTML = '';
 
-        jsonData.tiles.forEach((tile, index) => {
-            const tileDiv = document.createElement('div');
-            tileDiv.className = 'tile-container';
-            const img = document.createElement('img');
-            img.src = tile.imagePath;
-            img.className = 'tile-image';
-            tileDiv.appendChild(img);
-
-            const tileInfoDiv = document.createElement('div');
-            tileInfoDiv.innerHTML = `<h3>${tile.title}</h3>`;
-            tileInfoDiv.className = 'open-sans-500'
-
-            const tileInputsDiv = document.createElement('div');
-            tileInputsDiv.className = 'tile-inputs';
-
-            Object.keys(tile.rules).forEach(rule => {
-                const inputContainer = document.createElement('div');
-                inputContainer.className = 'row';
-
-                const label = document.createElement('label');
-                label.innerText = `${rule}: `;
-
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.value = tile.rules[rule];
-                input.dataset.tileIndex = index;
-                input.dataset.rule = rule;
-
-                inputContainer.appendChild(label);
-                inputContainer.appendChild(input);
-                tileInputsDiv.appendChild(inputContainer)
-            });
-
-            tileDiv.appendChild(tileInfoDiv);
-            tileInfoDiv.appendChild(tileInputsDiv);
-            container.appendChild(tileDiv);
-        });
-    }
-
-    function applyRules() {
-        const inputs = document.querySelectorAll('.rules-form input');
-
-        inputs.forEach(input => {
-            const tileIndex = input.dataset.tileIndex;
-            const rule = input.dataset.rule;
-            jsonData.tiles[tileIndex].rules[rule] = parseFloat(input.value) || input.value;
-        });
-
-        initializeTiles();
+    function resetGrid() {
         initializeGrid();
     }
+
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     if (jsonData) {
+    //         displayRulesForm();
+    //     } else {
+    //         setTimeout(displayRulesForm, 1000); // Adjust the delay as needed
+    //     }
+    // });
+    //
+    // function displayRulesForm() {
+    //     const container = document.getElementById('rulesFormContainer');
+    //     container.innerHTML = '';
+    //
+    //     jsonData.tiles.forEach((tile, index) => {
+    //         const tileDiv = document.createElement('div');
+    //         tileDiv.className = 'tile-container';
+    //         const img = document.createElement('img');
+    //         img.src = tile.imagePath;
+    //         img.className = 'tile-image';
+    //         tileDiv.appendChild(img);
+    //
+    //         const tileInfoDiv = document.createElement('div');
+    //         tileInfoDiv.innerHTML = `<h3>${tile.title}</h3>`;
+    //         tileInfoDiv.className = 'open-sans-500'
+    //
+    //         const tileInputsDiv = document.createElement('div');
+    //         tileInputsDiv.className = 'tile-inputs';
+    //
+    //         Object.keys(tile.rules).forEach(rule => {
+    //             const inputContainer = document.createElement('div');
+    //             inputContainer.className = 'row';
+    //
+    //             const label = document.createElement('label');
+    //             label.innerText = `${rule}: `;
+    //
+    //             const input = document.createElement('input');
+    //             input.type = 'text';
+    //             input.value = tile.rules[rule];
+    //             input.dataset.tileIndex = index;
+    //             input.dataset.rule = rule;
+    //
+    //             inputContainer.appendChild(label);
+    //             inputContainer.appendChild(input);
+    //             tileInputsDiv.appendChild(inputContainer)
+    //         });
+    //
+    //         tileDiv.appendChild(tileInfoDiv);
+    //         tileInfoDiv.appendChild(tileInputsDiv);
+    //         container.appendChild(tileDiv);
+    //     });
+    // }
+    //
+    // function applyRules() {
+    //     const inputs = document.querySelectorAll('.rules-form input');
+    //
+    //     inputs.forEach(input => {
+    //         const tileIndex = input.dataset.tileIndex;
+    //         const rule = input.dataset.rule;
+    //         jsonData.tiles[tileIndex].rules[rule] = parseFloat(input.value) || input.value;
+    //     });
+    //
+    //     initializeTiles();
+    //     initializeGrid();
+    // }
 </script>
 </body>
 </html>

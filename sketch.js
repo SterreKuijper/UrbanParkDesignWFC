@@ -1,44 +1,36 @@
 let jsonData;
 let tiles = [];
 let grid = [];
-const DIM = 25;
+const DIM = 10;
+let emptyCell;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
-    loadJSON('/tiles/pavement/rules.json', data => {
+    loadJSON('/tiles/3d-park/rules.json', data => {
         jsonData = data;
         jsonData.tiles.forEach(tile => {
             tile.image = loadImage(tile.imagePath); // Load the image for the tile
         });
     });
+    emptyCell = loadImage('/tiles/3d-park/sand.png');
 }
 
 // Sets up the canvas and initializes the tiles and grid
 function setup() {
-    createCanvas(800, 800);
+    createCanvas(800, 500);
     initializeTiles();
     initializeGrid();
 }
 
 // Creates Tile objects from jsonData, adds unique rotations, and generates adjacency rules
 function initializeTiles() {
-    let tempTiles = [];
     jsonData.tiles.forEach(data => {
         let tile = new Tile(data.image, data.edges, data.rules, data.index);
-        tempTiles.push(tile);
+        tiles.push(tile);
     });
 
-    // Generate rotated versions of each tile and add unique rotations to the tiles array
-    for (let i = 0; i < tempTiles.length; i++) {
-        let allTiles = [];
-        for (let j = 0; j < 4; j++) {
-            allTiles.push(tempTiles[i].rotate(j));
-        }
-        allTiles = removeDuplicatedTiles(allTiles); // Remove duplicate rotations
-        tiles = tiles.concat(allTiles); // Add unique rotations to the tiles array
-    }
-
-    console.log(tiles.length);
+    console.log('Length tiles: ' + tiles.length);
+    console.log('Table tiles: ');
     console.table(tiles);
 
     // Generate the adjacency rules based on edges
@@ -61,67 +53,156 @@ function initializeGrid() {
         // Initialize new cells if the grid is empty
         grid = Array(DIM * DIM).fill().map(() => new Cell(tiles.length));
     } else {
-        // Update existing cells or initialize new ones if cell state is 0
-        grid = grid.map(cell => (cell.state === 0 ? new Cell(tiles.length) : cell));
+        // Update existing cells or initialize new ones if cell state is -1
+        grid = grid.map(cell => (cell.state === -1 ? new Cell(tiles.length) : cell));
     }
 }
 
 // Main draw loop that handles drawing the grid, collapsing cells, and propagating constraints
 function draw() {
-    background(0);
+    background(255);
     drawGrid();
     collapseGrid();
     propagateConstraints();
 }
 
-// Draws the current state of the grid
 function drawGrid() {
     const w = width / DIM;
-    const h = height / DIM;
+    const h = w/2;
+    const depth = height / DIM + h/4;
+
     grid.forEach((cell, index) => {
-        const x = (index % DIM) * w;
-        const y = Math.floor(index / DIM) * h;
+        const imageCell = cell.collapsed ? (cell.state !== -2 ? tiles[cell.options[0]].img : emptyCell) : emptyCell;
+        const scale = w / imageCell.width;
+        imageCell.resize(imageCell.width * scale, imageCell.height * scale);
 
-        if (cell.state === 0) {
-            if (cell.collapsed) {
-                image(tiles[cell.options[0]].img, x, y, w, h); // Draw collapsed tile
-            } else {
-                noFill();
-                stroke(51);
-                rect(x, y, w, h); // Draw empty cell
-            }
-        } else if (cell.state === 1) {
-            noFill();
-            stroke(51);
-            rect(x, y, w, h); // Draw empty cell
-        } else {
-            image(tiles[cell.state - 2].img, x, y, w, h);
-            fill(255, 255, 255, 50);
-            noStroke();
-            rect(x, y, w, h);
+        const xIndex = index % DIM;
+        const yIndex = Math.floor(index / DIM);
+
+        const x = (xIndex - yIndex) * w / 2 + width / 2 - w / 2;
+        let y = (xIndex + yIndex) * h / 2;
+        const z = depth - imageCell.height;
+
+        if (isOverCell(x, y, z, imageCell)) {
+            y = (xIndex + yIndex) * h / 2 - 5;
         }
 
-        if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-            fill(255, 255, 255, 50);
-            noStroke();
-            rect(x, y, w, h);
-        }
-
+        image(imageCell, x, y + z); // draw the image
     });
 }
 
+function isOverCell(x, y, z, imageCell) {
+    const px = mouseX;
+    const py = mouseY;
+
+    // Define the vertices of the diamond shape
+    const vertices = [
+        {x: x + imageCell.width / 2, y: y + z},
+        {x: x + imageCell.width, y: y + z + imageCell.height / 2 - imageCell.height / 10},
+        {x: x + imageCell.width / 2, y: y + z + imageCell.height - imageCell.height / 10 * 2},
+        {x: x, y: y + z + imageCell.height / 2 - imageCell.height / 10}
+    ];
+
+    let isInside = false;
+    for (let i = 0, j = vertices.length - 1; i < vertices.length; j = i++) {
+        const xi = vertices[i].x, yi = vertices[i].y;
+        const xj = vertices[j].x, yj = vertices[j].y;
+
+        const intersect = ((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi);
+        if (intersect) isInside = !isInside;
+    }
+
+    return isInside;
+}
+
+
 function mouseClicked() {
     const w = width / DIM;
-    const h = height / DIM;
-    grid.forEach((cell, index) => {
-        const x = (index % DIM) * w;
-        const y = Math.floor(index / DIM) * h;
+    const h = w/2;
+    const depth = height / DIM + h/4;
 
-        if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-            console.log("clicked");
-            cell.updateState();
+    grid.forEach((cell, index) => {
+        const imageCell = cell.collapsed ? (cell.state !== -2 ? tiles[cell.options[0]].img : emptyCell) : emptyCell;
+        const scale = w / imageCell.width;
+        imageCell.resize(imageCell.width * scale, imageCell.height * scale);
+
+        const xIndex = index % DIM;
+        const yIndex = Math.floor(index / DIM);
+
+        const x = (xIndex - yIndex) * w / 2 + width / 2 - w / 2;
+        let y = (xIndex + yIndex) * h / 2;
+        const z = depth - imageCell.height;
+
+        if (isOverCell(x, y, z, imageCell)) {
+            showOptions(index);
         }
     });
+}
+
+function showOptions(index) {
+    const options = document.getElementById('cellOptions');
+    options.innerHTML = '';
+
+    // Add empty option
+    const emptyOptionDiv = document.createElement('div');
+    const emptyOption = document.createElement('img');
+    emptyOption.src = 'images/empty.png';
+    emptyOption.width = 65;
+
+    emptyOption.onclick = () => {
+        grid[index].updateState(-2);
+        removeOptions();
+    }
+
+    emptyOptionDiv.appendChild(emptyOption);
+    options.appendChild(emptyOptionDiv);
+
+    // Add lock option
+    const lockOptionDiv = document.createElement('div');
+    const lockOption = document.createElement('img');
+    lockOption.src = 'images/lock.png';
+    lockOption.width = 65;
+
+    lockOption.onclick = () => {
+        grid[index].updateState(grid[index].options[0]);
+        removeOptions();
+    }
+
+    lockOptionDiv.appendChild(lockOption);
+    options.appendChild(lockOptionDiv);
+
+    // Add reset option
+    const resetOptionDiv = document.createElement('div');
+    const resetOption = document.createElement('img');
+    resetOption.src = 'images/reset.png';
+    resetOption.width = 65;
+
+    resetOption.onclick = () => {
+        grid[index].updateState(-1);
+        removeOptions();
+    }
+
+    resetOptionDiv.appendChild(resetOption);
+    options.appendChild(resetOptionDiv);
+
+    jsonData.tiles.forEach(tile => {
+        const optionDiv = document.createElement('div');
+        const option = document.createElement('img');
+        option.src = tile.imagePath;
+
+        option.onclick = () => {
+            grid[index].updateState(tile.index);
+            removeOptions();
+        }
+
+        optionDiv.appendChild(option);
+        options.appendChild(optionDiv);
+    })
+}
+
+function removeOptions() {
+    const options = document.getElementById('cellOptions');
+    options.innerHTML = '';
 }
 
 // Handles collapsing the least entropic cell and starts the propagation of constraints
