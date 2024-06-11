@@ -399,6 +399,214 @@
         "maxCluster": "",
         "frequency": 1
       }
+    },
+    {
+      "title": "big-dirt-corner-0",
+      "index": 25,
+      "imagePath": "/tiles/3d-park/big-dirt-corner-0.png",
+      "edges": [
+        "DDG",
+        "GDD",
+        "DDD",
+        "DDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "big-dirt-corner-1",
+      "index": 26,
+      "imagePath": "/tiles/3d-park/big-dirt-corner-1.png",
+      "edges": [
+        "DDD",
+        "DDD",
+        "DDG",
+        "GDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "big-dirt-corner-2",
+      "index": 27,
+      "imagePath": "/tiles/3d-park/big-dirt-corner-2.png",
+      "edges": [
+        "GDD",
+        "DDD",
+        "DDD",
+        "DDG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "big-dirt-corner-3",
+      "index": 28,
+      "imagePath": "/tiles/3d-park/big-dirt-corner-3.png",
+      "edges": [
+        "DDD",
+        "DDG",
+        "GDD",
+        "DDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-corner-0",
+      "index": 29,
+      "imagePath": "/tiles/3d-park/dirt-corner-0.png",
+      "edges": [
+        "GGG",
+        "GGG",
+        "GDD",
+        "DDG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-corner-1",
+      "index": 30,
+      "imagePath": "/tiles/3d-park/dirt-corner-1.png",
+      "edges": [
+        "GDD",
+        "DDG",
+        "GGG",
+        "GGG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-corner-2",
+      "index": 31,
+      "imagePath": "/tiles/3d-park/dirt-corner-2.png",
+      "edges": [
+        "DDG",
+        "GGG",
+        "GGG",
+        "GDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-corner-3",
+      "index": 32,
+      "imagePath": "/tiles/3d-park/dirt-corner-3.png",
+      "edges": [
+        "GGG",
+        "GDD",
+        "DDG",
+        "GGG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-grass-0",
+      "index": 33,
+      "imagePath": "/tiles/3d-park/dirt-grass-0.png",
+      "edges": [
+        "GGG",
+        "GDD",
+        "DDD",
+        "DDG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-grass-1",
+      "index": 34,
+      "imagePath": "/tiles/3d-park/dirt-grass-1.png",
+      "edges": [
+        "DDD",
+        "DDG",
+        "GGG",
+        "GDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-grass-2",
+      "index": 35,
+      "imagePath": "/tiles/3d-park/dirt-grass-2.png",
+      "edges": [
+        "GDD",
+        "DDD",
+        "DDG",
+        "GGG"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt-grass-3",
+      "index": 36,
+      "imagePath": "/tiles/3d-park/dirt-grass-3.png",
+      "edges": [
+        "DDG",
+        "GGG",
+        "GDD",
+        "DDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
+    },
+    {
+      "title": "dirt",
+      "index": 37,
+      "imagePath": "/tiles/3d-park/sand.png",
+      "edges": [
+        "DDD",
+        "DDD",
+        "DDD",
+        "DDD"
+      ],
+      "rules": {
+        "maxAmount": "",
+        "maxCluster": "",
+        "frequency": 1
+      }
     }
   ]
 }

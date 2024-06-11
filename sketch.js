@@ -12,7 +12,7 @@ function preload() {
             tile.image = loadImage(tile.imagePath); // Load the image for the tile
         });
     });
-    emptyCell = loadImage('/tiles/3d-park/sand.png');
+    emptyCell = loadImage('/tiles/3d-park/empty.png');
 }
 
 // Sets up the canvas and initializes the tiles and grid
