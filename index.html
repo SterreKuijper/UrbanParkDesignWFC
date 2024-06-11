@@ -111,7 +111,7 @@
         }
 
         .cell-options {
-            width: 796px;
+            width: 944px;
             display: flex;
             gap: 16px;
             color: black;
@@ -130,6 +130,34 @@
         .cell-options img:hover {
             cursor: pointer;
         }
+
+        .type-options {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .type-options div {
+            display: flex;
+            gap: 32px;
+        }
+
+        .grid-options {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+        .grid-options div {
+            display: flex;
+            align-items: center;
+        }
+
+        .grid-options input {
+            width: 24px;
+            height: 24px;
+            accent-color: #66AA22; /* Green */
+        }
+
     </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,13 +170,17 @@
 <div class="container">
     <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
     <div class="content-container">
+        <div id="gridOptions" class="grid-options">
+            <div id="typeOptions" class="type-options"></div>
+            <button class="open-sans-500" onClick="applyGridRules()">Apply Grid Rules</button>
+        </div>
         <!--        <div style="display: flex; flex-direction: column; height: 800px; justify-content: space-between">-->
         <!--            <div class="rules-form" id="rulesFormContainer"></div>-->
         <!--            <button onclick="applyRules()">Apply Rules</button>-->
         <!--        </div>-->
         <main></main>
     </div>
-    <button onClick="resetGrid()">Reset grid</button>
+    <button class="open-sans-500" onClick="resetGrid()">Reset grid</button>
     <div id="cellOptions" class="cell-options"></div>
 </div>
 <script src="cell.js"></script>
@@ -161,13 +193,29 @@
         initializeGrid();
     }
 
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     if (jsonData) {
-    //         displayRulesForm();
-    //     } else {
-    //         setTimeout(displayRulesForm, 1000); // Adjust the delay as needed
-    //     }
-    // });
+    function displayTypeOptions() {
+        jsonOptions.options.types.forEach(type => {
+            const parentDiv = document.getElementById('typeOptions');
+            const typeDiv = document.createElement('div');
+            const typeImage = document.createElement('img');
+            const typeCheckbox = document.createElement('input');
+            typeCheckbox.type = 'checkbox';
+            typeCheckbox.checked = type.used;
+            typeImage.src = type.image;
+
+            parentDiv.appendChild(typeDiv);
+            typeDiv.appendChild(typeCheckbox);
+            typeDiv.appendChild(typeImage);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (jsonOptions) {
+            displayTypeOptions();
+        } else {
+            setTimeout(displayTypeOptions, 1000); // Adjust the delay as needed
+        }
+    });
     //
     // function displayRulesForm() {
     //     const container = document.getElementById('rulesFormContainer');

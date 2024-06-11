@@ -1,4 +1,5 @@
-let jsonData;
+let jsonTiles;
+let jsonOptions;
 let tiles = [];
 let grid = [];
 const DIM = 10;
@@ -6,13 +7,16 @@ let emptyCell;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
-    loadJSON('/tiles/3d-park/rules.json', data => {
-        jsonData = data;
-        jsonData.tiles.forEach(tile => {
+    loadJSON('/tile-sets/3d-park/tiles.json', data => {
+        jsonTiles = data;
+        jsonTiles.tiles.forEach(tile => {
             tile.image = loadImage(tile.imagePath); // Load the image for the tile
         });
     });
-    emptyCell = loadImage('/tiles/3d-park/empty.png');
+    emptyCell = loadImage('/tile-sets/3d-park/tiles/empty.png');
+    loadJSON('/tile-sets/3d-park/options.json', data => {
+        jsonOptions = data;
+    });
 }
 
 // Sets up the canvas and initializes the tiles and grid
@@ -24,9 +28,13 @@ function setup() {
 
 // Creates Tile objects from jsonData, adds unique rotations, and generates adjacency rules
 function initializeTiles() {
-    jsonData.tiles.forEach(data => {
-        let tile = new Tile(data.image, data.edges, data.rules, data.index);
-        tiles.push(tile);
+    jsonTiles.tiles.forEach(data => {
+        jsonOptions.options.types.forEach(type => {
+            if (type.used && data.type === type.title) {
+                let tile = new Tile(data.image, data.edges, data.rules, data.index);
+                tiles.push(tile);
+            }
+        })
     });
 
     console.log('Length tiles: ' + tiles.length);
@@ -68,8 +76,8 @@ function draw() {
 
 function drawGrid() {
     const w = width / DIM;
-    const h = w/2;
-    const depth = height / DIM + h/4;
+    const h = w / 2;
+    const depth = height / DIM + h / 4;
 
     grid.forEach((cell, index) => {
         const imageCell = cell.collapsed ? (cell.state !== -2 ? tiles[cell.options[0]].img : emptyCell) : emptyCell;
@@ -118,8 +126,8 @@ function isOverCell(x, y, z, imageCell) {
 
 function mouseClicked() {
     const w = width / DIM;
-    const h = w/2;
-    const depth = height / DIM + h/4;
+    const h = w / 2;
+    const depth = height / DIM + h / 4;
 
     grid.forEach((cell, index) => {
         const imageCell = cell.collapsed ? (cell.state !== -2 ? tiles[cell.options[0]].img : emptyCell) : emptyCell;
@@ -185,18 +193,22 @@ function showOptions(index) {
     resetOptionDiv.appendChild(resetOption);
     options.appendChild(resetOptionDiv);
 
-    jsonData.tiles.forEach(tile => {
-        const optionDiv = document.createElement('div');
-        const option = document.createElement('img');
-        option.src = tile.imagePath;
+    jsonTiles.tiles.forEach(tile => {
+        jsonOptions.options.types.forEach(type => {
+            if (type.used && tile.type === type.title) {
+                const optionDiv = document.createElement('div');
+                const option = document.createElement('img');
+                option.src = tile.imagePath;
 
-        option.onclick = () => {
-            grid[index].updateState(tile.index);
-            removeOptions();
-        }
+                option.onclick = () => {
+                    grid[index].updateState(tile.index);
+                    removeOptions();
+                }
 
-        optionDiv.appendChild(option);
-        options.appendChild(optionDiv);
+                optionDiv.appendChild(option);
+                options.appendChild(optionDiv);
+            }
+        });
     })
 }
 
