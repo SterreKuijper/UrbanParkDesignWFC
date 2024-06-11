@@ -18,7 +18,7 @@
       },
       {
         "title": "grass",
-        "used": false,
+        "used": true,
         "image": "tiles/3d-park/tiles/grass.png"
       }
     ]

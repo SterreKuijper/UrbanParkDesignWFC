@@ -2,19 +2,19 @@ let jsonTiles;
 let jsonOptions;
 let tiles = [];
 let grid = [];
-const DIM = 10;
+const DIM = 8;
 let emptyCell;
 
 // Preloads the JSON data and images for the tiles
 function preload() {
-    loadJSON('/tile-sets/3d-park/tiles.json', data => {
+    loadJSON('/tiles/3d-park/tiles.json', data => {
         jsonTiles = data;
         jsonTiles.tiles.forEach(tile => {
             tile.image = loadImage(tile.imagePath); // Load the image for the tile
         });
     });
-    emptyCell = loadImage('/tile-sets/3d-park/tiles/empty.png');
-    loadJSON('/tile-sets/3d-park/options.json', data => {
+    emptyCell = loadImage('/tiles/3d-park/tiles/empty.png');
+    loadJSON('/tiles/3d-park/options.json', data => {
         jsonOptions = data;
     });
 }
