@@ -1,5 +1,5 @@
 class Cell {
-    constructor(value) {
+    constructor(value, attribute) {
         this.collapsed = false;
         if (value instanceof Array) {
             this.options = value;
@@ -10,6 +10,7 @@ class Cell {
             }
         }
         this.state = -1;
+        this.attribute = attribute;
     }
 
     // -1 normal state
@@ -19,5 +20,9 @@ class Cell {
         this.state = state;
         if (this.state >= 0) this.options = [this.state];
         this.collapsed = state !== -1;
+    }
+
+    setAttribute(attribute) {
+        this.attribute = attribute;
     }
 }

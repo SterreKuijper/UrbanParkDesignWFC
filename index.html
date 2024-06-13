@@ -46,29 +46,6 @@
             gap: 32px;
         }
 
-        /*.content-container div {*/
-        /*    display: flex;*/
-        /*    flex-direction: column;*/
-        /*}*/
-
-        .rules-form {
-            width: 1016px;
-            text-align: left;
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .rules-form label {
-            display: block;
-        }
-
-        .rules-form input {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
         button {
             font-size: 20px;
             background-color: #66AA22; /* Green */
@@ -78,84 +55,6 @@
             text-align: center;
             text-decoration: none;
             border-radius: 100px;
-        }
-
-        .tile-image {
-            width: 56px;
-            height: 50px;
-            object-fit: contain;
-            margin-right: 16px;
-        }
-
-        .tile-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .tile-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .row {
-            display: flex;
-        }
-
-        .row input {
-            width: 128px;
-        }
-
-        .row label {
-            width: 128px;
-        }
-
-        .cell-options {
-            width: 944px;
-            display: flex;
-            gap: 16px;
-            color: black;
-            flex-wrap: wrap;
-        }
-
-        .cell-options div {
-            width: 100px;
-            height: 100px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cell-options img:hover {
-            cursor: pointer;
-        }
-
-        .type-options {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .type-options div {
-            display: flex;
-            gap: 32px;
-        }
-
-        .grid-options {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-        .grid-options div {
-            display: flex;
-            align-items: center;
-        }
-
-        .grid-options input {
-            width: 24px;
-            height: 24px;
-            accent-color: #66AA22; /* Green */
         }
 
     </style>
@@ -169,109 +68,17 @@
 <body>
 <div class="container">
     <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
-    <div class="content-container">
-        <div id="gridOptions" class="grid-options">
-            <div id="typeOptions" class="type-options"></div>
-            <button class="open-sans-500" onClick="applyGridRules()">Apply Grid Rules</button>
-        </div>
-        <!--        <div style="display: flex; flex-direction: column; height: 800px; justify-content: space-between">-->
-        <!--            <div class="rules-form" id="rulesFormContainer"></div>-->
-        <!--            <button onclick="applyRules()">Apply Rules</button>-->
-        <!--        </div>-->
-        <main></main>
-    </div>
-    <button class="open-sans-500" onClick="resetGrid()">Reset grid</button>
-    <div id="cellOptions" class="cell-options"></div>
+    <main></main>
 </div>
+
 <script src="cell.js"></script>
 <script src="tile.js"></script>
 <script src="sketch.js"></script>
+
 <script>
-
-
     function resetGrid() {
         initializeGrid();
     }
-
-    function displayTypeOptions() {
-        jsonOptions.options.types.forEach(type => {
-            const parentDiv = document.getElementById('typeOptions');
-            const typeDiv = document.createElement('div');
-            const typeImage = document.createElement('img');
-            const typeCheckbox = document.createElement('input');
-            typeCheckbox.type = 'checkbox';
-            typeCheckbox.checked = type.used;
-            typeImage.src = type.image;
-
-            parentDiv.appendChild(typeDiv);
-            typeDiv.appendChild(typeCheckbox);
-            typeDiv.appendChild(typeImage);
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        if (jsonOptions) {
-            displayTypeOptions();
-        } else {
-            setTimeout(displayTypeOptions, 1000); // Adjust the delay as needed
-        }
-    });
-    //
-    // function displayRulesForm() {
-    //     const container = document.getElementById('rulesFormContainer');
-    //     container.innerHTML = '';
-    //
-    //     jsonData.tiles.forEach((tile, index) => {
-    //         const tileDiv = document.createElement('div');
-    //         tileDiv.className = 'tile-container';
-    //         const img = document.createElement('img');
-    //         img.src = tile.imagePath;
-    //         img.className = 'tile-image';
-    //         tileDiv.appendChild(img);
-    //
-    //         const tileInfoDiv = document.createElement('div');
-    //         tileInfoDiv.innerHTML = `<h3>${tile.title}</h3>`;
-    //         tileInfoDiv.className = 'open-sans-500'
-    //
-    //         const tileInputsDiv = document.createElement('div');
-    //         tileInputsDiv.className = 'tile-inputs';
-    //
-    //         Object.keys(tile.rules).forEach(rule => {
-    //             const inputContainer = document.createElement('div');
-    //             inputContainer.className = 'row';
-    //
-    //             const label = document.createElement('label');
-    //             label.innerText = `${rule}: `;
-    //
-    //             const input = document.createElement('input');
-    //             input.type = 'text';
-    //             input.value = tile.rules[rule];
-    //             input.dataset.tileIndex = index;
-    //             input.dataset.rule = rule;
-    //
-    //             inputContainer.appendChild(label);
-    //             inputContainer.appendChild(input);
-    //             tileInputsDiv.appendChild(inputContainer)
-    //         });
-    //
-    //         tileDiv.appendChild(tileInfoDiv);
-    //         tileInfoDiv.appendChild(tileInputsDiv);
-    //         container.appendChild(tileDiv);
-    //     });
-    // }
-    //
-    // function applyRules() {
-    //     const inputs = document.querySelectorAll('.rules-form input');
-    //
-    //     inputs.forEach(input => {
-    //         const tileIndex = input.dataset.tileIndex;
-    //         const rule = input.dataset.rule;
-    //         jsonData.tiles[tileIndex].rules[rule] = parseFloat(input.value) || input.value;
-    //     });
-    //
-    //     initializeTiles();
-    //     initializeGrid();
-    // }
 </script>
 </body>
 </html>
