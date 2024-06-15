@@ -55,7 +55,7 @@ function initializeTiles() {
 }
 
 function initializeGrid() {
-    for (let i = 0; i < DIM * DIM; i++) {
+    for (let index = 0; index < DIM * DIM; index++) {
         let options = [];
 
         // Filter the options based on the used types
@@ -66,23 +66,30 @@ function initializeGrid() {
             if (isUsed) options.push(tile);
         });
 
-        grid[i] = new Cell(options);
+        // Create the position of the cell
+        const indexX = index % DIM;
+        const indexY = Math.floor(index / DIM);
+
+        const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2;
+        let y = (indexX + indexY) * TILE_HEIGHT / 2 ;
+
+        grid[index] = new Cell(options, createVector(x, y), emptyCell);
     }
 }
 
 function drawGrid() {
-    grid.forEach((cell, index) => {
-        const imageCell = cell.collapsed ? cell.options[0].image : emptyCell;
-
-        const indexX = index % DIM;
-        const indexY = Math.floor(index / DIM);
-
-        const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2 - imageCell.width / 2;
-        let y = (indexX + indexY) * TILE_HEIGHT / 2 - imageCell.height / 2;
-
-        image(imageCell, x, y);
+    grid.forEach((cell) => {
+        cell.update();
+        cell.render();
     });
 }
+
+function mouseMoved() {
+    grid.forEach((cell) => {
+        cell.hover(createVector(mouseX, mouseY));
+    });
+}
+
 
 /**
  * Handles collapsing the least entropic cell
@@ -142,7 +149,6 @@ function propagateConstraints(cell) {
 
                 // Get the valid options for the neighbor based on the current cell's selected option
                 let validOptions = [];
-                console.log(current.options)
                 current.options.forEach(option => {
                     validOptions = validOptions.concat(option[direction]);
                 });
