@@ -58,15 +58,12 @@ function initializeGrid() {
     for (let i = 0; i < DIM * DIM; i++) {
         let options = [];
 
+        // Filter the options based on the used types
         tiles.forEach(tile => {
-            // Check if any of the tile types are marked as used
-            const isUsed = tile.type.some(tileType =>
-                jsonOptions.options.types.some(optionType => optionType.name === tileType && optionType.used)
-            );
-
-            if (isUsed) {
-                options.push(tile);
-            }
+            let isUsed = tile.type.some(tileType => {
+                return jsonOptions.options.types.some(option => option.name === tileType && option.used);
+            });
+            if (isUsed) options.push(tile);
         });
 
         grid[i] = new Cell(options);
