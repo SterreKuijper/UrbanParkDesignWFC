@@ -75,7 +75,7 @@ function initializeGrid() {
 
 function drawGrid() {
     grid.forEach((cell, index) => {
-        const imageCell = cell.collapsed ? (cell.options[0] ? cell.options[0].image : emptyCell) : emptyCell;
+        const imageCell = cell.collapsed ? cell.options[0].image : emptyCell;
 
         const indexX = index % DIM;
         const indexY = Math.floor(index / DIM);
@@ -131,7 +131,8 @@ function propagateConstraints(cell) {
 
         neighbors.forEach(neighbor => {
             if (neighbor && !neighbor.collapsed) {
-// Get the index of the current cell in the grid
+
+                // Get the index of the current cell in the grid
                 const currentIndex = grid.indexOf(current);
                 const neighborIndex = grid.indexOf(neighbor);
 
@@ -144,6 +145,7 @@ function propagateConstraints(cell) {
 
                 // Get the valid options for the neighbor based on the current cell's selected option
                 let validOptions = [];
+                console.log(current.options)
                 current.options.forEach(option => {
                     validOptions = validOptions.concat(option[direction]);
                 });
@@ -157,7 +159,6 @@ function propagateConstraints(cell) {
                     // If the neighbor's options were reduced, add it to the stack to propagate further
                     stack.push(neighbor);
                 }
-
             }
         });
     }
@@ -177,7 +178,6 @@ function getNeighbors(cell) {
 
     return neighbors;
 }
-
 
 function getRandomElement(arr) {
     if (arr.length === 0) return null;
