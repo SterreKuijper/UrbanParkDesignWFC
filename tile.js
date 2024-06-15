@@ -1,12 +1,11 @@
 function reverseString(s) {
-    let arr = s.split('');
-    arr = arr.reverse();
-    return arr.join('');
+    return s.split('').reverse().join('');
 }
 
 function compareEdge(a, b) {
     return a === reverseString(b);
 }
+
 
 class Tile {
     constructor(image, edges, type) {
@@ -35,6 +34,6 @@ class Tile {
                 this.left.push(tile);
             }
         }
-
     }
 }
+

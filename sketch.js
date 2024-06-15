@@ -6,7 +6,7 @@ let jsonTiles = [];
 let jsonOptions = [];
 
 let tiles = [];
-let grid = [DIM*DIM];
+let grid = [DIM * DIM];
 let emptyCell;
 
 function preload() {
@@ -75,13 +75,13 @@ function initializeGrid() {
 
 function drawGrid() {
     grid.forEach((cell, index) => {
-        const imageCell = cell.collapsed ? cell.options[0].image : emptyCell;
+        const imageCell = cell.collapsed ? (cell.options[0] ? cell.options[0].image : emptyCell) : emptyCell;
 
-        const xIndex = index % DIM;
-        const yIndex = Math.floor(index / DIM);
+        const indexX = index % DIM;
+        const indexY = Math.floor(index / DIM);
 
-        const x = (xIndex - yIndex) * TILE_WIDTH / 2 + width / 2 - imageCell.width / 2;
-        let y = (xIndex + yIndex) * TILE_HEIGHT / 2 - imageCell.height / 2;
+        const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2 - imageCell.width / 2;
+        let y = (indexX + indexY) * TILE_HEIGHT / 2 - imageCell.height / 2;
 
         image(imageCell, x, y);
     });
@@ -99,13 +99,20 @@ function collapseGrid() {
     if (gridCopy.length === 0) return;
 
     // Sort the grid by the number of options
-    gridCopy.sort((a, b) => calculateEntropy(a.options) - calculateEntropy(b.options));
+    gridCopy.sort((a, b) => a.options.length - b.options.length);
 
     // Get the cell with the least entropy
-    const cell = gridCopy[0];
+    gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length);
+
+    const cell = getRandomElement(gridCopy);
 
     // Pick a random tile from the cell's options
-    const pick = weightedRandom(cell.options);
+    const pick = getRandomElement(cell.options);
+
+    if (pick === undefined) {
+        initializeGrid();
+        return;
+    }
 
     // Collapse the cell to the selected tile
     cell.collapsed = true;
@@ -124,47 +131,35 @@ function propagateConstraints(cell) {
 
         neighbors.forEach(neighbor => {
             if (neighbor && !neighbor.collapsed) {
-                let options = Array.from(neighbor.options);
+// Get the index of the current cell in the grid
+                const currentIndex = grid.indexOf(current);
+                const neighborIndex = grid.indexOf(neighbor);
 
-                // Process up direction
-                if (current.options[0]) {
-                    let validUp = current.options[0].down;
-                    checkValid(options, validUp);
+                // Determine the direction of the neighbor relative to the current cell
+                let direction;
+                if (neighborIndex === currentIndex - DIM) direction = "up";
+                if (neighborIndex === currentIndex + DIM) direction = "down";
+                if (neighborIndex === currentIndex - 1) direction = "left";
+                if (neighborIndex === currentIndex + 1) direction = "right";
+
+                // Get the valid options for the neighbor based on the current cell's selected option
+                let validOptions = [];
+                current.options.forEach(option => {
+                    validOptions = validOptions.concat(option[direction]);
+                });
+
+                // Filter the neighbor's options to only include the valid ones
+                let neighborOptions = neighbor.options.filter(option => validOptions.includes(option));
+                if (neighborOptions.length < neighbor.options.length) {
+
+                    neighbor.options = neighborOptions;
+
+                    // If the neighbor's options were reduced, add it to the stack to propagate further
+                    stack.push(neighbor);
                 }
 
-                // Process right direction
-                if (current.options[0]) {
-                    let validRight = current.options[0].left;
-                    checkValid(options, validRight);
-                }
-
-                // Process down direction
-                if (current.options[0]) {
-                    let validDown = current.options[0].up;
-                    checkValid(options, validDown);
-                }
-
-                // Process left direction
-                if (current.options[0]) {
-                    let validLeft = current.options[0].right;
-                    checkValid(options, validLeft);
-                }
-
-                if (options.length < neighbor.options.length) {
-                    neighbor.options = options;
-                    stack.push(neighbor); // Add the neighbor to the stack for further propagation
-                }
             }
         });
-    }
-}
-
-// Filters valid options based on neighboring cells
-function checkValid(arr, valid) {
-    for (let i = arr.length - 1; i >= 0; i--) {
-        if (!valid.includes(arr[i])) {
-            arr.splice(i, 1); // Remove invalid option
-        }
     }
 }
 
@@ -183,26 +178,9 @@ function getNeighbors(cell) {
     return neighbors;
 }
 
-// Helper function to calculate adjusted entropy
-function calculateEntropy(options) {
-    const totalFrequency = options.length;
-    return -options.reduce((sum, option) => {
-        const probability = 1 / totalFrequency;
-        return sum + probability * Math.log(probability);
-    }, 0);
-}
 
-// Helper function to select a tile based on equal weights
-function weightedRandom(options) {
-    const totalWeight = options.length;
-    const randomValue = Math.random() * totalWeight;
-
-    let cumulativeWeight = 0;
-    for (let i = 0; i < options.length; i++) {
-        cumulativeWeight += 1;
-        if (randomValue < cumulativeWeight) {
-            return options[i];
-        }
-    }
-    return options[options.length - 1];
+function getRandomElement(arr) {
+    if (arr.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
 }
