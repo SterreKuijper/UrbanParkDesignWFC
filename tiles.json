@@ -2,13 +2,11 @@
   "tiles": [
     {
       "name": "Grass",
-      "type": [
-        "grass"
-      ],
+      "type": "grass",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_grass_NE.png",
+          "imagePath": "/tiles/ground_grass_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -18,7 +16,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_grass_NW.png",
+          "imagePath": "/tiles/ground_grass_NW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -28,7 +26,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_grass_SE.png",
+          "imagePath": "/tiles/ground_grass_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -38,7 +36,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_grass_SW.png",
+          "imagePath": "/tiles/ground_grass_SW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -50,14 +48,11 @@
     },
     {
       "name": "Path Bend",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBend_NE.png",
+          "imagePath": "/tiles/ground_pathBend_NE.png",
           "edges": [
             "GGG",
             "GPG",
@@ -67,7 +62,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBend_NW.png",
+          "imagePath": "/tiles/ground_pathBend_NW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -77,7 +72,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBend_SE.png",
+          "imagePath": "/tiles/ground_pathBend_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -87,7 +82,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBend_SW.png",
+          "imagePath": "/tiles/ground_pathBend_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -99,14 +94,11 @@
     },
     {
       "name": "Path Bend Bank",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBendBank_NE.png",
+          "imagePath": "/tiles/ground_pathBendBank_NE.png",
           "edges": [
             "GGG",
             "GPG",
@@ -116,7 +108,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBendBank_NW.png",
+          "imagePath": "/tiles/ground_pathBendBank_NW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -126,7 +118,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBendBank_SE.png",
+          "imagePath": "/tiles/ground_pathBendBank_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -136,7 +128,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathBendBank_SW.png",
+          "imagePath": "/tiles/ground_pathBendBank_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -148,14 +140,11 @@
     },
     {
       "name": "Path Corner",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCorner_NE.png",
+          "imagePath": "/tiles/ground_pathCorner_NE.png",
           "edges": [
             "GGG",
             "GPP",
@@ -165,7 +154,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCorner_NW.png",
+          "imagePath": "/tiles/ground_pathCorner_NW.png",
           "edges": [
             "GPP",
             "PPG",
@@ -175,7 +164,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCorner_SE.png",
+          "imagePath": "/tiles/ground_pathCorner_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -185,7 +174,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCorner_SW.png",
+          "imagePath": "/tiles/ground_pathCorner_SW.png",
           "edges": [
             "PPG",
             "GGG",
@@ -197,14 +186,11 @@
     },
     {
       "name": "Path Corner Small",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCornerSmall_NE.png",
+          "imagePath": "/tiles/ground_pathCornerSmall_NE.png",
           "edges": [
             "PPG",
             "GPP",
@@ -214,7 +200,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCornerSmall_NW.png",
+          "imagePath": "/tiles/ground_pathCornerSmall_NW.png",
           "edges": [
             "GPP",
             "PPP",
@@ -224,7 +210,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCornerSmall_SE.png",
+          "imagePath": "/tiles/ground_pathCornerSmall_SE.png",
           "edges": [
             "PPP",
             "PPG",
@@ -234,7 +220,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCornerSmall_SW.png",
+          "imagePath": "/tiles/ground_pathCornerSmall_SW.png",
           "edges": [
             "PPP",
             "PPP",
@@ -246,14 +232,11 @@
     },
     {
       "name": "Path Cross",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCross_NE.png",
+          "imagePath": "/tiles/ground_pathCross_NE.png",
           "edges": [
             "GPG",
             "GPG",
@@ -263,7 +246,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCross_NW.png",
+          "imagePath": "/tiles/ground_pathCross_NW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -273,7 +256,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCross_SE.png",
+          "imagePath": "/tiles/ground_pathCross_SE.png",
           "edges": [
             "GPG",
             "GPG",
@@ -283,7 +266,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathCross_SW.png",
+          "imagePath": "/tiles/ground_pathCross_SW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -295,14 +278,11 @@
     },
     {
       "name": "Path End",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEnd_NE.png",
+          "imagePath": "/tiles/ground_pathEnd_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -312,7 +292,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEnd_NW.png",
+          "imagePath": "/tiles/ground_pathEnd_NW.png",
           "edges": [
             "GGG",
             "GPG",
@@ -322,7 +302,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEnd_SE.png",
+          "imagePath": "/tiles/ground_pathEnd_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -332,7 +312,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEnd_SW.png",
+          "imagePath": "/tiles/ground_pathEnd_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -344,14 +324,11 @@
     },
     {
       "name": "Path End Closed",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEndClosed_NE.png",
+          "imagePath": "/tiles/ground_pathEndClosed_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -361,7 +338,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEndClosed_NW.png",
+          "imagePath": "/tiles/ground_pathEndClosed_NW.png",
           "edges": [
             "GGG",
             "GPG",
@@ -371,7 +348,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEndClosed_SE.png",
+          "imagePath": "/tiles/ground_pathEndClosed_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -381,7 +358,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathEndClosed_SW.png",
+          "imagePath": "/tiles/ground_pathEndClosed_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -393,14 +370,11 @@
     },
     {
       "name": "Path Open",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathOpen_NE.png",
+          "imagePath": "/tiles/ground_pathOpen_NE.png",
           "edges": [
             "PPP",
             "PPP",
@@ -410,7 +384,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathOpen_NW.png",
+          "imagePath": "/tiles/ground_pathOpen_NW.png",
           "edges": [
             "PPP",
             "PPP",
@@ -420,7 +394,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathOpen_SE.png",
+          "imagePath": "/tiles/ground_pathOpen_SE.png",
           "edges": [
             "PPP",
             "PPP",
@@ -430,7 +404,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathOpen_SW.png",
+          "imagePath": "/tiles/ground_pathOpen_SW.png",
           "edges": [
             "PPP",
             "PPP",
@@ -442,14 +416,11 @@
     },
     {
       "name": "Path Rocks",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathRocks_NE.png",
+          "imagePath": "/tiles/ground_pathRocks_NE.png",
           "edges": [
             "GPG",
             "GGG",
@@ -459,7 +430,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathRocks_NW.png",
+          "imagePath": "/tiles/ground_pathRocks_NW.png",
           "edges": [
             "GGG",
             "GPG",
@@ -469,7 +440,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathRocks_SE.png",
+          "imagePath": "/tiles/ground_pathRocks_SE.png",
           "edges": [
             "GGG",
             "GPG",
@@ -479,7 +450,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathRocks_SW.png",
+          "imagePath": "/tiles/ground_pathRocks_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -491,14 +462,11 @@
     },
     {
       "name": "Path Side",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSide_NE.png",
+          "imagePath": "/tiles/ground_pathSide_NE.png",
           "edges": [
             "GGG",
             "GPP",
@@ -508,7 +476,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSide_NW.png",
+          "imagePath": "/tiles/ground_pathSide_NW.png",
           "edges": [
             "GPP",
             "PPP",
@@ -518,7 +486,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSide_SE.png",
+          "imagePath": "/tiles/ground_pathSide_SE.png",
           "edges": [
             "PPG",
             "GGG",
@@ -528,7 +496,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSide_SW.png",
+          "imagePath": "/tiles/ground_pathSide_SW.png",
           "edges": [
             "PPP",
             "PPG",
@@ -540,14 +508,11 @@
     },
     {
       "name": "Path Side Open",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSideOpen_NE.png",
+          "imagePath": "/tiles/ground_pathSideOpen_NE.png",
           "edges": [
             "GPG",
             "GPP",
@@ -557,7 +522,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSideOpen_NW.png",
+          "imagePath": "/tiles/ground_pathSideOpen_NW.png",
           "edges": [
             "GPP",
             "PPP",
@@ -567,7 +532,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSideOpen_SE.png",
+          "imagePath": "/tiles/ground_pathSideOpen_SE.png",
           "edges": [
             "PPG",
             "GPG",
@@ -577,7 +542,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSideOpen_SW.png",
+          "imagePath": "/tiles/ground_pathSideOpen_SW.png",
           "edges": [
             "PPP",
             "PPG",
@@ -589,14 +554,11 @@
     },
     {
       "name": "Path Split",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSplit_NE.png",
+          "imagePath": "/tiles/ground_pathSplit_NE.png",
           "edges": [
             "GGG",
             "GPG",
@@ -606,7 +568,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSplit_NW.png",
+          "imagePath": "/tiles/ground_pathSplit_NW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -616,7 +578,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSplit_SE.png",
+          "imagePath": "/tiles/ground_pathSplit_SE.png",
           "edges": [
             "GPG",
             "GGG",
@@ -626,7 +588,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathSplit_SW.png",
+          "imagePath": "/tiles/ground_pathSplit_SW.png",
           "edges": [
             "GPG",
             "GPG",
@@ -638,14 +600,11 @@
     },
     {
       "name": "Path Straight",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathStraight_NE.png",
+          "imagePath": "/tiles/ground_pathStraight_NE.png",
           "edges": [
             "GPG",
             "GGG",
@@ -655,7 +614,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathStraight_NW.png",
+          "imagePath": "/tiles/ground_pathStraight_NW.png",
           "edges": [
             "GGG",
             "GPG",
@@ -665,7 +624,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathStraight_SE.png",
+          "imagePath": "/tiles/ground_pathStraight_SE.png",
           "edges": [
             "GGG",
             "GPG",
@@ -675,7 +634,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathStraight_SW.png",
+          "imagePath": "/tiles/ground_pathStraight_SW.png",
           "edges": [
             "GPG",
             "GGG",
@@ -687,14 +646,11 @@
     },
     {
       "name": "Path Tile",
-      "type": [
-        "grass",
-        "path"
-      ],
+      "type": "path",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathTile_NE.png",
+          "imagePath": "/tiles/ground_pathTile_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -704,7 +660,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathTile_NW.png",
+          "imagePath": "/tiles/ground_pathTile_NW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -714,7 +670,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathTile_SE.png",
+          "imagePath": "/tiles/ground_pathTile_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -724,7 +680,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_pathTile_SW.png",
+          "imagePath": "/tiles/ground_pathTile_SW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -736,14 +692,11 @@
     },
     {
       "name": "River Bend",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBend_NE.png",
+          "imagePath": "/tiles/ground_riverBend_NE.png",
           "edges": [
             "GGG",
             "GRG",
@@ -753,7 +706,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBend_NW.png",
+          "imagePath": "/tiles/ground_riverBend_NW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -763,7 +716,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBend_SE.png",
+          "imagePath": "/tiles/ground_riverBend_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -773,7 +726,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBend_SW.png",
+          "imagePath": "/tiles/ground_riverBend_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -785,14 +738,11 @@
     },
     {
       "name": "River Bend Bank",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBendBank_NE.png",
+          "imagePath": "/tiles/ground_riverBendBank_NE.png",
           "edges": [
             "GGG",
             "GRG",
@@ -802,7 +752,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBendBank_NW.png",
+          "imagePath": "/tiles/ground_riverBendBank_NW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -812,7 +762,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBendBank_SE.png",
+          "imagePath": "/tiles/ground_riverBendBank_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -822,7 +772,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverBendBank_SW.png",
+          "imagePath": "/tiles/ground_riverBendBank_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -834,14 +784,11 @@
     },
     {
       "name": "River Corner",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCorner_NE.png",
+          "imagePath": "/tiles/ground_riverCorner_NE.png",
           "edges": [
             "GGG",
             "GRR",
@@ -851,7 +798,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCorner_NW.png",
+          "imagePath": "/tiles/ground_riverCorner_NW.png",
           "edges": [
             "GRR",
             "RRG",
@@ -861,7 +808,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCorner_SE.png",
+          "imagePath": "/tiles/ground_riverCorner_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -871,7 +818,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCorner_SW.png",
+          "imagePath": "/tiles/ground_riverCorner_SW.png",
           "edges": [
             "RRG",
             "GGG",
@@ -883,14 +830,11 @@
     },
     {
       "name": "River Corner Small",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCornerSmall_NE.png",
+          "imagePath": "/tiles/ground_riverCornerSmall_NE.png",
           "edges": [
             "RRG",
             "GRR",
@@ -900,7 +844,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCornerSmall_NW.png",
+          "imagePath": "/tiles/ground_riverCornerSmall_NW.png",
           "edges": [
             "GRR",
             "RRR",
@@ -910,7 +854,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCornerSmall_SE.png",
+          "imagePath": "/tiles/ground_riverCornerSmall_SE.png",
           "edges": [
             "RRR",
             "RRG",
@@ -920,7 +864,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCornerSmall_SW.png",
+          "imagePath": "/tiles/ground_riverCornerSmall_SW.png",
           "edges": [
             "RRR",
             "RRR",
@@ -932,14 +876,11 @@
     },
     {
       "name": "River Cross",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCross_NE.png",
+          "imagePath": "/tiles/ground_riverCross_NE.png",
           "edges": [
             "GRG",
             "GRG",
@@ -949,7 +890,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCross_NW.png",
+          "imagePath": "/tiles/ground_riverCross_NW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -959,7 +900,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCross_SE.png",
+          "imagePath": "/tiles/ground_riverCross_SE.png",
           "edges": [
             "GRG",
             "GRG",
@@ -969,7 +910,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverCross_SW.png",
+          "imagePath": "/tiles/ground_riverCross_SW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -981,14 +922,11 @@
     },
     {
       "name": "River End",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEnd_NE.png",
+          "imagePath": "/tiles/ground_riverEnd_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -998,7 +936,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEnd_NW.png",
+          "imagePath": "/tiles/ground_riverEnd_NW.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1008,7 +946,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEnd_SE.png",
+          "imagePath": "/tiles/ground_riverEnd_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1018,7 +956,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEnd_SW.png",
+          "imagePath": "/tiles/ground_riverEnd_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1030,14 +968,11 @@
     },
     {
       "name": "River End Closed",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEndClosed_NE.png",
+          "imagePath": "/tiles/ground_riverEndClosed_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1047,7 +982,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEndClosed_NW.png",
+          "imagePath": "/tiles/ground_riverEndClosed_NW.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1057,7 +992,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEndClosed_SE.png",
+          "imagePath": "/tiles/ground_riverEndClosed_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1067,7 +1002,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverEndClosed_SW.png",
+          "imagePath": "/tiles/ground_riverEndClosed_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1079,14 +1014,11 @@
     },
     {
       "name": "River Open",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverOpen_NE.png",
+          "imagePath": "/tiles/ground_riverOpen_NE.png",
           "edges": [
             "RRR",
             "RRR",
@@ -1096,7 +1028,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverOpen_NW.png",
+          "imagePath": "/tiles/ground_riverOpen_NW.png",
           "edges": [
             "RRR",
             "RRR",
@@ -1106,7 +1038,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverOpen_SE.png",
+          "imagePath": "/tiles/ground_riverOpen_SE.png",
           "edges": [
             "RRR",
             "RRR",
@@ -1116,7 +1048,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverOpen_SW.png",
+          "imagePath": "/tiles/ground_riverOpen_SW.png",
           "edges": [
             "RRR",
             "RRR",
@@ -1128,14 +1060,11 @@
     },
     {
       "name": "River Rocks",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverRocks_NE.png",
+          "imagePath": "/tiles/ground_riverRocks_NE.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1145,7 +1074,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverRocks_NW.png",
+          "imagePath": "/tiles/ground_riverRocks_NW.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1155,7 +1084,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverRocks_SE.png",
+          "imagePath": "/tiles/ground_riverRocks_SE.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1165,7 +1094,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverRocks_SW.png",
+          "imagePath": "/tiles/ground_riverRocks_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1177,14 +1106,11 @@
     },
     {
       "name": "River Side",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSide_NE.png",
+          "imagePath": "/tiles/ground_riverSide_NE.png",
           "edges": [
             "GGG",
             "GRR",
@@ -1194,7 +1120,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSide_NW.png",
+          "imagePath": "/tiles/ground_riverSide_NW.png",
           "edges": [
             "GRR",
             "RRR",
@@ -1204,7 +1130,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSide_SE.png",
+          "imagePath": "/tiles/ground_riverSide_SE.png",
           "edges": [
             "RRG",
             "GGG",
@@ -1214,7 +1140,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSide_SW.png",
+          "imagePath": "/tiles/ground_riverSide_SW.png",
           "edges": [
             "RRR",
             "RRG",
@@ -1226,14 +1152,11 @@
     },
     {
       "name": "River Side Open",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSideOpen_NE.png",
+          "imagePath": "/tiles/ground_riverSideOpen_NE.png",
           "edges": [
             "GRG",
             "GRR",
@@ -1243,7 +1166,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSideOpen_NW.png",
+          "imagePath": "/tiles/ground_riverSideOpen_NW.png",
           "edges": [
             "GRR",
             "RRR",
@@ -1253,7 +1176,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSideOpen_SE.png",
+          "imagePath": "/tiles/ground_riverSideOpen_SE.png",
           "edges": [
             "RRG",
             "GRG",
@@ -1263,7 +1186,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSideOpen_SW.png",
+          "imagePath": "/tiles/ground_riverSideOpen_SW.png",
           "edges": [
             "RRR",
             "RRG",
@@ -1275,14 +1198,11 @@
     },
     {
       "name": "River Split",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSplit_NE.png",
+          "imagePath": "/tiles/ground_riverSplit_NE.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1292,7 +1212,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSplit_NW.png",
+          "imagePath": "/tiles/ground_riverSplit_NW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -1302,7 +1222,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSplit_SE.png",
+          "imagePath": "/tiles/ground_riverSplit_SE.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1312,7 +1232,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverSplit_SW.png",
+          "imagePath": "/tiles/ground_riverSplit_SW.png",
           "edges": [
             "GRG",
             "GRG",
@@ -1324,14 +1244,11 @@
     },
     {
       "name": "River Straight",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverStraight_NE.png",
+          "imagePath": "/tiles/ground_riverStraight_NE.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1341,7 +1258,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverStraight_NW.png",
+          "imagePath": "/tiles/ground_riverStraight_NW.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1351,7 +1268,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverStraight_SE.png",
+          "imagePath": "/tiles/ground_riverStraight_SE.png",
           "edges": [
             "GGG",
             "GRG",
@@ -1361,7 +1278,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverStraight_SW.png",
+          "imagePath": "/tiles/ground_riverStraight_SW.png",
           "edges": [
             "GRG",
             "GGG",
@@ -1373,14 +1290,11 @@
     },
     {
       "name": "River Tile",
-      "type": [
-        "grass",
-        "river"
-      ],
+      "type": "river",
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverTile_NE.png",
+          "imagePath": "/tiles/ground_riverTile_NE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1390,7 +1304,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverTile_NW.png",
+          "imagePath": "/tiles/ground_riverTile_NW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1400,7 +1314,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverTile_SE.png",
+          "imagePath": "/tiles/ground_riverTile_SE.png",
           "edges": [
             "GGG",
             "GGG",
@@ -1410,7 +1324,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/tilesets/isometric-park/tiles/ground_riverTile_SW.png",
+          "imagePath": "/tiles/ground_riverTile_SW.png",
           "edges": [
             "GGG",
             "GGG",

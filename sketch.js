@@ -13,7 +13,7 @@ let bottomCell;
 
 function preload() {
     // Load the tiles from the JSON file and load the images
-    loadJSON('/tilesets/isometric-park/tiles.json', data => {
+    loadJSON('tiles.json', data => {
         jsonTiles = data;
         jsonTiles.tiles.forEach(tile => {
             tile.directions.forEach(direction => {
@@ -23,7 +23,7 @@ function preload() {
     });
 
     // Load the options from the JSON file and load the images
-    loadJSON('/tilesets/isometric-park/options.json', data => {
+    loadJSON('options.json', data => {
         jsonOptions = data;
         jsonOptions.options.types.forEach(type => {
             type.image = loadImage(type.imagePath);
@@ -31,7 +31,10 @@ function preload() {
     });
 
     // Load the empty cell image
-    emptyCell = loadImage('/tilesets/isometric-park/tiles/ground_grass_NE.png');
+    emptyCell = loadImage('/tiles/ground_grass_NE.png');
+
+    //load the bottom cell image
+    bottomCell = loadImage('/tiles/border/cliff_blockHalf_rock_NE.png');
 }
 
 function setup() {
