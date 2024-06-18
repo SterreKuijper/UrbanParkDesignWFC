@@ -1,4 +1,4 @@
-const DIM = 8;
+const DIM = 8; // max 12 on laptop
 const TILE_WIDTH = 128;
 const TILE_HEIGHT = 64;
 
@@ -6,8 +6,10 @@ let jsonTiles = [];
 let jsonOptions = [];
 
 let tiles = [];
+// let optionTiles = [];
 let grid = [DIM * DIM];
 let emptyCell;
+let bottomCell;
 
 function preload() {
     // Load the tiles from the JSON file and load the images
@@ -33,7 +35,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1280, 700);
+    createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT * 2);
     initializeTiles();
     initializeGrid();
 }
@@ -47,23 +49,26 @@ function draw() {
 function initializeTiles() {
     jsonTiles.tiles.forEach(tile => {
         tile.directions.forEach(direction => {
-            let newTile = new Tile(direction.image, direction.edges, tile.type);
-            tiles.push(newTile);
+            tiles.push(new Tile(direction.image, direction.edges, tile.type));
         });
+        // optionTiles.push(new Tile(tile.directions[0].image, tile.directions[0].edges, tile.type))
     });
     tiles.forEach(tile => tile.analyze(tiles));
 }
 
 function initializeGrid() {
+
+    jsonOptions.options.types.forEach(type => {
+        console.log(type.used);
+    });
     for (let index = 0; index < DIM * DIM; index++) {
         let options = [];
 
         // Filter the options based on the used types
         tiles.forEach(tile => {
-            let isUsed = tile.type.some(tileType => {
-                return jsonOptions.options.types.some(option => option.name === tileType && option.used);
-            });
-            if (isUsed) options.push(tile);
+            if (!jsonOptions.options.types.some(type => tile.type === type.name && !type.used)) {
+                options.push(tile);
+            }
         });
 
         // Create the position of the cell
@@ -71,7 +76,7 @@ function initializeGrid() {
         const indexY = Math.floor(index / DIM);
 
         const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2;
-        let y = (indexX + indexY) * TILE_HEIGHT / 2 ;
+        let y = (indexX + indexY) * TILE_HEIGHT / 2;
 
         grid[index] = new Cell(options, createVector(x, y), emptyCell);
     }
@@ -87,6 +92,12 @@ function drawGrid() {
 function mouseMoved() {
     grid.forEach((cell) => {
         cell.hover(createVector(mouseX, mouseY));
+    });
+}
+
+function mouseClicked() {
+    grid.forEach((cell) => {
+        cell.select(createVector(mouseX, mouseY), grid);
     });
 }
 

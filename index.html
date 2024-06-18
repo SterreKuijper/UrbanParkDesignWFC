@@ -11,11 +11,24 @@
             font-weight: 700;
             font-style: normal;
         }
+
         .open-sans-500 {
             font-family: "Open Sans", sans-serif;
             font-optical-sizing: auto;
             font-weight: 500;
             font-style: normal;
+        }
+
+        button {
+            font-size: 20px;
+            background-color: #2fe7c5;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 100px;
+            width: fit-content;
         }
 
         * {
@@ -32,29 +45,38 @@
             width: 100%;
             height: 100%;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start;
+            align-content: flex-start;
             flex-direction: column;
             text-align: center;
             gap: 16px;
         }
 
         .content-container {
-            width: 100%;
             display: flex;
-            justify-content: center;
+        }
+
+        .sketch-container {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
             gap: 32px;
         }
 
-        button {
-            font-size: 20px;
-            background-color: #66AA22; /* Green */
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 100px;
+        .options-container {
+            width: 768px;
+            height: 640px;
+            background-color: #2fe7c5;
+        }
+
+        .cell-options {
+            width: 1152px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .cell-options div img {
+            width: 100px;
         }
 
     </style>
@@ -68,7 +90,18 @@
 <body>
 <div class="container">
     <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
-    <main></main>
+    <div class="content-container">
+        <div class="sketch-container">
+            <main style="width: fit-content; height: fit-content"></main>
+            <div class="cell-options" id="cellOptions"></div>
+        </div>
+        <div class="options-container" id="optionsContainer">
+            <div class="type-options">
+                <h2 class="open-sans-700">Tile Types</h2>
+                <div class="types" id="types"></div>
+            </div>
+        </div>
+    </div>
     <button class="button open-sans-500" onclick="resetGrid()">Reset Grid</button>
 </div>
 
@@ -77,8 +110,47 @@
 <script src="sketch.js"></script>
 
 <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        if (jsonOptions && jsonOptions.options && jsonOptions.options.types) {
+            initializeTypeOptions();
+        } else {
+            setTimeout(initializeTypeOptions, 1000); // Adjust the delay as needed
+        }
+    });
+
     function resetGrid() {
+        applyTypes();
         initializeGrid();
+    }
+
+    function initializeTypeOptions() {
+        let typesContainer = document.getElementById('types');
+        jsonOptions.options.types.forEach(type => {
+            let typeDiv = document.createElement('div');
+            typeDiv.innerHTML = `<h3 class="open-sans-700">${type.name}</h3>`;
+
+            let typeOption = document.createElement('div');
+            let image = document.createElement('img');
+            image.src = imageToDataURL(cropImage(type.image));
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.checked = type.used;
+            typeOption.appendChild(image);
+            typeOption.appendChild(input);
+            typeDiv.appendChild(typeOption);
+            typesContainer.appendChild(typeDiv);
+        })
+    }
+
+    function applyTypes() {
+        const inputs = document.querySelectorAll('.types input');
+
+        inputs.forEach(input => {
+            jsonOptions.options.types.forEach(type => {
+                type.used = input.checked;
+            })
+        });
     }
 </script>
 </body>
