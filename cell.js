@@ -9,22 +9,21 @@ class Cell {
         this.offsetY = 0;
         this.hovered = false;
         this.selected = false;
+        this.removed = false;
     }
 
     render() {
-        // Draw the bottom cell first
-        image(bottomCell, this.position.x - bottomCell.width / 2, this.position.y - bottomCell.height / 2 + 44 + this.offsetY);
-        // Draw the cell
-        image(this.image, this.position.x - this.image.width / 2, this.position.y - this.image.height / 2 + this.offsetY);
+        if (!this.removed) {
+            // Draw the bottom cell first
+            image(bottomCell, this.position.x - bottomCell.width / 2, this.position.y - bottomCell.height / 2 + 44 + this.offsetY);
+            // Draw the cell
+            image(this.image, this.position.x - this.image.width / 2, this.position.y - this.image.height / 2 + this.offsetY);
+        }
     }
 
     update() {
         if (this.collapsed) this.image = this.options[0].image;
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
-    }
-
-    hover(temp) {
-        this.hovered = this.isOverCell(temp);
     }
 
     isOverCell(temp) {
@@ -39,6 +38,10 @@ class Cell {
         let dy = translatedY / (TILE_HEIGHT / 2);
 
         return (dx + dy) <= 1;
+    }
+
+    hover(temp) {
+        this.hovered = this.isOverCell(temp);
     }
 
     select(temp, others) {
@@ -76,6 +79,10 @@ class Cell {
         let optionsDiv = document.getElementById('cellOptions');
         optionsDiv.innerHTML = '';
     }
+
+    setOptions(options) {
+        this.options = options;
+    }
 }
 
 function cropImage(image) {
@@ -83,7 +90,7 @@ function cropImage(image) {
     let cropY = (image.height / 2);
 
     // Crop the image using get()
-    return image.get(cropX, cropY, TILE_WIDTH, TILE_HEIGHT*2);
+    return image.get(cropX, cropY, TILE_WIDTH, TILE_HEIGHT * 2);
 }
 
 function imageToDataURL(image) {

@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-    <button class="button open-sans-500" onclick="resetGrid()">Reset Grid</button>
+    <button class="button open-sans-500" onclick="resetPage()">Reset Grid</button>
 </div>
 
 <script src="cell.js"></script>
@@ -119,9 +119,9 @@
         }
     });
 
-    function resetGrid() {
+    function resetPage() {
         applyTypes();
-        initializeGrid();
+        resetGrid();
     }
 
     function initializeTypeOptions() {
@@ -146,10 +146,13 @@
     function applyTypes() {
         const inputs = document.querySelectorAll('.types input');
 
-        inputs.forEach(input => {
-            jsonOptions.options.types.forEach(type => {
-                type.used = input.checked;
-            })
+        inputs.forEach((input, index) => {
+            jsonOptions.options.types[index].used = input.checked;
+        });
+
+        // Update the global jsonOptions object with the modified copy
+        jsonOptions.options.types.forEach((type, index) => {
+            type.used = jsonOptions.options.types[index].used;
         });
     }
 </script>

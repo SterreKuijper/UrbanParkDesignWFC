@@ -7,7 +7,7 @@ let jsonOptions = [];
 
 let tiles = [];
 // let optionTiles = [];
-let grid = [DIM * DIM];
+let grid = [];
 let emptyCell;
 let bottomCell;
 
@@ -60,29 +60,33 @@ function initializeTiles() {
 }
 
 function initializeGrid() {
-
-    jsonOptions.options.types.forEach(type => {
-        console.log(type.used);
-    });
     for (let index = 0; index < DIM * DIM; index++) {
-        let options = [];
+        // Get the options for the cell
+        let options = getFilteredOptions();
 
-        // Filter the options based on the used types
-        tiles.forEach(tile => {
-            if (!jsonOptions.options.types.some(type => tile.type === type.name && !type.used)) {
-                options.push(tile);
-            }
-        });
-
-        // Create the position of the cell
+        // Calculate the indexes of the cell in the grid
         const indexX = index % DIM;
         const indexY = Math.floor(index / DIM);
 
+        // Determine the position of the cell
         const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2;
         let y = (indexX + indexY) * TILE_HEIGHT / 2;
 
+        // Create the cell
         grid[index] = new Cell(options, createVector(x, y), emptyCell);
     }
+}
+
+function resetGrid() {
+    grid.forEach((cell, index) => {
+        let options = getFilteredOptions();
+        grid[index] = new Cell(options, cell.position, emptyCell);
+    });
+}
+
+// Function to filter options
+function getFilteredOptions() {
+    return tiles.filter(tile => !jsonOptions.options.types.some(type => tile.type === type.name && !type.used));
 }
 
 function drawGrid() {
@@ -128,7 +132,7 @@ function collapseGrid() {
     const pick = getRandomElement(cell.options);
 
     if (pick === undefined) {
-        initializeGrid();
+        resetGrid();
         return;
     }
 
