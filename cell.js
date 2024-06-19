@@ -1,7 +1,6 @@
 class Cell {
     constructor(options, position, image) {
         this.collapsed = false;
-        this.tiles = options;
         this.options = options;
         this.position = position;
         this.image = image;
@@ -10,6 +9,7 @@ class Cell {
         this.hovered = false;
         this.selected = false;
         this.removed = false;
+        this.locked = false;
     }
 
     render() {
@@ -19,6 +19,8 @@ class Cell {
             // Draw the cell
             image(this.image, this.position.x - this.image.width / 2, this.position.y - this.image.height / 2 + this.offsetY);
         }
+
+        if  (this.locked) ellipse(this.position.x, this.position.y + TILE_HEIGHT, 10, 10);
     }
 
     update() {

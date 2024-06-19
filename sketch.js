@@ -62,7 +62,7 @@ function initializeTiles() {
 function initializeGrid() {
     for (let index = 0; index < DIM * DIM; index++) {
         // Get the options for the cell
-        let options = getFilteredOptions();
+        let tiles = getFilteredTiles();
 
         // Calculate the indexes of the cell in the grid
         const indexX = index % DIM;
@@ -73,19 +73,32 @@ function initializeGrid() {
         let y = (indexX + indexY) * TILE_HEIGHT / 2;
 
         // Create the cell
-        grid[index] = new Cell(options, createVector(x, y), emptyCell);
+        grid[index] = new Cell(tiles, createVector(x, y), emptyCell);
     }
 }
 
 function resetGrid() {
     grid.forEach((cell, index) => {
-        let options = getFilteredOptions();
-        grid[index] = new Cell(options, cell.position, emptyCell);
+        if (cell.locked) {
+            grid[index] = new Cell(cell.options, cell.position, cell.options[0].image);
+            grid[index].locked = true;
+            grid[index].collapsed = true;
+        } else {
+            grid[index] = new Cell(getFilteredTiles(), cell.position, emptyCell);
+        }
+    });
+
+    // Propagate constraints for all locked cells after resetting the grid
+    grid.forEach(cell => {
+        if (cell.locked) {
+            propagateConstraints(cell);
+        }
     });
 }
 
+
 // Function to filter options
-function getFilteredOptions() {
+function getFilteredTiles() {
     return tiles.filter(tile => !jsonOptions.options.types.some(type => tile.type === type.name && !type.used));
 }
 
@@ -104,7 +117,8 @@ function mouseMoved() {
 
 function mouseClicked() {
     grid.forEach((cell) => {
-        cell.select(createVector(mouseX, mouseY), grid);
+        cell.deselect();
+        cell.select(createVector(mouseX, mouseY));
     });
 }
 
@@ -152,7 +166,7 @@ function propagateConstraints(cell) {
         let neighbors = getNeighbors(current);
 
         neighbors.forEach(neighbor => {
-            if (neighbor && !neighbor.collapsed) {
+            if (neighbor && !neighbor.collapsed && !neighbor.locked) {
 
                 // Get the index of the current cell in the grid
                 const currentIndex = grid.indexOf(current);
@@ -174,7 +188,6 @@ function propagateConstraints(cell) {
                 // Filter the neighbor's options to only include the valid ones
                 let neighborOptions = neighbor.options.filter(option => validOptions.includes(option));
                 if (neighborOptions.length < neighbor.options.length) {
-
                     neighbor.options = neighborOptions;
 
                     // If the neighbor's options were reduced, add it to the stack to propagate further
