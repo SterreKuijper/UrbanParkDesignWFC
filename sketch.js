@@ -142,13 +142,14 @@ function collapseGrid() {
     // Stop if all cells are collapsed
     if (gridCopy.length === 0) return;
 
-    // Sort the grid by the number of options
+    // Sort the grid by the number of options (entropy)
     gridCopy.sort((a, b) => a.options.length - b.options.length);
 
     // Get the cell with the least entropy
-    gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length);
+    const cellsWithLeastEntropy = gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length);
 
-    const cell = getRandomElement(gridCopy);
+    // Select a random cell from the cells with the least entropy
+    const cell = getRandomElement(cellsWithLeastEntropy);
 
     // Pick a random tile from the cell's options
     const pick = getRandomElement(cell.options);
