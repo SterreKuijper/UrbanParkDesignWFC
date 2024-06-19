@@ -1,8 +1,10 @@
 class Cell {
-    constructor(options, position) {
+    constructor(options, position, items) {
         this.collapsed = false;
+        this.hasItem = false;
         this.options = options;
         this.position = position;
+        this.itemOptions = items;
 
         this.offsetY = 0;
         this.hovered = false;
@@ -24,12 +26,23 @@ class Cell {
                 image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
             }
         }
+        if (this.hasItem) image(this.item, this.position.x, this.position.y + this.offsetY);
     }
 
     update() {
-        this.image = this.options[0].image;
+        this.image = this.options[0] ? this.options[0].image : emptyCell;
+        this.item = this.itemOptions[0] ? this.itemOptions[0].image : emptyCell;
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
     }
+
+    analyzeItems(){
+        if (this.collapsed) {
+            this.itemOptions = this.itemOptions.filter(item =>
+                item.type === 'empty' || this.options[0].type === item.type
+            );
+        }
+    }
+
 
     isOverCell(temp) {
         let centerX = this.position.x;
@@ -133,10 +146,6 @@ class Cell {
     removeOptions() {
         let optionsDiv = document.getElementById('cellOptions');
         optionsDiv.innerHTML = '';
-    }
-
-    setOptions(options) {
-        this.options = options;
     }
 }
 

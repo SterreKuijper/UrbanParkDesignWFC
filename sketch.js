@@ -7,7 +7,7 @@ let jsonOptions = [];
 let jsonItems = [];
 
 let tiles = [];
-// let optionTiles = [];
+let items = [];
 let grid = [];
 let emptyCell;
 let bottomCell;
@@ -49,10 +49,11 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1152, 640) // perfect for DIM = 8
-    // createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT * 2);
+    createCanvas(1152, 768) // perfect for DIM = 8
+    // createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT*4);
     imageMode(CENTER);
     initializeTiles();
+    initializeItems();
     initializeGrid();
 }
 
@@ -60,6 +61,7 @@ function draw() {
     background(255);
     drawGrid();
     collapseGrid();
+    if (grid.every(cell => cell.collapsed)) collapseItems();
 }
 
 function initializeTiles() {
@@ -67,9 +69,19 @@ function initializeTiles() {
         tile.directions.forEach(direction => {
             tiles.push(new Tile(direction.image, direction.edges, tile.type));
         });
-        // optionTiles.push(new Tile(tile.directions[0].image, tile.directions[0].edges, tile.type))
     });
     tiles.forEach(tile => tile.analyze(tiles));
+}
+
+function initializeItems() {
+    jsonItems.items.forEach(item => {
+        item.directions.forEach(direction => {
+            items.push(new Tile(direction.image, direction.edges, item.type, item.season));
+        });
+    });
+    items.push(new Tile(emptyCell, [], 'empty'));
+    items.forEach(item => item.analyze(items));
+    console.table(items);
 }
 
 function initializeGrid() {
@@ -86,7 +98,7 @@ function initializeGrid() {
         let y = (indexX + indexY) * TILE_HEIGHT / 2 + height / 2;
 
         // Create the cell
-        grid[index] = new Cell(tiles, createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), emptyCell);
+        grid[index] = new Cell(tiles, createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), items);
     }
 }
 
@@ -94,16 +106,16 @@ function resetGrid() {
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
-                grid[index] = new Cell(getFilteredTiles(), cell.position, cell.options[0].image);
+                grid[index] = new Cell(getFilteredTiles(), cell.position, items);
                 grid[index].removed = true;
 
             } else {
-                grid[index] = new Cell(cell.options, cell.position, cell.options[0].image);
+                grid[index] = new Cell(cell.options, cell.position, items);
             }
             grid[index].locked = true;
             grid[index].collapsed = true;
         } else {
-            grid[index] = new Cell(getFilteredTiles(), cell.position, emptyCell);
+            grid[index] = new Cell(getFilteredTiles(), cell.position, items);
         }
     });
 
@@ -114,7 +126,6 @@ function resetGrid() {
         }
     });
 }
-
 
 // Function to filter options
 function getFilteredTiles() {
@@ -141,11 +152,6 @@ function mouseClicked() {
     });
 }
 
-
-/**
- * Handles collapsing the least entropic cell
- * and starts the propagation of constraints
- */
 function collapseGrid() {
     // Get the non-collapsed cells
     let gridCopy = grid.filter(cell => !cell.collapsed);
@@ -237,4 +243,78 @@ function getRandomElement(arr) {
     if (arr.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
+}
+
+function collapseItems() {
+    grid.forEach(cell => cell.analyzeItems());
+
+    // Get the cells with no item
+    let gridCopy = grid.filter(cell => !cell.hasItem);
+
+    // Stop if all cells have an item
+    if (gridCopy.length === 0) return;
+
+    // Sort the grid by the number of options (entropy)
+    gridCopy.sort((a, b) => a.itemOptions.length - b.itemOptions.length);
+
+    // Get the cell with the least entropy
+    const cellsWithLeastEntropy = gridCopy.filter(cell => cell.itemOptions.length === gridCopy[0].itemOptions.length);
+
+    // Select a random cell from the cells with the least entropy
+    const cell = getRandomElement(cellsWithLeastEntropy);
+
+    // Pick a random tile from the cell's options
+    const pick = getRandomElement(cell.itemOptions);
+
+    if (pick === undefined) {
+        resetGrid();
+        return;
+    }
+
+    // Collapse the cell to the selected tile
+    cell.hasItem = true;
+    cell.itemOptions = [pick];
+
+    // Propagate constraints
+    propagateItemsConstraints(cell);
+}
+
+// Uses the adjacency information to update the options of neighboring cells
+function propagateItemsConstraints(cell) {
+    let stack = [cell];
+    while (stack.length > 0) {
+        let current = stack.pop();
+        let neighbors = getNeighbors(current);
+
+        neighbors.forEach(neighbor => {
+            if (neighbor && !neighbor.collapsed && !neighbor.locked) {
+
+                // Get the index of the current cell in the grid
+                const currentIndex = grid.indexOf(current);
+                const neighborIndex = grid.indexOf(neighbor);
+
+                // Determine the direction of the neighbor relative to the current cell
+                let direction;
+                if (neighborIndex === currentIndex - DIM) direction = "up";
+                if (neighborIndex === currentIndex + DIM) direction = "down";
+                if (neighborIndex === currentIndex - 1) direction = "left";
+                if (neighborIndex === currentIndex + 1) direction = "right";
+
+                // Get the valid options for the neighbor based on the current cell's selected option
+                let validOptions = [];
+                current.options.forEach(option => {
+                    validOptions = validOptions.concat(option[direction]);
+                });
+
+                // Filter the neighbor's options to only include the valid ones
+                let neighborOptions = neighbor.options.filter(option => validOptions.includes(option));
+                if (neighborOptions.length < neighbor.options.length) {
+                    neighbor.options = neighborOptions;
+
+                    // If the neighbor's options were reduced, add it to the stack to propagate further
+                    stack.push(neighbor);
+                }
+            }
+        });
+    }
 }

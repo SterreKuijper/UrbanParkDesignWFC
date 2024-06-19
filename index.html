@@ -46,7 +46,6 @@
 
 <script src="cell.js"></script>
 <script src="tile.js"></script>
-<script src="item.js"></script>
 <script src="sketch.js"></script>
 
 <script>
@@ -67,7 +66,7 @@
     function resetFunction() {
         applyTypes();
         resetGrid();
-        console.table(grid)
+        console.table(items)
     }
 
     function initializeTypeOptions() {
@@ -130,7 +129,7 @@
     function emptyGrid() {
         resetGrid();
         grid.forEach((cell, index) => {
-            grid[index] = new Cell([tiles[0]], cell.position);
+            grid[index] = new Cell([tiles[0]], cell.position, items);
         });
     }
 </script>

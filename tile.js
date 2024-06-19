@@ -3,12 +3,13 @@ function reverseString(s) {
 }
 
 function compareEdge(a, b) {
+    if (a === undefined || b === undefined) return true;
     return a === reverseString(b);
 }
 
 
 class Tile {
-    constructor(image, edges, type) {
+    constructor(image, edges, type, season) {
         this.image = image;
         this.edges = edges;
         this.up = [];
@@ -16,6 +17,7 @@ class Tile {
         this.down = [];
         this.left = [];
         this.type = type;
+        this.season = season;
     }
 
     analyze(tiles) {
