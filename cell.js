@@ -1,9 +1,8 @@
 class Cell {
-    constructor(options, position, image) {
+    constructor(options, position) {
         this.collapsed = false;
         this.options = options;
         this.position = position;
-        this.image = image;
 
         this.offsetY = 0;
         this.hovered = false;
@@ -13,18 +12,22 @@ class Cell {
     }
 
     render() {
-        if (!this.removed) {
-            // Draw the bottom cell first
-            image(bottomCell, this.position.x - bottomCell.width / 2, this.position.y - bottomCell.height / 2 + 44 + this.offsetY);
-            // Draw the cell
-            image(this.image, this.position.x - this.image.width / 2, this.position.y - this.image.height / 2 + this.offsetY);
+        if (this.removed) {
+            image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
+        } else {
+            if (this.collapsed) {
+                if (this.locked) tint(223, 255); // 128 is 50% transparency
+                image(bottomCell, this.position.x, this.position.y + 44 + this.offsetY);
+                image(this.image, this.position.x, this.position.y + this.offsetY);
+                noTint(); // Reset tint to ensure no unintended tinting
+            } else {
+                image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
+            }
         }
-
-        if  (this.locked) ellipse(this.position.x, this.position.y + TILE_HEIGHT, 10, 10);
     }
 
     update() {
-        if (this.collapsed) this.image = this.options[0].image;
+        this.image = this.options[0].image;
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
     }
 
@@ -73,6 +76,7 @@ class Cell {
         const lockOption = addElementToCellOptions('lockedOption', 'images/lock.png');
         lockOption.onclick = () => {
             this.locked = true;
+            this.removed = false;
             propagateConstraints(this);
         }
 
@@ -90,6 +94,7 @@ class Cell {
             const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image)));
             tileOption.onclick = () => {
                 this.locked = true;
+                this.removed = false;
                 this.collapsed = true;
                 this.options = [tile];
                 this.image = tile.image;

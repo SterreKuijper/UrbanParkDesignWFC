@@ -31,14 +31,16 @@ function preload() {
     });
 
     // Load the empty cell image
-    emptyCell = loadImage('/tiles/ground_grass_NE.png');
+    emptyCell = loadImage('/images/emptyTile.png');
 
     //load the bottom cell image
     bottomCell = loadImage('/tiles/border/cliff_blockHalf_rock_NE.png');
 }
 
 function setup() {
-    createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT * 2);
+    createCanvas(1152, 640) // perfect for DIM = 8
+    // createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT * 2);
+    imageMode(CENTER);
     initializeTiles();
     initializeGrid();
 }
@@ -70,10 +72,10 @@ function initializeGrid() {
 
         // Determine the position of the cell
         const x = (indexX - indexY) * TILE_WIDTH / 2 + width / 2;
-        let y = (indexX + indexY) * TILE_HEIGHT / 2;
+        let y = (indexX + indexY) * TILE_HEIGHT / 2 + height / 2;
 
         // Create the cell
-        grid[index] = new Cell(tiles, createVector(x, y), emptyCell);
+        grid[index] = new Cell(tiles, createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), emptyCell);
     }
 }
 
