@@ -44,11 +44,7 @@ class Cell {
         this.hovered = this.isOverCell(temp);
     }
 
-    select(temp, others) {
-        others.forEach(other => {
-            if (this === other) other.deselect();
-        });
-
+    select(temp) {
         if (this.isOverCell(temp)) {
             this.selected = true;
             this.showOptions();
@@ -56,8 +52,8 @@ class Cell {
     }
 
     deselect() {
+        if (this.selected) this.removeOptions();
         this.selected = false;
-        this.removeOptions();
     }
 
     showOptions() {
