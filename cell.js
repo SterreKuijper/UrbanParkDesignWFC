@@ -65,7 +65,7 @@ class Cell {
         this.removeOptions();
 
         // Add the empty option
-        const emptyOption = addElementToCellOptions('emptyOption', 'images/empty.png');
+        const emptyOption = addElementToCellOptions('emptyOption', 'assets/images/empty.png');
         emptyOption.onclick = () => {
             this.removed = true;
             this.locked = true;
@@ -73,7 +73,7 @@ class Cell {
         }
 
         // Add the lock option
-        const lockOption = addElementToCellOptions('lockedOption', 'images/lock.png');
+        const lockOption = addElementToCellOptions('lockedOption', 'assets/images/lock.png');
         lockOption.onclick = () => {
             this.locked = true;
             this.removed = false;
@@ -81,7 +81,7 @@ class Cell {
         }
 
         // Add the reset option
-        const resetOption = addElementToCellOptions('resetOption', 'images/reset.png');
+        const resetOption = addElementToCellOptions('resetOption', 'assets/images/reset.png');
         resetOption.onclick = () => {
             this.removed = false;
             this.locked = false;

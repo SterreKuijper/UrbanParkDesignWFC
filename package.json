@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "watch:sass": "node-sass -w styles/index.scss styles/index.css"
+    "watch:sass": "node-sass -w assets/styles/index.scss styles/index.css"
   },
   "dependencies": {
     "node-sass": "^9.0.0"

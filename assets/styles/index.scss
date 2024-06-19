@@ -1,0 +1,149 @@
+//.scrollbar {
+//  overflow: auto;
+//  scrollbar-color: grey transparent; //firefox scrollbar styling
+//  scrollbar-width: thin;
+//
+//  ::-webkit-scrollbar {
+//    position: relative;
+//    width: 12px;
+//    height: 12px;
+//    background-color: transparent;
+//  }
+//
+//  ::-webkit-scrollbar-track {
+//    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+//    borders-radius: 10px;
+//    background-color: #F5F5F5;
+//  }
+//
+//  ::-webkit-scrollbar-thumb {
+//    borders-radius: 10px;
+//    box-shadow: inset 0 0 16px 16px grey;
+//    borders: solid 4px grey;
+//  }
+//}
+
+.open-sans-700 {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.open-sans-500 {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.bungee {
+  font-family: "Bungee", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+}
+
+button {
+  font-size: 20px;
+  background-color: #397097;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  color: #397097;
+}
+
+.footer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #397097;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .content-right {
+      width: 100%;
+      padding: 64px 0;
+
+      .type-options {
+        margin: 32px;
+
+        .type-input {
+          width: fit-content;
+          display: flex;
+          align-items: center;
+          gap: 32px;
+
+          input {
+            width: 24px;
+            height: 24px;
+            accent-color: #397097;
+          }
+        }
+      }
+    }
+
+    .content-center {
+      width: 1152px;
+
+      h1 {
+        text-align: center;
+        font-size: 48px;
+        line-height: 128px;
+        color: #397097;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 32px;
+      }
+    }
+
+    .content-left {
+      width: 100%;
+
+      .cell-options {
+        height: 100vh;
+        display: flex;
+        align-content: flex-start;
+        column-gap: 16px;
+        flex-wrap: wrap;
+        padding: 64px 0;
+        overflow: auto;
+
+        div {
+          width: 100px;
+          height: 100px;
+
+          img {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+

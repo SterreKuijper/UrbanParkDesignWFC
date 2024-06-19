@@ -4,6 +4,7 @@ const TILE_HEIGHT = 64;
 
 let jsonTiles = [];
 let jsonOptions = [];
+let jsonItems = [];
 
 let tiles = [];
 // let optionTiles = [];
@@ -22,6 +23,16 @@ function preload() {
         });
     });
 
+    // Load the items from the JSON file and load the images
+    loadJSON('items.json', data => {
+        jsonItems = data;
+        jsonItems.items.forEach(item => {
+            item.directions.forEach(direction => {
+                direction.image = loadImage(direction.imagePath);
+            });
+        });
+    });
+
     // Load the options from the JSON file and load the images
     loadJSON('options.json', data => {
         jsonOptions = data;
@@ -31,10 +42,10 @@ function preload() {
     });
 
     // Load the empty cell image
-    emptyCell = loadImage('/images/emptyTile.png');
+    emptyCell = loadImage('/assets/images/emptyTile.png');
 
     //load the bottom cell image
-    bottomCell = loadImage('/tiles/border/cliff_blockHalf_rock_NE.png');
+    bottomCell = loadImage('/assets/images/blockHalf.png');
 }
 
 function setup() {
