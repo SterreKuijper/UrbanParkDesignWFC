@@ -58,16 +58,34 @@ class Cell {
 
     showOptions() {
         this.removeOptions();
-        let optionsDiv = document.getElementById('cellOptions');
 
-        this.tiles.forEach(tile => {
-            let tileDiv = document.createElement('div');
-            let tileImg = document.createElement('img')
+        // Add the empty option
+        const emptyOption = addElementToCellOptions('emptyOption', 'images/empty.png');
+        emptyOption.onclick = () => {
+            this.removed = true;
+            this.locked = true;
+        }
 
-            tileImg.src = imageToDataURL(cropImage(tile.image));
+        // Add the lock option
+        const lockOption = addElementToCellOptions('lockedOption', 'images/lock.png');
+        lockOption.onclick = () => {
+            this.locked = true;
+        }
 
-            tileDiv.appendChild(tileImg);
-            optionsDiv.appendChild(tileDiv);
+        // Add the reset option
+        const resetOption = addElementToCellOptions('resetOption', 'images/reset.png');
+        resetOption.onclick = () => {
+            this.removed = false;
+            this.locked = false;
+        }
+
+        // Add the tile options
+        getFilteredTiles().forEach((tile, index) => {
+            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image)));
+            tileOption.onclick = () => {
+                this.locked = true;
+                this.options = [tile];
+            }
         });
     }
 

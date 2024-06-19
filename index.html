@@ -154,6 +154,19 @@
             type.used = jsonOptions.options.types[index].used;
         });
     }
+
+    function addElementToCellOptions(element, image) {
+        const cellOptions = document.getElementById('cellOptions');
+
+        const elementDiv = document.createElement('div');
+        elementDiv.id = element;
+        const elementImg = document.createElement('img');
+        elementImg.src = image;
+
+        elementDiv.appendChild(elementImg);
+        cellOptions.appendChild(elementDiv);
+        return elementDiv;
+    }
 </script>
 </body>
 </html>
