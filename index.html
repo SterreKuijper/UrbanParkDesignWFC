@@ -7,28 +7,41 @@
     <link rel="stylesheet" href="styles/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 </head>
 
 <body>
 <div class="container">
-    <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
-    <div class="content-container">
-        <div class="sketch-container">
-            <main style="width: fit-content; height: fit-content"></main>
-            <div class="cell-options" id="cellOptions"></div>
-        </div>
-        <div class="options-container" id="optionsContainer">
+    <div class="content">
+        <div class="content-right">
             <div class="type-options">
-                <h2 class="open-sans-700">Tile Types</h2>
+                <h2 class="open-sans-700">Tile types:</h2>
                 <div class="types" id="types"></div>
             </div>
         </div>
+
+        <div class="content-center">
+            <h1 class="bungee">ISOMETRIC PARK DESIGN</h1>
+            <main></main>
+            <div class="buttons">
+                <button class="button open-sans-500" onclick="resetFunction()">Reset Function</button>
+                <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
+                <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
+            </div>
+        </div>
+
+        <div class="content-left">
+            <div class="cell-options scrollbar" id="cellOptions"></div>
+        </div>
     </div>
-    <button class="button open-sans-500" onclick="resetFunction()">Reset Function</button>
-    <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
-    <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
+</div>
+
+<div class="footer">
+    <h1 class="open-sans-700">Urban Park Design Using Wave Function Collapse</h1>
+    <h2 class="open-sans-500">Description</h2>
 </div>
 
 <script src="cell.js"></script>
@@ -53,30 +66,31 @@
     function resetFunction() {
         applyTypes();
         resetGrid();
+        console.table(grid)
     }
 
     function initializeTypeOptions() {
         let typesContainer = document.getElementById('types');
         jsonOptions.options.types.forEach(type => {
-            let typeDiv = document.createElement('div');
-            typeDiv.innerHTML = `<h3 class="open-sans-700">${type.name}</h3>`;
 
             let typeOption = document.createElement('div');
-            let image = document.createElement('img');
-            image.src = imageToDataURL(cropImage(type.image));
+            typeOption.className = 'type-input';
+
             let input = document.createElement('input');
             input.type = 'checkbox';
             input.checked = type.used;
-            typeOption.appendChild(image);
+
+            let image = document.createElement('img');
+            image.src = imageToDataURL(cropImage(type.image));
+
             typeOption.appendChild(input);
-            typeDiv.appendChild(typeOption);
-            typesContainer.appendChild(typeDiv);
+            typeOption.appendChild(image);
+            typesContainer.appendChild(typeOption);
         })
     }
 
     function applyTypes() {
         const inputs = document.querySelectorAll('.types input');
-
 
 
         inputs.forEach((input, index) => {
@@ -115,7 +129,7 @@
     function emptyGrid() {
         resetGrid();
         grid.forEach((cell, index) => {
-            grid[index].options = [tiles[0]];
+            grid[index] = new Cell([tiles[0]], cell.position);
         });
     }
 </script>
