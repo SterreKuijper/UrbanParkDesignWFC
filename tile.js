@@ -3,7 +3,6 @@ function reverseString(s) {
 }
 
 function compareEdge(a, b) {
-    if (a === undefined || b === undefined) return true;
     return a === reverseString(b);
 }
 

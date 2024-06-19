@@ -79,9 +79,8 @@ function initializeItems() {
             items.push(new Tile(direction.image, direction.edges, item.type, item.season));
         });
     });
-    items.push(new Tile(emptyCell, [], 'empty'));
+    items.push(new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty'));
     items.forEach(item => item.analyze(items));
-    console.table(items);
 }
 
 function initializeGrid() {
@@ -133,20 +132,20 @@ function getFilteredTiles() {
 }
 
 function drawGrid() {
-    grid.forEach((cell) => {
+    grid.forEach(cell => {
         cell.update();
         cell.render();
     });
 }
 
 function mouseMoved() {
-    grid.forEach((cell) => {
+    grid.forEach(cell => {
         cell.hover(createVector(mouseX, mouseY));
     });
 }
 
 function mouseClicked() {
-    grid.forEach((cell) => {
+    grid.forEach(cell => {
         cell.deselect();
         cell.select(createVector(mouseX, mouseY));
     });

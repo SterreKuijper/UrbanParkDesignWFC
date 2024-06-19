@@ -26,7 +26,7 @@ class Cell {
                 image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
             }
         }
-        if (this.hasItem) image(this.item, this.position.x, this.position.y + this.offsetY);
+        if (this.hasItem && !this.locked) image(this.item, this.position.x, this.position.y + this.offsetY);
     }
 
     update() {

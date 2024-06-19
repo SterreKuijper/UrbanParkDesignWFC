@@ -11,40 +11,40 @@
           "direction": "NE",
           "imagePath": "/assets/items/tree_thin_NE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_thin_NW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_thin_SE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_thin_SW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         }
       ]
@@ -60,40 +60,40 @@
           "direction": "NE",
           "imagePath": "/assets/items/tree_thin_fall_NE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_thin_fall_NW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_thin_fall_SE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_thin_fall_SW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         }
       ]
@@ -109,40 +109,91 @@
           "direction": "NE",
           "imagePath": "/assets/items/tree_thin_dark_NE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_thin_dark_NW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_thin_dark_SE.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
           ]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_thin_dark_SW.png",
           "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Path Stone",
+      "type": "grass",
+      "season": [
+        "winter",
+        "spring",
+        "fall"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/path_stone_NE.png",
+          "edges": [
+            "AAA",
+            "SSS",
+            "AAA",
+            "SSS"
+          ]
+        },
+        {
+          "direction": "NW",
+          "imagePath": "/assets/items/path_stone_NW.png",
+          "edges": [
+            "SSS",
+            "AAA",
+            "SSS",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SE",
+          "imagePath": "/assets/items/path_stone_SE.png",
+          "edges": [
+            "SSS",
+            "AAA",
+            "SSS",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SW",
+          "imagePath": "/assets/items/path_stone_SW.png",
+          "edges": [
+            "AAA",
+            "SSS",
+            "AAA",
+            "SSS"
           ]
         }
       ]
