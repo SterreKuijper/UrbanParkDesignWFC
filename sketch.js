@@ -80,7 +80,13 @@ function initializeGrid() {
 function resetGrid() {
     grid.forEach((cell, index) => {
         if (cell.locked) {
-            grid[index] = new Cell(cell.options, cell.position, cell.options[0].image);
+            if (cell.removed) {
+                grid[index] = new Cell(getFilteredTiles(), cell.position, cell.options[0].image);
+                grid[index].removed = true;
+
+            } else {
+                grid[index] = new Cell(cell.options, cell.position, cell.options[0].image);
+            }
             grid[index].locked = true;
             grid[index].collapsed = true;
         } else {

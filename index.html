@@ -101,7 +101,8 @@
             </div>
         </div>
     </div>
-    <button class="button open-sans-500" onclick="resetPage()">Reset Grid</button>
+    <button class="button open-sans-500" onclick="resetFunction()">Reset Function</button>
+    <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
 </div>
 
 <script src="cell.js"></script>
@@ -118,7 +119,12 @@
         }
     });
 
-    function resetPage() {
+    function resetEntireGrid() {
+        applyTypes();
+        initializeGrid();
+    }
+
+    function resetFunction() {
         applyTypes();
         resetGrid();
     }

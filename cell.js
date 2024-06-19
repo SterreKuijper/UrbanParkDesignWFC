@@ -66,12 +66,14 @@ class Cell {
         emptyOption.onclick = () => {
             this.removed = true;
             this.locked = true;
+            propagateConstraints(this);
         }
 
         // Add the lock option
         const lockOption = addElementToCellOptions('lockedOption', 'images/lock.png');
         lockOption.onclick = () => {
             this.locked = true;
+            propagateConstraints(this);
         }
 
         // Add the reset option
@@ -79,16 +81,48 @@ class Cell {
         resetOption.onclick = () => {
             this.removed = false;
             this.locked = false;
+            propagateConstraints(this);
         }
 
         // Add the tile options
-        getFilteredTiles().forEach((tile, index) => {
+        const validTiles = this.getValidTilesBasedOnNeighbors();
+        validTiles.forEach((tile, index) => {
             const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image)));
             tileOption.onclick = () => {
                 this.locked = true;
+                this.collapsed = true;
                 this.options = [tile];
+                this.image = tile.image;
+                propagateConstraints(this);
             }
         });
+    }
+
+    getValidTilesBasedOnNeighbors() {
+        let neighbors = getNeighbors(this);
+        let validTiles = getFilteredTiles();
+
+        neighbors.forEach(neighbor => {
+            if (neighbor.locked && neighbor.options.length === 1) {
+                const neighborTile = neighbor.options[0];
+                const direction = this.getDirection(neighbor);
+                validTiles = validTiles.filter(tile => neighborTile[direction].includes(tile));
+            }
+        });
+
+        return validTiles;
+    }
+
+    getDirection(neighbor) {
+        const currentIndex = grid.indexOf(this);
+        const neighborIndex = grid.indexOf(neighbor);
+
+        if (neighborIndex === currentIndex - DIM) return "down";
+        if (neighborIndex === currentIndex + DIM) return "up";
+        if (neighborIndex === currentIndex - 1) return "right";
+        if (neighborIndex === currentIndex + 1) return "left";
+
+        return null;
     }
 
     removeOptions() {
