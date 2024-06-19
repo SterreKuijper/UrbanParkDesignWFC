@@ -28,6 +28,7 @@
     </div>
     <button class="button open-sans-500" onclick="resetFunction()">Reset Function</button>
     <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
+    <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
 </div>
 
 <script src="cell.js"></script>
@@ -76,7 +77,19 @@
     function applyTypes() {
         const inputs = document.querySelectorAll('.types input');
 
+
+
         inputs.forEach((input, index) => {
+            // Release the tiles that are being unchecked
+            grid.forEach(cell => {
+                if (cell.locked) {
+                    if (cell.options[0].type === jsonOptions.options.types[index].name && !input.checked) {
+                        cell.locked = false;
+                        cell.removed = false;
+                    }
+                }
+            })
+
             jsonOptions.options.types[index].used = input.checked;
         });
 
@@ -97,6 +110,13 @@
         elementDiv.appendChild(elementImg);
         cellOptions.appendChild(elementDiv);
         return elementDiv;
+    }
+
+    function emptyGrid() {
+        resetGrid();
+        grid.forEach((cell, index) => {
+            grid[index].options = [tiles[0]];
+        });
     }
 </script>
 </body>
