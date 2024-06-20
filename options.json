@@ -4,45 +4,112 @@
       {
         "name": "river",
         "used": true,
-        "imagePath": "/assets/tiles/ground_riverStraight_NE.png"
+        "imagePath": "/assets/tiles/ground_riverStraight_SE.png"
       },
       {
         "name": "water",
         "used": true,
-        "imagePath": "/assets/tiles/ground_riverOpen_NE.png"
+        "imagePath": "/assets/tiles/ground_riverOpen_SE.png"
       },
       {
         "name": "path",
         "used": true,
-        "imagePath": "/assets/tiles/ground_pathStraight_NE.png"
+        "imagePath": "/assets/tiles/ground_pathStraight_SE.png"
       },
       {
         "name": "ground",
         "used": true,
-        "imagePath": "/assets/tiles/ground_pathOpen_NE.png"
+        "imagePath": "/assets/tiles/ground_pathOpen_SE.png"
       }
     ],
     "seasons": [
-        {
-            "name": "spring",
-            "used": true,
-            "imagePath": "/assets/items/tree_thin_NE.png"
-        },
-        {
-            "name": "summer",
-            "used": true,
-            "imagePath": "/assets/items/tree_palm_NE.png"
-        },
-        {
-            "name": "fall",
-            "used": true,
-            "imagePath": "/assets/items/tree_thin_fall_NE.png"
-        },
-        {
-            "name": "winter",
-            "used": true,
-            "imagePath": "/assets/items/tree_thin_dark_NE.png"
-        }
+      {
+        "name": "default",
+        "used": true,
+        "imagePath": "/assets/items/tree_thin_SE.png"
+      },
+      {
+        "name": "spring",
+        "used": true,
+        "imagePath": "/assets/items/tree_thin_dark_SE.png"
+      },
+      {
+        "name": "fall",
+        "used": true,
+        "imagePath": "/assets/items/tree_thin_fall_SE.png"
+      },
+      {
+        "name": "winter",
+        "used": true,
+        "imagePath": "/assets/items/tree_pineDefaultA_SE.png"
+      },
+      {
+        "name": "summer",
+        "used": true,
+        "imagePath": "/assets/items/tree_palm_SE.png"
+      }
+    ],
+    "categories": [
+      {
+        "name": "tree",
+        "used": true,
+        "imagePath": "/assets/items/tree_small_SE.png"
+      },
+      {
+        "name": "flower",
+        "used": true,
+        "imagePath": "/assets/items/flower_purpleA_SE.png"
+      },
+      {
+        "name": "grass",
+        "used": true,
+        "imagePath": "/assets/items/grass_large_SE.png"
+      },
+      {
+        "name": "lily",
+        "used": true,
+        "imagePath": "/assets/items/lily_large_SE.png"
+      },
+      {
+        "name": "log",
+        "used": true,
+        "imagePath": "/assets/items/log_SE.png"
+      },
+      {
+        "name": "mushroom",
+        "used": true,
+        "imagePath": "/assets/items/mushroom_red_SE.png"
+      },
+      {
+        "name": "bush",
+        "used": true,
+        "imagePath": "/assets/items/plant_bush_SE.png"
+      },
+      {
+        "name": "sign",
+        "used": true,
+        "imagePath": "/assets/items/sign_SE.png"
+      },
+      {
+        "name": "statue",
+        "used": true,
+        "imagePath": "/assets/items/statue_head_SE.png"
+      },
+      {
+        "name": "stone",
+        "used": true,
+        "imagePath": "/assets/items/path_stone_SE.png"
+      },
+      {
+        "name": "wood",
+        "used": true,
+        "imagePath": "/assets/items/path_wood_SE.png"
+      },
+      {
+        "name": "crops",
+        "used": true,
+        "imagePath": "/assets/items/crops_dirtRow_SE.png"
+      }
     ]
   }
 }

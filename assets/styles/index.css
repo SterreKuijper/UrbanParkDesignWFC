@@ -49,7 +49,7 @@ button {
     .container .content .content-left {
       width: 100%; }
       .container .content .content-left .options {
-        margin: 32px 0 32px 32px; }
+        margin-left: 32px; }
         .container .content .content-left .options h2 {
           color: #397097; }
         .container .content .content-left .options .types {
@@ -59,7 +59,15 @@ button {
         .container .content .content-left .options .seasons {
           display: flex;
           flex-wrap: wrap;
-          gap: 16px; }
+          gap: 16px;
+          height: 336px;
+          overflow-y: scroll; }
+        .container .content .content-left .options .categories {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
+          overflow-y: scroll;
+          height: 272px; }
         .container .content .content-left .options .option-input {
           width: fit-content;
           display: flex;
@@ -70,7 +78,8 @@ button {
             height: 24px;
             accent-color: #397097; }
     .container .content .content-center {
-      width: 1152px; }
+      width: 1152px;
+      justify-self: center; }
       .container .content .content-center h1 {
         text-align: center;
         font-size: 48px;

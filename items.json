@@ -3,13 +3,14 @@
     {
       "name": "Tree",
       "type": ["grass"],
+      "category": "tree",
       "seasons": [
-        "spring"
+        "default"
       ],
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/assets/items/tree_thin_NE.png",
+          "imagePath": "/assets/items/tree_blocks_NE.png",
           "edges": [
             "AAA",
             "AAA",
@@ -19,7 +20,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/assets/items/tree_thin_NW.png",
+          "imagePath": "/assets/items/tree_blocks_NW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -29,7 +30,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/assets/items/tree_thin_SE.png",
+          "imagePath": "/assets/items/tree_blocks_SE.png",
           "edges": [
             "AAA",
             "AAA",
@@ -39,7 +40,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/assets/items/tree_thin_SW.png",
+          "imagePath": "/assets/items/tree_blocks_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -52,13 +53,64 @@
     {
       "name": "Tree",
       "type": ["grass"],
+      "category": "tree",
+      "seasons": [
+        "sping"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/tree_blocks_dark_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "NW",
+          "imagePath": "/assets/items/tree_blocks_dark_NW.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SE",
+          "imagePath": "/assets/items/tree_blocks_dark_SE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SW",
+          "imagePath": "/assets/items/tree_blocks_dark_SW.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tree",
+      "type": ["grass"],
+      "category": "tree",
       "seasons": [
         "fall"
       ],
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/assets/items/tree_thin_fall_NE.png",
+          "imagePath": "/assets/items/tree_blocks_fall_NE.png",
           "edges": [
             "AAA",
             "AAA",
@@ -68,7 +120,7 @@
         },
         {
           "direction": "NW",
-          "imagePath": "/assets/items/tree_thin_fall_NW.png",
+          "imagePath": "/assets/items/tree_blocks_fall_NW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -78,7 +130,7 @@
         },
         {
           "direction": "SE",
-          "imagePath": "/assets/items/tree_thin_fall_SE.png",
+          "imagePath": "/assets/items/tree_blocks_fall_SE.png",
           "edges": [
             "AAA",
             "AAA",
@@ -88,7 +140,7 @@
         },
         {
           "direction": "SW",
-          "imagePath": "/assets/items/tree_thin_fall_SW.png",
+          "imagePath": "/assets/items/tree_blocks_fall_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -101,104 +153,65 @@
     {
       "name": "Tree",
       "type": ["grass"],
-      "seasons": [
-        "winter"
-      ],
+      "category": "tree",
+      "seasons": ["winter"],
       "directions": [
         {
           "direction": "NE",
-          "imagePath": "/assets/items/tree_thin_dark_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "imagePath": "/assets/items/tree_pineDefaultA_NE.png",
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "NW",
-          "imagePath": "/assets/items/tree_thin_dark_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "imagePath": "/assets/items/tree_pineDefaultA_NW.png",
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "SE",
-          "imagePath": "/assets/items/tree_thin_dark_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "imagePath": "/assets/items/tree_pineDefaultA_SE.png",
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "SW",
-          "imagePath": "/assets/items/tree_thin_dark_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "imagePath": "/assets/items/tree_pineDefaultA_SW.png",
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         }
       ]
     },
     {
       "name": "Tree",
       "type": ["grass"],
-      "seasons": [
-        "summer"
-      ],
+      "category": "tree",
+      "seasons": ["summer"],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/items/tree_palm_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_palm_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_palm_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_palm_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
+          "edges": ["AAA", "AAA", "AAA", "AAA"]
         }
       ]
     },
     {
       "name": "Path Stone",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -249,7 +262,10 @@
     },
     {
       "name": "Path Stone Circle",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -300,7 +316,10 @@
     },
     {
       "name": "Path Stone Corner",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -351,7 +370,10 @@
     },
     {
       "name": "Path Stone End",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -402,7 +424,10 @@
     },
     {
       "name": "Path Stone",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -453,7 +478,10 @@
     },
     {
       "name": "Path Stone Circle",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -504,7 +532,10 @@
     },
     {
       "name": "Path Stone Corner",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -555,7 +586,10 @@
     },
     {
       "name": "Path Stone End",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "stone",
       "seasons": [
         "winter",
         "spring",
@@ -606,7 +640,10 @@
     },
     {
       "name": "Path Wood",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "wood",
       "seasons": [
         "winter",
         "spring",
@@ -657,7 +694,10 @@
     },
     {
       "name": "Path Wood Corner",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "wood",
       "seasons": [
         "winter",
         "spring",
@@ -708,7 +748,10 @@
     },
     {
       "name": "Path Wood End",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "wood",
       "seasons": [
         "winter",
         "spring",
@@ -759,7 +802,10 @@
     },
     {
       "name": "Crops Dirt Row",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "crops",
       "seasons": [
         "winter",
         "spring",
@@ -810,7 +856,10 @@
     },
     {
       "name": "Crops Dirt Row Corner",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "crops",
       "seasons": [
         "winter",
         "spring",
@@ -861,7 +910,10 @@
     },
     {
       "name": "Crops Dirt Row End",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "crops",
       "seasons": [
         "winter",
         "spring",
@@ -912,7 +964,10 @@
     },
     {
       "name": "Lily Large",
-      "type": ["open"],
+      "type": [
+        "open"
+      ],
+      "category": "lily",
       "seasons": [
         "spring",
         "summer"
@@ -962,7 +1017,10 @@
     },
     {
       "name": "Lily Small",
-      "type": ["open"],
+      "type": [
+        "open"
+      ],
+      "category": "lily",
       "seasons": [
         "spring",
         "summer"
@@ -1012,7 +1070,10 @@
     },
     {
       "name": "Flower Purple A",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1064,7 +1125,10 @@
     },
     {
       "name": "Flower Purple B",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1116,7 +1180,10 @@
     },
     {
       "name": "Flower Purple C",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1168,7 +1235,10 @@
     },
     {
       "name": "Flower Red A",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1220,7 +1290,10 @@
     },
     {
       "name": "Flower Red B",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1272,7 +1345,10 @@
     },
     {
       "name": "Flower Red C",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1324,7 +1400,10 @@
     },
     {
       "name": "Flower Yellow A",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1376,7 +1455,10 @@
     },
     {
       "name": "Flower Yellow B",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1428,7 +1510,10 @@
     },
     {
       "name": "Flower Yellow C",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "flower",
       "seasons": [
         "spring",
         "summer",
@@ -1480,7 +1565,10 @@
     },
     {
       "name": "Grass Large",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "grass",
       "seasons": [
         "spring",
         "summer",
@@ -1532,7 +1620,10 @@
     },
     {
       "name": "Grass Leafs",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "grass",
       "seasons": [
         "spring",
         "summer",
@@ -1584,7 +1675,10 @@
     },
     {
       "name": "Grass Leafs Large",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "grass",
       "seasons": [
         "spring",
         "summer",
@@ -1636,7 +1730,10 @@
     },
     {
       "name": "Grass",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "grass",
       "seasons": [
         "spring",
         "summer",
@@ -1688,7 +1785,10 @@
     },
     {
       "name": "Log Large",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "log",
       "seasons": [
         "spring",
         "summer",
@@ -1740,7 +1840,10 @@
     },
     {
       "name": "Log",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "log",
       "seasons": [
         "spring",
         "summer",
@@ -1792,7 +1895,10 @@
     },
     {
       "name": "Log Stack",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "log",
       "seasons": [
         "spring",
         "summer",
@@ -1844,7 +1950,10 @@
     },
     {
       "name": "Log Stack Large",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "log",
       "seasons": [
         "spring",
         "summer",
@@ -1896,7 +2005,10 @@
     },
     {
       "name": "Mushroom Tan",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -1948,7 +2060,10 @@
     },
     {
       "name": "Mushroom Tan Tall",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -2000,7 +2115,10 @@
     },
     {
       "name": "Mushroom Tan Group",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -2052,7 +2170,10 @@
     },
     {
       "name": "Mushroom Red",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -2104,7 +2225,10 @@
     },
     {
       "name": "Mushroom Red Tall",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -2156,7 +2280,10 @@
     },
     {
       "name": "Mushroom Red Group",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "mushroom",
       "seasons": [
         "spring",
         "summer",
@@ -2208,7 +2335,10 @@
     },
     {
       "name": "Sign",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "sign",
       "seasons": [
         "spring",
         "summer",
@@ -2260,7 +2390,10 @@
     },
     {
       "name": "Statue Obelisk",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "statue",
       "seasons": [
         "spring",
         "summer",
@@ -2312,7 +2445,10 @@
     },
     {
       "name": "Statue Ring",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "statue",
       "seasons": [
         "spring",
         "summer",
@@ -2364,7 +2500,10 @@
     },
     {
       "name": "Statue Head",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
+      "category": "statue",
       "seasons": [
         "spring",
         "summer",

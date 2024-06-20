@@ -22,6 +22,8 @@
                 <div class="types" id="types"></div>
                 <h2 class="open-sans-700">Seasons:</h2>
                 <div class="seasons" id="seasons"></div>
+                <h2 class="open-sans-700">Categories:</h2>
+                <div class="categories" id="categories"></div>
             </div>
         </div>
 
@@ -57,10 +59,12 @@
         if (jsonOptions && jsonOptions.options && jsonOptions.options.types && jsonOptions.options.seasons) {
             initializeTypeOptions();
             initializeSeasonOptions();
+            initializeCategoryOptions();
         } else {
             setTimeout(() => {
                 initializeTypeOptions();
                 initializeSeasonOptions();
+                initializeCategoryOptions();
             }, 1000); // Adjust the delay as needed
         }
     });
@@ -69,6 +73,7 @@
     function resetEntireGrid() {
         applyOptions();
         initializeGrid();
+        resetGrid();
     }
 
     function resetFunction() {
@@ -116,11 +121,31 @@
             input.checked = type.used;
 
             let image = document.createElement('img');
-            image.src = imageToDataURL(cropImage(type.image, 0, -TILE_HEIGHT*1.25, TILE_WIDTH, TILE_HEIGHT*2.5));
+            image.src = imageToDataURL(cropImage(type.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5));
 
             seasonOption.appendChild(input);
             seasonOption.appendChild(image);
             seasonsContainer.appendChild(seasonOption);
+        });
+    }
+
+    function initializeCategoryOptions() {
+        let categoriesContainer = document.getElementById('categories');
+        jsonOptions.options.categories.forEach(category => {
+
+            let categoryOption = document.createElement('label');
+            categoryOption.className = 'option-input';
+
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.checked = category.used;
+
+            let image = document.createElement('img');
+            image.src = imageToDataURL(cropImage(category.image, 0, -TILE_HEIGHT/2));
+
+            categoryOption.appendChild(input);
+            categoryOption.appendChild(image);
+            categoriesContainer.appendChild(categoryOption);
         });
     }
 
@@ -155,6 +180,16 @@
         jsonOptions.options.seasons.forEach((season, index) => {
             season.used = jsonOptions.options.seasons[index].used;
         });
+
+        const categoryInputs = document.querySelectorAll('.categories input');
+        categoryInputs.forEach((input, index) => {
+            jsonOptions.options.categories[index].used = input.checked;
+        });
+
+        jsonOptions.options.categories.forEach((category, index) => {
+            category.used = jsonOptions.options.categories[index].used;
+        });
+
     }
 
     function addElementToCellOptions(element, image, parent = 'cellOptions') {

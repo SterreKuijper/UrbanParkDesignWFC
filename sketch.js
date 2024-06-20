@@ -42,7 +42,10 @@ function preload() {
         });
         jsonOptions.options.seasons.forEach(season => {
             season.image = loadImage(season.imagePath);
-        })
+        });
+        jsonOptions.options.categories.forEach(category => {
+            category.image = loadImage(category.imagePath);
+        });
     });
 
     // Load the empty cell image
@@ -80,10 +83,10 @@ function initializeTiles() {
 function initializeItems() {
     jsonItems.items.forEach(item => {
         item.directions.forEach(direction => {
-            items.push(new Tile(direction.image, direction.edges, item.type, item.seasons));
+            items.push(new Tile(direction.image, direction.edges, item.type, item.seasons, item.category));
         });
     });
-    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"]);
+    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"], "none");
     items.push(emptyItem);
     items.forEach(item => item.analyze(items));
 }
