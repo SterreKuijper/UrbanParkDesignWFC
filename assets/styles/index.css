@@ -28,8 +28,7 @@ button {
 
 * {
   margin: 0;
-  box-sizing: border-box;
-  color: #397097; }
+  box-sizing: border-box; }
 
 .footer {
   width: 100%;
@@ -51,6 +50,8 @@ button {
       width: 100%; }
       .container .content .content-right .options {
         margin: 32px; }
+        .container .content .content-right .options h2 {
+          color: #397097; }
         .container .content .content-right .options .option-input {
           width: fit-content;
           display: flex;
@@ -75,7 +76,7 @@ button {
     .container .content .content-left {
       width: 100%; }
       .container .content .content-left .cell-options {
-        height: 100vh;
+        height: 50vh;
         display: flex;
         align-content: flex-start;
         column-gap: 16px;

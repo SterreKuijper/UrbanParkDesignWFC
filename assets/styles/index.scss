@@ -58,7 +58,6 @@ button {
 * {
   margin: 0;
   box-sizing: border-box;
-  color: #397097;
 }
 
 .footer {
@@ -86,6 +85,10 @@ button {
 
       .options {
         margin: 32px;
+
+        h2 {
+          color: #397097;
+        }
 
         .option-input {
           width: fit-content;
@@ -124,7 +127,7 @@ button {
       width: 100%;
 
       .cell-options {
-        height: 100vh;
+        height: 50vh;
         display: flex;
         align-content: flex-start;
         column-gap: 16px;

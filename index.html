@@ -37,6 +37,7 @@
 
         <div class="content-left">
             <div class="cell-options scrollbar" id="cellOptions"></div>
+            <div class="cell-options scrollbar" id="itemOptions"></div>
         </div>
     </div>
 </div>
@@ -156,8 +157,8 @@
         });
     }
 
-    function addElementToCellOptions(element, image) {
-        const cellOptions = document.getElementById('cellOptions');
+    function addElementToCellOptions(element, image, parent = 'cellOptions') {
+        const cellOptions = document.getElementById(parent);
 
         const elementDiv = document.createElement('div');
         elementDiv.id = element;
