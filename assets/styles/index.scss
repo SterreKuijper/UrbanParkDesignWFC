@@ -137,6 +137,7 @@ button {
 
     .content-right {
       width: 100%;
+      margin-left: 64px;
 
       .cell-options {
         height: 50vh;
@@ -144,7 +145,7 @@ button {
         align-content: flex-start;
         column-gap: 16px;
         flex-wrap: wrap;
-        padding: 64px 0;
+        padding: 32px 0;
         overflow: auto;
 
         div {

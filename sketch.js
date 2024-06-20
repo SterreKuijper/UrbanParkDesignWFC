@@ -53,8 +53,8 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1024, 768) // perfect for DIM = 8
-    // createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT*4);
+    createCanvas(1024, 704) // perfect for DIM = 8
+    // createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT*3);
     imageMode(CENTER);
     initializeTiles();
     initializeItems();

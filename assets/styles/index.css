@@ -82,14 +82,15 @@ button {
         gap: 32px;
         margin-top: 32px; }
     .container .content .content-right {
-      width: 100%; }
+      width: 100%;
+      margin-left: 64px; }
       .container .content .content-right .cell-options {
         height: 50vh;
         display: flex;
         align-content: flex-start;
         column-gap: 16px;
         flex-wrap: wrap;
-        padding: 64px 0;
+        padding: 32px 0;
         overflow: auto; }
         .container .content .content-right .cell-options div {
           width: 100px;
