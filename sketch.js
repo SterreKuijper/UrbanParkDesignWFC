@@ -286,7 +286,7 @@ function propagateItemsConstraints(cell) {
         let neighbors = getNeighbors(current);
 
         neighbors.forEach(neighbor => {
-            if (neighbor && !neighbor.collapsed && !neighbor.locked) {
+            if (neighbor && !neighbor.hasItem) {
 
                 // Get the index of the current cell in the grid
                 const currentIndex = grid.indexOf(current);
@@ -301,14 +301,14 @@ function propagateItemsConstraints(cell) {
 
                 // Get the valid options for the neighbor based on the current cell's selected option
                 let validOptions = [];
-                current.options.forEach(option => {
-                    validOptions = validOptions.concat(option[direction]);
+                current.itemOptions.forEach(item => {
+                    validOptions = validOptions.concat(item[direction]);
                 });
 
                 // Filter the neighbor's options to only include the valid ones
-                let neighborOptions = neighbor.options.filter(option => validOptions.includes(option));
-                if (neighborOptions.length < neighbor.options.length) {
-                    neighbor.options = neighborOptions;
+                let neighborOptions = neighbor.itemOptions.filter(option => validOptions.includes(option));
+                if (neighborOptions.length < neighbor.itemOptions.length) {
+                    neighbor.itemOptions = neighborOptions;
 
                     // If the neighbor's options were reduced, add it to the stack to propagate further
                     stack.push(neighbor);
