@@ -39,6 +39,9 @@ function preload() {
         jsonOptions.options.types.forEach(type => {
             type.image = loadImage(type.imagePath);
         });
+        jsonOptions.options.seasons.forEach(season => {
+            season.image = loadImage(season.imagePath);
+        })
     });
 
     // Load the empty cell image
@@ -76,18 +79,15 @@ function initializeTiles() {
 function initializeItems() {
     jsonItems.items.forEach(item => {
         item.directions.forEach(direction => {
-            items.push(new Tile(direction.image, direction.edges, item.type, item.season));
+            items.push(new Tile(direction.image, direction.edges, item.type, item.seasons));
         });
     });
-    items.push(new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty'));
+    items.push(new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty', ["spring", "summer", "fall", "winter"]));
     items.forEach(item => item.analyze(items));
 }
 
 function initializeGrid() {
     for (let index = 0; index < DIM * DIM; index++) {
-        // Get the options for the cell
-        let tiles = getFilteredTiles();
-
         // Calculate the indexes of the cell in the grid
         const indexX = index % DIM;
         const indexY = Math.floor(index / DIM);
@@ -97,7 +97,7 @@ function initializeGrid() {
         let y = (indexX + indexY) * TILE_HEIGHT / 2 + height / 2;
 
         // Create the cell
-        grid[index] = new Cell(tiles, createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), items);
+        grid[index] = new Cell(getFilteredTiles(), createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), getFilteredItems());
     }
 }
 
@@ -105,16 +105,16 @@ function resetGrid() {
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
-                grid[index] = new Cell(getFilteredTiles(), cell.position, items);
+                grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
                 grid[index].removed = true;
 
             } else {
-                grid[index] = new Cell(cell.options, cell.position, items);
+                grid[index] = new Cell(cell.options, cell.position, getFilteredItems());
             }
             grid[index].locked = true;
             grid[index].collapsed = true;
         } else {
-            grid[index] = new Cell(getFilteredTiles(), cell.position, items);
+            grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
         }
     });
 
@@ -129,6 +129,23 @@ function resetGrid() {
 // Function to filter options
 function getFilteredTiles() {
     return tiles.filter(tile => !jsonOptions.options.types.some(type => tile.type === type.name && !type.used));
+}
+
+function getFilteredItems() {
+    let newItems = [];
+
+    items.forEach(item => {
+        let isUsed = false;
+        jsonOptions.options.seasons.forEach(season => {
+            item.seasons.forEach(itemSeason => {
+                if (itemSeason === season.name && season.used) {
+                    isUsed = true;
+                }
+            });
+        });
+        if (isUsed) newItems.push(item);
+    })
+    return newItems;
 }
 
 function drawGrid() {

@@ -35,7 +35,7 @@ class Cell {
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
     }
 
-    analyzeItems(){
+    analyzeItems() {
         if (this.collapsed) {
             this.itemOptions = this.itemOptions.filter(item =>
                 item.type === 'empty' || this.options[0].type === item.type
@@ -149,12 +149,12 @@ class Cell {
     }
 }
 
-function cropImage(image) {
+function cropImage(image, offsetX = 0, offsetY = 0, w = TILE_WIDTH, h = TILE_HEIGHT*2) {
     let cropX = (image.width / 2) - TILE_WIDTH / 2;
     let cropY = (image.height / 2);
 
     // Crop the image using get()
-    return image.get(cropX, cropY, TILE_WIDTH, TILE_HEIGHT * 2);
+    return image.get(cropX + offsetX, cropY + offsetY, w, h);
 }
 
 function imageToDataURL(image) {

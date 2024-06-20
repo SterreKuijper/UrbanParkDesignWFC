@@ -41,7 +41,6 @@
   font-family: "Bungee", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-
 }
 
 button {
@@ -84,12 +83,11 @@ button {
 
     .content-right {
       width: 100%;
-      padding: 64px 0;
 
-      .type-options {
+      .options {
         margin: 32px;
 
-        .type-input {
+        .option-input {
           width: fit-content;
           display: flex;
           align-items: center;

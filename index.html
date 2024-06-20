@@ -17,9 +17,11 @@
 <div class="container">
     <div class="content">
         <div class="content-right">
-            <div class="type-options">
+            <div class="options">
                 <h2 class="open-sans-700">Tile types:</h2>
                 <div class="types" id="types"></div>
+                <h2 class="open-sans-700">Seasons:</h2>
+                <div class="seasons" id="seasons"></div>
             </div>
         </div>
 
@@ -51,22 +53,34 @@
 <script>
 
     document.addEventListener("DOMContentLoaded", () => {
-        if (jsonOptions && jsonOptions.options && jsonOptions.options.types) {
+        if (jsonOptions && jsonOptions.options && jsonOptions.options.types && jsonOptions.options.seasons) {
             initializeTypeOptions();
+            initializeSeasonOptions();
         } else {
-            setTimeout(initializeTypeOptions, 1000); // Adjust the delay as needed
+            setTimeout(() => {
+                initializeTypeOptions();
+                initializeSeasonOptions();
+            }, 1000); // Adjust the delay as needed
         }
     });
 
+
     function resetEntireGrid() {
-        applyTypes();
+        applyOptions();
         initializeGrid();
     }
 
     function resetFunction() {
-        applyTypes();
+        applyOptions();
         resetGrid();
-        console.table(items)
+    }
+
+    function emptyGrid() {
+        applyOptions();
+        resetGrid();
+        grid.forEach((cell, index) => {
+            grid[index] = new Cell([tiles[0]], cell.position, getFilteredItems());
+        });
     }
 
     function initializeTypeOptions() {
@@ -74,7 +88,7 @@
         jsonOptions.options.types.forEach(type => {
 
             let typeOption = document.createElement('label');
-            typeOption.className = 'type-input';
+            typeOption.className = 'option-input';
 
             let input = document.createElement('input');
             input.type = 'checkbox';
@@ -89,9 +103,28 @@
         })
     }
 
-    function applyTypes() {
-        const inputs = document.querySelectorAll('.types input');
+    function initializeSeasonOptions() {
+        let seasonsContainer = document.getElementById('seasons');
+        jsonOptions.options.seasons.forEach(type => {
 
+            let seasonOption = document.createElement('label');
+            seasonOption.className = 'option-input';
+
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.checked = type.used;
+
+            let image = document.createElement('img');
+            image.src = imageToDataURL(cropImage(type.image, 0, -TILE_HEIGHT*1.25, TILE_WIDTH, TILE_HEIGHT*2.5));
+
+            seasonOption.appendChild(input);
+            seasonOption.appendChild(image);
+            seasonsContainer.appendChild(seasonOption);
+        });
+    }
+
+    function applyOptions() {
+        const inputs = document.querySelectorAll('.types input');
 
         inputs.forEach((input, index) => {
             // Release the tiles that are being unchecked
@@ -111,6 +144,16 @@
         jsonOptions.options.types.forEach((type, index) => {
             type.used = jsonOptions.options.types[index].used;
         });
+
+
+        const seasonInputs = document.querySelectorAll('.seasons input');
+        seasonInputs.forEach((input, index) => {
+            jsonOptions.options.seasons[index].used = input.checked;
+        });
+
+        jsonOptions.options.seasons.forEach((season, index) => {
+            season.used = jsonOptions.options.seasons[index].used;
+        });
     }
 
     function addElementToCellOptions(element, image) {
@@ -124,13 +167,6 @@
         elementDiv.appendChild(elementImg);
         cellOptions.appendChild(elementDiv);
         return elementDiv;
-    }
-
-    function emptyGrid() {
-        resetGrid();
-        grid.forEach((cell, index) => {
-            grid[index] = new Cell([tiles[0]], cell.position, items);
-        });
     }
 </script>
 </body>
