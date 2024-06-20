@@ -53,8 +53,8 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1152, 768) // perfect for DIM = 8
-    // createCanvas(TILE_WIDTH * DIM + TILE_WIDTH, TILE_HEIGHT * DIM + TILE_HEIGHT*4);
+    createCanvas(1024, 768) // perfect for DIM = 8
+    // createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT*4);
     imageMode(CENTER);
     initializeTiles();
     initializeItems();
@@ -71,7 +71,7 @@ function draw() {
 function initializeTiles() {
     jsonTiles.tiles.forEach(tile => {
         tile.directions.forEach(direction => {
-            tiles.push(new Tile(direction.image, direction.edges, tile.type));
+            tiles.push(new Tile(direction.image, direction.edges, tile.types));
         });
     });
     tiles.forEach(tile => tile.analyze(tiles));
@@ -83,7 +83,7 @@ function initializeItems() {
             items.push(new Tile(direction.image, direction.edges, item.type, item.seasons));
         });
     });
-    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty', ["spring", "summer", "fall", "winter"]);
+    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"]);
     items.push(emptyItem);
     items.forEach(item => item.analyze(items));
 }
@@ -132,7 +132,20 @@ function resetGrid() {
 
 // Function to filter options
 function getFilteredTiles() {
-    return tiles.filter(tile => !jsonOptions.options.types.some(type => tile.type === type.name && !type.used));
+    let newTiles = [];
+
+    tiles.forEach(tile => {
+        let isUsed = true;
+        jsonOptions.options.types.forEach(type => {
+            tile.types.forEach(itemType => {
+                if (itemType === type.name && !type.used) {
+                    isUsed = false;
+                }
+            });
+        });
+        if (isUsed) newTiles.push(tile);
+    })
+    return newTiles;
 }
 
 function getFilteredItems() {
@@ -266,7 +279,7 @@ function getRandomElement(arr) {
 }
 
 function collapseItems() {
-    grid.forEach(cell => cell.analyzeItems());
+    grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
 
     // Get the cells with no item
     let gridCopy = grid.filter(cell => !cell.hasItem);

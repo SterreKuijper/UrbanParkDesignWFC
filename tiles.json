@@ -2,7 +2,7 @@
   "tiles": [
     {
       "name": "Grass",
-      "type": "grass",
+      "types": ["grass"],
       "directions": [
         {
           "direction": "NE",
@@ -48,7 +48,7 @@
     },
     {
       "name": "Path Bend",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -94,7 +94,7 @@
     },
     {
       "name": "Path Bend Bank",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -140,7 +140,7 @@
     },
     {
       "name": "Path Corner",
-      "type": "path",
+      "types": ["ground"],
       "directions": [
         {
           "direction": "NE",
@@ -186,7 +186,7 @@
     },
     {
       "name": "Path Corner Small",
-      "type": "path",
+      "types": ["ground"],
       "directions": [
         {
           "direction": "NE",
@@ -232,7 +232,7 @@
     },
     {
       "name": "Path Cross",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -278,7 +278,7 @@
     },
     {
       "name": "Path End",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -324,7 +324,7 @@
     },
     {
       "name": "Path End Closed",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -370,7 +370,7 @@
     },
     {
       "name": "Path Open",
-      "type": "path",
+      "types": ["ground"],
       "directions": [
         {
           "direction": "NE",
@@ -416,7 +416,7 @@
     },
     {
       "name": "Path Rocks",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -462,7 +462,7 @@
     },
     {
       "name": "Path Side",
-      "type": "path",
+      "types": ["ground"],
       "directions": [
         {
           "direction": "NE",
@@ -508,7 +508,7 @@
     },
     {
       "name": "Path Side Open",
-      "type": "path",
+      "types": ["path", "ground"],
       "directions": [
         {
           "direction": "NE",
@@ -554,7 +554,7 @@
     },
     {
       "name": "Path Split",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -600,7 +600,7 @@
     },
     {
       "name": "Path Straight",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -646,7 +646,7 @@
     },
     {
       "name": "Path Tile",
-      "type": "path",
+      "types": ["path"],
       "directions": [
         {
           "direction": "NE",
@@ -692,7 +692,7 @@
     },
     {
       "name": "River Bend",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -738,7 +738,7 @@
     },
     {
       "name": "River Bend Bank",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -784,7 +784,7 @@
     },
     {
       "name": "River Corner",
-      "type": "river",
+      "types": ["water"],
       "directions": [
         {
           "direction": "NE",
@@ -830,7 +830,7 @@
     },
     {
       "name": "River Corner Small",
-      "type": "river",
+      "types": ["water", "open"],
       "directions": [
         {
           "direction": "NE",
@@ -876,7 +876,7 @@
     },
     {
       "name": "River Cross",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -922,7 +922,7 @@
     },
     {
       "name": "River End",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -968,7 +968,7 @@
     },
     {
       "name": "River End Closed",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -1014,7 +1014,7 @@
     },
     {
       "name": "River Open",
-      "type": "river",
+      "types": ["water", "open"],
       "directions": [
         {
           "direction": "NE",
@@ -1060,7 +1060,7 @@
     },
     {
       "name": "River Rocks",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -1106,7 +1106,7 @@
     },
     {
       "name": "River Side",
-      "type": "river",
+      "types": ["water", "open"],
       "directions": [
         {
           "direction": "NE",
@@ -1152,7 +1152,7 @@
     },
     {
       "name": "River Side Open",
-      "type": "river",
+      "types": ["river", "water"],
       "directions": [
         {
           "direction": "NE",
@@ -1198,7 +1198,7 @@
     },
     {
       "name": "River Split",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -1244,7 +1244,7 @@
     },
     {
       "name": "River Straight",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",
@@ -1290,7 +1290,7 @@
     },
     {
       "name": "River Tile",
-      "type": "river",
+      "types": ["river"],
       "directions": [
         {
           "direction": "NE",

@@ -2,7 +2,7 @@
   "items": [
     {
       "name": "Tree",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring"
       ],
@@ -51,7 +51,7 @@
     },
     {
       "name": "Tree",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "fall"
       ],
@@ -100,7 +100,7 @@
     },
     {
       "name": "Tree",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter"
       ],
@@ -149,7 +149,7 @@
     },
     {
       "name": "Tree",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "summer"
       ],
@@ -198,7 +198,7 @@
     },
     {
       "name": "Path Stone",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -249,7 +249,7 @@
     },
     {
       "name": "Path Stone Circle",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -300,7 +300,7 @@
     },
     {
       "name": "Path Stone Corner",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -351,7 +351,7 @@
     },
     {
       "name": "Path Stone End",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -402,7 +402,7 @@
     },
     {
       "name": "Path Stone",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -453,7 +453,7 @@
     },
     {
       "name": "Path Stone Circle",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -504,7 +504,7 @@
     },
     {
       "name": "Path Stone Corner",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -555,7 +555,7 @@
     },
     {
       "name": "Path Stone End",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -606,7 +606,7 @@
     },
     {
       "name": "Path Wood",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -657,7 +657,7 @@
     },
     {
       "name": "Path Wood Corner",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -708,7 +708,7 @@
     },
     {
       "name": "Path Wood End",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -759,7 +759,7 @@
     },
     {
       "name": "Crops Dirt Row",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -810,7 +810,7 @@
     },
     {
       "name": "Crops Dirt Row Corner",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -861,7 +861,7 @@
     },
     {
       "name": "Crops Dirt Row End",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "winter",
         "spring",
@@ -912,7 +912,7 @@
     },
     {
       "name": "Lily Large",
-      "type": "river",
+      "type": ["open"],
       "seasons": [
         "spring",
         "summer"
@@ -962,7 +962,7 @@
     },
     {
       "name": "Lily Small",
-      "type": "river",
+      "type": ["open"],
       "seasons": [
         "spring",
         "summer"
@@ -1012,7 +1012,7 @@
     },
     {
       "name": "Flower Purple A",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1064,7 +1064,7 @@
     },
     {
       "name": "Flower Purple B",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1116,7 +1116,7 @@
     },
     {
       "name": "Flower Purple C",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1168,7 +1168,7 @@
     },
     {
       "name": "Flower Red A",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1220,7 +1220,7 @@
     },
     {
       "name": "Flower Red B",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1272,7 +1272,7 @@
     },
     {
       "name": "Flower Red C",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1324,7 +1324,7 @@
     },
     {
       "name": "Flower Yellow A",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1376,7 +1376,7 @@
     },
     {
       "name": "Flower Yellow B",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1428,7 +1428,7 @@
     },
     {
       "name": "Flower Yellow C",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1480,7 +1480,7 @@
     },
     {
       "name": "Grass Large",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1532,7 +1532,7 @@
     },
     {
       "name": "Grass Leafs",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1584,7 +1584,7 @@
     },
     {
       "name": "Grass Leafs Large",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1636,7 +1636,7 @@
     },
     {
       "name": "Grass",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1688,7 +1688,7 @@
     },
     {
       "name": "Log Large",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1740,7 +1740,7 @@
     },
     {
       "name": "Log",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1792,7 +1792,7 @@
     },
     {
       "name": "Log Stack",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1844,7 +1844,7 @@
     },
     {
       "name": "Log Stack Large",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1896,7 +1896,7 @@
     },
     {
       "name": "Mushroom Tan",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -1948,7 +1948,7 @@
     },
     {
       "name": "Mushroom Tan Tall",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2000,7 +2000,7 @@
     },
     {
       "name": "Mushroom Tan Group",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2052,7 +2052,7 @@
     },
     {
       "name": "Mushroom Red",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2104,7 +2104,7 @@
     },
     {
       "name": "Mushroom Red Tall",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2156,7 +2156,7 @@
     },
     {
       "name": "Mushroom Red Group",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2208,7 +2208,7 @@
     },
     {
       "name": "Sign",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2260,7 +2260,7 @@
     },
     {
       "name": "Statue Obelisk",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2312,7 +2312,7 @@
     },
     {
       "name": "Statue Ring",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",
@@ -2364,7 +2364,7 @@
     },
     {
       "name": "Statue Head",
-      "type": "grass",
+      "type": ["grass"],
       "seasons": [
         "spring",
         "summer",

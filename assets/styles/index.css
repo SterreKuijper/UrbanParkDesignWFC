@@ -46,18 +46,26 @@ button {
   .container .content {
     display: flex;
     justify-content: space-between; }
-    .container .content .content-right {
+    .container .content .content-left {
       width: 100%; }
-      .container .content .content-right .options {
-        margin: 32px; }
-        .container .content .content-right .options h2 {
+      .container .content .content-left .options {
+        margin: 32px 0 32px 32px; }
+        .container .content .content-left .options h2 {
           color: #397097; }
-        .container .content .content-right .options .option-input {
+        .container .content .content-left .options .types {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 32px; }
+        .container .content .content-left .options .seasons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px; }
+        .container .content .content-left .options .option-input {
           width: fit-content;
           display: flex;
           align-items: center;
-          gap: 32px; }
-          .container .content .content-right .options .option-input input {
+          gap: 16px; }
+          .container .content .content-left .options .option-input input {
             width: 24px;
             height: 24px;
             accent-color: #397097; }
@@ -73,9 +81,9 @@ button {
         justify-content: center;
         gap: 32px;
         margin-top: 32px; }
-    .container .content .content-left {
+    .container .content .content-right {
       width: 100%; }
-      .container .content .content-left .cell-options {
+      .container .content .content-right .cell-options {
         height: 50vh;
         display: flex;
         align-content: flex-start;
@@ -83,8 +91,9 @@ button {
         flex-wrap: wrap;
         padding: 64px 0;
         overflow: auto; }
-        .container .content .content-left .cell-options div {
+        .container .content .content-right .cell-options div {
           width: 100px;
-          height: 100px; }
-          .container .content .content-left .cell-options div img {
+          height: 100px;
+          cursor: pointer; }
+          .container .content .content-right .cell-options div img {
             width: 100px; }

@@ -4,11 +4,21 @@
       {
         "name": "river",
         "used": true,
+        "imagePath": "/assets/tiles/ground_riverStraight_NE.png"
+      },
+      {
+        "name": "water",
+        "used": true,
         "imagePath": "/assets/tiles/ground_riverOpen_NE.png"
       },
       {
         "name": "path",
-        "used": false,
+        "used": true,
+        "imagePath": "/assets/tiles/ground_pathStraight_NE.png"
+      },
+      {
+        "name": "ground",
+        "used": true,
         "imagePath": "/assets/tiles/ground_pathOpen_NE.png"
       }
     ],

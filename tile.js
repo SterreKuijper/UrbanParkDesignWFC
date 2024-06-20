@@ -8,14 +8,14 @@ function compareEdge(a, b) {
 
 
 class Tile {
-    constructor(image, edges, type, seasons) {
+    constructor(image, edges, types, seasons) {
         this.image = image;
         this.edges = edges;
         this.up = [];
         this.right = [];
         this.down = [];
         this.left = [];
-        this.type = type;
+        this.types = types;
         this.seasons = seasons;
     }
 

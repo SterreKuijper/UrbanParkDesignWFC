@@ -80,21 +80,33 @@ button {
     display: flex;
     justify-content: space-between;
 
-    .content-right {
+    .content-left {
       width: 100%;
 
       .options {
-        margin: 32px;
+        margin: 32px 0 32px 32px;
 
         h2 {
           color: #397097;
+        }
+
+        .types {
+          display: flex;
+          flex-wrap: wrap;
+          column-gap: 32px;
+        }
+
+        .seasons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 16px;
         }
 
         .option-input {
           width: fit-content;
           display: flex;
           align-items: center;
-          gap: 32px;
+          gap: 16px;
 
           input {
             width: 24px;
@@ -123,7 +135,7 @@ button {
       }
     }
 
-    .content-left {
+    .content-right {
       width: 100%;
 
       .cell-options {
@@ -138,6 +150,7 @@ button {
         div {
           width: 100px;
           height: 100px;
+          cursor: pointer;
 
           img {
             width: 100px;

@@ -36,13 +36,22 @@ class Cell {
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
     }
 
-    analyzeItems() {
+    analyzeItems(items) {
         if (this.collapsed) {
-            this.itemOptions = this.itemOptions.filter(item =>
-                item.type === 'empty' || this.options[0].type === item.type
-            );
+            return items.filter(item => {
+                if (item.types.includes('empty')) return true;
+
+                return item.types.some(itemType => {
+                    return this.options[0].types.some(tileType => {
+                        return tileType === itemType;
+                    });
+                });
+            });
+        } else {
+            return items;
         }
     }
+
 
 
     isOverCell(temp) {
@@ -156,19 +165,20 @@ class Cell {
         }
 
         // Add the tile options
-        let validItems = this.getValidItemsBasedOnNeighbors();
-        if (this.collapsed) {
-            validItems = validItems.filter(item =>
-                item.type === 'empty' || this.options[0].type === item.type
-            );
-        }
+        let validItems = this.analyzeItems(this.getValidItemsBasedOnNeighbors());
         validItems.forEach((tile, index) => {
-            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT*1.25, TILE_WIDTH, TILE_HEIGHT*2.5)), 'itemOptions');
+            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), 'itemOptions');
             tileOption.onclick = () => {
                 this.itemLocked = true;
                 this.itemOptions = [tile];
                 this.item = tile.image;
                 propagateItemsConstraints(this);
+                this.locked = true;
+                this.removed = false;
+                this.collapsed = true;
+                this.options = [tile];
+                this.image = tile.image;
+                propagateConstraints(this);
             }
         });
     }
@@ -228,7 +238,7 @@ class Cell {
     }
 }
 
-function cropImage(image, offsetX = 0, offsetY = 0, w = TILE_WIDTH, h = TILE_HEIGHT*2) {
+function cropImage(image, offsetX = 0, offsetY = 0, w = TILE_WIDTH, h = TILE_HEIGHT * 2) {
     let cropX = (image.width / 2) - TILE_WIDTH / 2;
     let cropY = (image.height / 2);
 
