@@ -176,8 +176,6 @@ class Cell {
                 this.locked = true;
                 this.removed = false;
                 this.collapsed = true;
-                this.options = [tile];
-                this.image = tile.image;
                 propagateConstraints(this);
             }
         });

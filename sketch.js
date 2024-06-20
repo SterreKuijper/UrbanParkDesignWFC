@@ -155,15 +155,22 @@ function getFilteredItems() {
     let newItems = [];
 
     items.forEach(item => {
-        let isUsed = false;
+        let isUsedCategory = false;
+        jsonOptions.options.categories.forEach(category => {
+            // console.log(category.name, item.category)
+            if (item.category === category.name && category.used) {
+                isUsedCategory = true;
+            }
+        });
+        let isUsedSeason = false;
         jsonOptions.options.seasons.forEach(season => {
             item.seasons.forEach(itemSeason => {
                 if (itemSeason === season.name && season.used) {
-                    isUsed = true;
+                    isUsedSeason = true;
                 }
             });
         });
-        if (isUsed) newItems.push(item);
+        if ((isUsedCategory && isUsedSeason) || item.types.includes("empty")) newItems.push(item);
     })
     return newItems;
 }
