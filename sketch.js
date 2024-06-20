@@ -11,6 +11,7 @@ let items = [];
 let grid = [];
 let emptyCell;
 let bottomCell;
+let emptyItem;
 
 function preload() {
     // Load the tiles from the JSON file and load the images
@@ -82,7 +83,8 @@ function initializeItems() {
             items.push(new Tile(direction.image, direction.edges, item.type, item.seasons));
         });
     });
-    items.push(new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty', ["spring", "summer", "fall", "winter"]));
+    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], 'empty', ["spring", "summer", "fall", "winter"]);
+    items.push(emptyItem);
     items.forEach(item => item.analyze(items));
 }
 
@@ -109,10 +111,12 @@ function resetGrid() {
                 grid[index].removed = true;
 
             } else {
-                grid[index] = new Cell(cell.options, cell.position, getFilteredItems());
+                grid[index] = new Cell(cell.options, cell.position, cell.itemOptions);
             }
             grid[index].locked = true;
             grid[index].collapsed = true;
+            grid[index].itemLocked = true;
+            grid[index].hasItem = true;
         } else {
             grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
         }
@@ -120,9 +124,9 @@ function resetGrid() {
 
     // Propagate constraints for all locked cells after resetting the grid
     grid.forEach(cell => {
-        if (cell.locked) {
-            propagateConstraints(cell);
-        }
+        if (cell.locked) propagateConstraints(cell);
+        if (cell.itemLocked) propagateItemsConstraints(cell);
+
     });
 }
 

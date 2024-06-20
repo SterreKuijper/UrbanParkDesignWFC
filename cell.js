@@ -11,6 +11,7 @@ class Cell {
         this.selected = false;
         this.removed = false;
         this.locked = false;
+        this.itemLocked = false;
     }
 
     render() {
@@ -26,7 +27,7 @@ class Cell {
                 image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
             }
         }
-        if (this.hasItem && !this.locked) image(this.item, this.position.x, this.position.y + this.offsetY);
+        if (this.hasItem) image(this.item, this.position.x, this.position.y + this.offsetY);
     }
 
     update() {
@@ -65,17 +66,19 @@ class Cell {
     select(temp) {
         if (this.isOverCell(temp)) {
             this.selected = true;
-            this.showOptions();
+            this.showTileOptions();
+            this.showItemOptions();
         }
     }
 
     deselect() {
-        if (this.selected) this.removeOptions();
+        if (this.selected) this.removeTileOptions();
+        if (this.selected) this.removeItemOptions();
         this.selected = false;
     }
 
-    showOptions() {
-        this.removeOptions();
+    showTileOptions() {
+        this.removeTileOptions();
 
         // Add the empty option
         const emptyOption = addElementToCellOptions('emptyOption', 'assets/images/empty.png');
@@ -111,10 +114,65 @@ class Cell {
                 this.collapsed = true;
                 this.options = [tile];
                 this.image = tile.image;
+                if (tile.type !== this.itemOptions[0].type) {
+                    this.itemOptions = [emptyItem];
+                    this.item = emptyItem.image;
+                    this.itemLocked = false;
+                    this.hasItem = false;
+                }
                 propagateConstraints(this);
             }
         });
     }
+
+    showItemOptions() {
+        this.removeItemOptions();
+
+        // Add the empty option
+        const emptyOption = addElementToCellOptions('emptyItemOption', 'assets/images/empty.png', 'itemOptions');
+        emptyOption.onclick = () => {
+            this.itemOptions = [emptyItem];
+            this.item = emptyItem.image;
+            this.itemLocked = true;
+            // this.hasItem = true;
+            propagateItemsConstraints(this);
+        }
+
+        // Add the lock option
+        const lockOption = addElementToCellOptions('lockedItemOption', 'assets/images/lock.png', 'itemOptions');
+        lockOption.onclick = () => {
+            this.itemLocked = true;
+            propagateItemsConstraints(this);
+            this.locked = true;
+            this.removed = false;
+            propagateConstraints(this);
+        }
+
+        // Add the reset option
+        const resetOption = addElementToCellOptions('resetItemOption', 'assets/images/reset.png', 'itemOptions');
+        resetOption.onclick = () => {
+            this.itemLocked = false;
+            propagateItemsConstraints(this);
+        }
+
+        // Add the tile options
+        let validItems = this.getValidItemsBasedOnNeighbors();
+        if (this.collapsed) {
+            validItems = validItems.filter(item =>
+                item.type === 'empty' || this.options[0].type === item.type
+            );
+        }
+        validItems.forEach((tile, index) => {
+            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT*1.25, TILE_WIDTH, TILE_HEIGHT*2.5)), 'itemOptions');
+            tileOption.onclick = () => {
+                this.itemLocked = true;
+                this.itemOptions = [tile];
+                this.item = tile.image;
+                propagateItemsConstraints(this);
+            }
+        });
+    }
+
 
     getValidTilesBasedOnNeighbors() {
         let neighbors = getNeighbors(this);
@@ -131,6 +189,22 @@ class Cell {
         return validTiles;
     }
 
+
+    getValidItemsBasedOnNeighbors() {
+        let neighbors = getNeighbors(this);
+        let validItems = getFilteredItems();
+
+        neighbors.forEach(neighbor => {
+            if (neighbor.locked && neighbor.options.length === 1) {
+                const neighborTile = neighbor.options[0];
+                const direction = this.getDirection(neighbor);
+                validItems = validItems.filter(tile => neighborTile[direction].includes(tile));
+            }
+        });
+
+        return validItems;
+    }
+
     getDirection(neighbor) {
         const currentIndex = grid.indexOf(this);
         const neighborIndex = grid.indexOf(neighbor);
@@ -143,8 +217,13 @@ class Cell {
         return null;
     }
 
-    removeOptions() {
+    removeTileOptions() {
         let optionsDiv = document.getElementById('cellOptions');
+        optionsDiv.innerHTML = '';
+    }
+
+    removeItemOptions() {
+        let optionsDiv = document.getElementById('itemOptions');
         optionsDiv.innerHTML = '';
     }
 }
