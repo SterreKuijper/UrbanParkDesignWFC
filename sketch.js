@@ -1,14 +1,17 @@
 const DIM = 8; // max 12 on laptop
 const TILE_WIDTH = 128;
 const TILE_HEIGHT = 64;
+const RESPONSIVE_WIDTH = false;
 
+// Arrays to store the JSON data
 let jsonTiles = [];
-let jsonOptions = [];
 let jsonItems = [];
+let jsonOptions = [];
 
 let tiles = [];
 let items = [];
 let grid = [];
+
 let emptyCell;
 let bottomCell;
 let emptyItem;
@@ -56,19 +59,12 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1024, 704) // perfect for DIM = 8
-    // createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT*3);
+    if (RESPONSIVE_WIDTH) createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT * 3);
+    else createCanvas(1024, 704) // perfect for DIM = 8
     imageMode(CENTER);
     initializeTiles();
     initializeItems();
     initializeGrid();
-}
-
-function draw() {
-    background(255);
-    drawGrid();
-    collapseGrid();
-    if (grid.every(cell => cell.collapsed)) collapseItems();
 }
 
 function initializeTiles() {
@@ -106,13 +102,18 @@ function initializeGrid() {
     }
 }
 
+function draw() {
+    background(255);
+    drawGrid();
+    collapseGrid();
+}
+
 function resetGrid() {
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
                 grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
                 grid[index].removed = true;
-
             } else {
                 grid[index] = new Cell(cell.options, cell.position, cell.itemOptions);
             }
@@ -125,11 +126,9 @@ function resetGrid() {
         }
     });
 
-    // Propagate constraints for all locked cells after resetting the grid
     grid.forEach(cell => {
-        if (cell.locked) propagateConstraints(cell);
-        if (cell.itemLocked) propagateItemsConstraints(cell);
-
+        if (cell.locked) propagateConstraints(cell, 'options', 'collapsed');
+        if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'hasItem');
     });
 }
 
@@ -147,7 +146,7 @@ function getFilteredTiles() {
             });
         });
         if (isUsed) newTiles.push(tile);
-    })
+    });
     return newTiles;
 }
 
@@ -157,7 +156,6 @@ function getFilteredItems() {
     items.forEach(item => {
         let isUsedCategory = false;
         jsonOptions.options.categories.forEach(category => {
-            // console.log(category.name, item.category)
             if (item.category === category.name && category.used) {
                 isUsedCategory = true;
             }
@@ -171,7 +169,7 @@ function getFilteredItems() {
             });
         });
         if ((isUsedCategory && isUsedSeason) || item.types.includes("empty")) newItems.push(item);
-    })
+    });
     return newItems;
 }
 
@@ -196,70 +194,52 @@ function mouseClicked() {
 }
 
 function collapseGrid() {
-    // Get the non-collapsed cells
-    let gridCopy = grid.filter(cell => !cell.collapsed);
+    collapseCell('options', 'collapsed');
+    if (grid.every(cell => cell.collapsed)) {
+        grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
+        collapseCell('itemOptions', 'hasItem');
+    }
+}
 
-    // Stop if all cells are collapsed
-    if (gridCopy.length === 0) return;
+function collapseCell(optionsKey, itemKey) {
+    const nonCollapsedCells = grid.filter(cell => !cell[itemKey]);
 
-    // Sort the grid by the number of options (entropy)
-    gridCopy.sort((a, b) => a.options.length - b.options.length);
+    if (nonCollapsedCells.length === 0) return;
 
-    // Get the cell with the least entropy
-    const cellsWithLeastEntropy = gridCopy.filter(cell => cell.options.length === gridCopy[0].options.length);
+    nonCollapsedCells.sort((a, b) => a[optionsKey].length - b[optionsKey].length);
 
-    // Select a random cell from the cells with the least entropy
-    const cell = getRandomElement(cellsWithLeastEntropy);
+    const minEntropy = nonCollapsedCells[0][optionsKey].length;
+    const cellsWithLeastEntropy = nonCollapsedCells.filter(cell => cell[optionsKey].length === minEntropy);
 
-    // Pick a random tile from the cell's options
-    const pick = getRandomElement(cell.options);
+    const selectedCell = getRandomElement(cellsWithLeastEntropy);
+    const pick = getRandomElement(selectedCell[optionsKey]);
 
-    if (pick === undefined) {
+    if (!pick) {
         resetGrid();
         return;
     }
 
-    // Collapse the cell to the selected tile
-    cell.collapsed = true;
-    cell.options = [pick];
+    selectedCell[itemKey] = true;
+    selectedCell[optionsKey] = [pick];
 
-    // Propagate constraints
-    propagateConstraints(cell);
+    propagateConstraints(selectedCell, optionsKey, itemKey);
 }
 
-// Uses the adjacency information to update the options of neighboring cells
-function propagateConstraints(cell) {
-    let stack = [cell];
-    while (stack.length > 0) {
-        let current = stack.pop();
-        let neighbors = getNeighbors(current);
+function propagateConstraints(cell, optionsKey, itemKey) {
+    const stack = [cell];
+    while (stack.length) {
+        const current = stack.pop();
+        const neighbors = getNeighbors(current);
 
         neighbors.forEach(neighbor => {
-            if (neighbor && !neighbor.collapsed && !neighbor.locked) {
+            if (neighbor && !neighbor[itemKey] && !neighbor.locked) {
+                const direction = getDirection(current, neighbor);
 
-                // Get the index of the current cell in the grid
-                const currentIndex = grid.indexOf(current);
-                const neighborIndex = grid.indexOf(neighbor);
+                const validOptions = current[optionsKey].flatMap(option => option[direction]);
 
-                // Determine the direction of the neighbor relative to the current cell
-                let direction;
-                if (neighborIndex === currentIndex - DIM) direction = "up";
-                if (neighborIndex === currentIndex + DIM) direction = "down";
-                if (neighborIndex === currentIndex - 1) direction = "left";
-                if (neighborIndex === currentIndex + 1) direction = "right";
-
-                // Get the valid options for the neighbor based on the current cell's selected option
-                let validOptions = [];
-                current.options.forEach(option => {
-                    validOptions = validOptions.concat(option[direction]);
-                });
-
-                // Filter the neighbor's options to only include the valid ones
-                let neighborOptions = neighbor.options.filter(option => validOptions.includes(option));
-                if (neighborOptions.length < neighbor.options.length) {
-                    neighbor.options = neighborOptions;
-
-                    // If the neighbor's options were reduced, add it to the stack to propagate further
+                const neighborOptions = neighbor[optionsKey].filter(option => validOptions.includes(option));
+                if (neighborOptions.length < neighbor[optionsKey].length) {
+                    neighbor[optionsKey] = neighborOptions;
                     stack.push(neighbor);
                 }
             }
@@ -272,92 +252,34 @@ function getNeighbors(cell) {
     const index = grid.indexOf(cell);
     const i = index % DIM;
     const j = Math.floor(index / DIM);
-    let neighbors = [];
+    const neighbors = [];
 
-    if (j > 0) neighbors.push(grid[index - DIM]); // up
-    if (i < DIM - 1) neighbors.push(grid[index + 1]); // right
-    if (j < DIM - 1) neighbors.push(grid[index + DIM]); // down
-    if (i > 0) neighbors.push(grid[index - 1]); // left
+    const addNeighbor = (condition, neighborIndex) => {
+        if (condition) neighbors.push(grid[neighborIndex]);
+    };
+
+    addNeighbor(j > 0, index - DIM);         // up
+    addNeighbor(i < DIM - 1, index + 1);     // right
+    addNeighbor(j < DIM - 1, index + DIM);   // down
+    addNeighbor(i > 0, index - 1);           // left
 
     return neighbors;
+}
+
+function getDirection(current, neighbor) {
+    const currentIndex = grid.indexOf(current);
+    const neighborIndex = grid.indexOf(neighbor);
+
+    if (neighborIndex === currentIndex - DIM) return "up";
+    if (neighborIndex === currentIndex + DIM) return "down";
+    if (neighborIndex === currentIndex - 1) return "left";
+    if (neighborIndex === currentIndex + 1) return "right";
+
+    return null;
 }
 
 function getRandomElement(arr) {
     if (arr.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * arr.length);
     return arr[randomIndex];
-}
-
-function collapseItems() {
-    grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
-
-    // Get the cells with no item
-    let gridCopy = grid.filter(cell => !cell.hasItem);
-
-    // Stop if all cells have an item
-    if (gridCopy.length === 0) return;
-
-    // Sort the grid by the number of options (entropy)
-    gridCopy.sort((a, b) => a.itemOptions.length - b.itemOptions.length);
-
-    // Get the cell with the least entropy
-    const cellsWithLeastEntropy = gridCopy.filter(cell => cell.itemOptions.length === gridCopy[0].itemOptions.length);
-
-    // Select a random cell from the cells with the least entropy
-    const cell = getRandomElement(cellsWithLeastEntropy);
-
-    // Pick a random tile from the cell's options
-    const pick = getRandomElement(cell.itemOptions);
-
-    if (pick === undefined) {
-        resetGrid();
-        return;
-    }
-
-    // Collapse the cell to the selected tile
-    cell.hasItem = true;
-    cell.itemOptions = [pick];
-
-    // Propagate constraints
-    propagateItemsConstraints(cell);
-}
-
-// Uses the adjacency information to update the options of neighboring cells
-function propagateItemsConstraints(cell) {
-    let stack = [cell];
-    while (stack.length > 0) {
-        let current = stack.pop();
-        let neighbors = getNeighbors(current);
-
-        neighbors.forEach(neighbor => {
-            if (neighbor && !neighbor.hasItem) {
-
-                // Get the index of the current cell in the grid
-                const currentIndex = grid.indexOf(current);
-                const neighborIndex = grid.indexOf(neighbor);
-
-                // Determine the direction of the neighbor relative to the current cell
-                let direction;
-                if (neighborIndex === currentIndex - DIM) direction = "up";
-                if (neighborIndex === currentIndex + DIM) direction = "down";
-                if (neighborIndex === currentIndex - 1) direction = "left";
-                if (neighborIndex === currentIndex + 1) direction = "right";
-
-                // Get the valid options for the neighbor based on the current cell's selected option
-                let validOptions = [];
-                current.itemOptions.forEach(item => {
-                    validOptions = validOptions.concat(item[direction]);
-                });
-
-                // Filter the neighbor's options to only include the valid ones
-                let neighborOptions = neighbor.itemOptions.filter(option => validOptions.includes(option));
-                if (neighborOptions.length < neighbor.itemOptions.length) {
-                    neighbor.itemOptions = neighborOptions;
-
-                    // If the neighbor's options were reduced, add it to the stack to propagate further
-                    stack.push(neighbor);
-                }
-            }
-        });
-    }
 }

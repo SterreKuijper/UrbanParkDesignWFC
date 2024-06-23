@@ -15,20 +15,24 @@ class Cell {
     }
 
     render() {
+        const posX = this.position.x;
+        const posY = this.position.y + this.offsetY;
+
         if (this.removed) {
-            image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
+            image(bottomCell, posX, posY + TILE_HEIGHT, TILE_WIDTH, TILE_WIDTH);
         } else {
             if (this.collapsed) {
-                if (this.locked) tint(223, 255); // 128 is 50% transparency
-                image(bottomCell, this.position.x, this.position.y + 44 + this.offsetY);
-                image(this.image, this.position.x, this.position.y + this.offsetY);
-                noTint(); // Reset tint to ensure no unintended tinting
+                if (this.locked) tint(223, 255);
+                image(bottomCell, posX, posY + 44);
+                image(this.image, posX, posY);
+                noTint();
             } else {
-                image(bottomCell, this.position.x, this.position.y + TILE_HEIGHT + this.offsetY, TILE_WIDTH, TILE_WIDTH);
+                image(bottomCell, posX, posY + TILE_HEIGHT, TILE_WIDTH, TILE_WIDTH);
             }
         }
-        if (this.hasItem) image(this.item, this.position.x, this.position.y + this.offsetY);
+        if (this.hasItem) image(this.item, posX, posY);
     }
+
 
     update() {
         this.image = this.options[0] ? this.options[0].image : emptyCell;
@@ -51,8 +55,6 @@ class Cell {
             return items;
         }
     }
-
-
 
     isOverCell(temp) {
         let centerX = this.position.x;
