@@ -83,43 +83,40 @@ class Cell {
     }
 
     deselect() {
-        if (this.selected) this.removeTileOptions();
-        if (this.selected) this.removeItemOptions();
+        if (this.selected) this.removeOptionsFromDiv('cellOptions');
+        if (this.selected) this.removeOptionsFromDiv('itemOptions');
         this.selected = false;
     }
 
     showTileOptions() {
-        this.removeTileOptions();
+        const parentId = 'cellOptions';
+        this.removeOptionsFromDiv(parentId);
 
         // Add the empty option
-        const emptyOption = addElementToCellOptions('emptyOption', 'assets/images/empty.png');
-        emptyOption.onclick = () => {
+        addOption(parentId, 'emptyOption', 'assets/images/empty.png', () => {
             this.removed = true;
             this.locked = true;
-            propagateConstraints(this);
-        }
+            propagateConstraints(this, 'options', 'collapsed');
+        });
 
         // Add the lock option
-        const lockOption = addElementToCellOptions('lockedOption', 'assets/images/lock.png');
-        lockOption.onclick = () => {
+        addOption(parentId, 'lockedOption', 'assets/images/lock.png', () => {
             this.locked = true;
             this.removed = false;
-            propagateConstraints(this);
-        }
+            propagateConstraints(this, 'options', 'collapsed');
+        });
 
         // Add the reset option
-        const resetOption = addElementToCellOptions('resetOption', 'assets/images/reset.png');
-        resetOption.onclick = () => {
+        addOption(parentId, 'resetOption', 'assets/images/reset.png', () => {
             this.removed = false;
             this.locked = false;
-            propagateConstraints(this);
-        }
+            propagateConstraints(this, 'options', 'collapsed');
+        });
 
         // Add the tile options
-        const validTiles = this.getValidTilesBasedOnNeighbors();
+        const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles());
         validTiles.forEach((tile, index) => {
-            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image)));
-            tileOption.onclick = () => {
+            addOption(parentId, 'tile' + index, imageToDataURL(cropImage(tile.image)), () => {
                 this.locked = true;
                 this.removed = false;
                 this.collapsed = true;
@@ -131,110 +128,73 @@ class Cell {
                     this.itemLocked = false;
                     this.hasItem = false;
                 }
-                propagateConstraints(this);
-            }
+                propagateConstraints(this, 'options', 'collapsed');
+            });
         });
     }
 
     showItemOptions() {
-        this.removeItemOptions();
+        const parentId = 'itemOptions';
+        this.removeOptionsFromDiv(parentId);
 
         // Add the empty option
-        const emptyOption = addElementToCellOptions('emptyItemOption', 'assets/images/empty.png', 'itemOptions');
-        emptyOption.onclick = () => {
+        addOption(parentId, 'emptyItemOption', 'assets/images/empty.png', () => {
             this.itemOptions = [emptyItem];
             this.item = emptyItem.image;
             this.itemLocked = true;
             // this.hasItem = true;
-            propagateItemsConstraints(this);
-        }
+            propagateConstraints(this, parentId, 'hasItem');
+
+        });
 
         // Add the lock option
-        const lockOption = addElementToCellOptions('lockedItemOption', 'assets/images/lock.png', 'itemOptions');
-        lockOption.onclick = () => {
+        addOption(parentId, 'lockedItemOption', 'assets/images/lock.png', () => {
             this.itemLocked = true;
             propagateItemsConstraints(this);
             this.locked = true;
             this.removed = false;
-            propagateConstraints(this);
-        }
+            propagateConstraints(this, parentId, 'hasItem');
+        });
 
         // Add the reset option
-        const resetOption = addElementToCellOptions('resetItemOption', 'assets/images/reset.png', 'itemOptions');
-        resetOption.onclick = () => {
+        addOption(parentId, 'resetItemOption', 'assets/images/reset.png', () => {
             this.itemLocked = false;
-            propagateItemsConstraints(this);
-        }
+            propagateConstraints(this, parentId, 'hasItem');
+        });
 
         // Add the tile options
-        let validItems = this.analyzeItems(this.getValidItemsBasedOnNeighbors());
+        let validItems = this.analyzeItems(this.getValidBasedOnNeighbors(getFilteredItems()));
         validItems.forEach((tile, index) => {
-            const tileOption = addElementToCellOptions('tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), 'itemOptions');
-            tileOption.onclick = () => {
+            addOption(parentId, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
                 this.itemLocked = true;
                 this.itemOptions = [tile];
                 this.item = tile.image;
-                propagateItemsConstraints(this);
+                propagateConstraints(this, parentId, 'hasItem');
                 this.locked = true;
                 this.removed = false;
                 this.collapsed = true;
-                propagateConstraints(this);
-            }
+                propagateConstraints(this, parentId, 'hasItem');
+            });
         });
     }
 
-
-    getValidTilesBasedOnNeighbors() {
+    getValidBasedOnNeighbors(valid) {
         let neighbors = getNeighbors(this);
-        let validTiles = getFilteredTiles();
 
         neighbors.forEach(neighbor => {
             if (neighbor.locked && neighbor.options.length === 1) {
                 const neighborTile = neighbor.options[0];
-                const direction = this.getDirection(neighbor);
-                validTiles = validTiles.filter(tile => neighborTile[direction].includes(tile));
+                const direction = getDirection(this, neighbor);
+                valid = valid.filter(tile => neighborTile[direction].includes(tile));
             }
         });
 
-        return validTiles;
+        return valid;
+
     }
 
-
-    getValidItemsBasedOnNeighbors() {
-        let neighbors = getNeighbors(this);
-        let validItems = getFilteredItems();
-
-        neighbors.forEach(neighbor => {
-            if (neighbor.locked && neighbor.options.length === 1) {
-                const neighborTile = neighbor.options[0];
-                const direction = this.getDirection(neighbor);
-                validItems = validItems.filter(tile => neighborTile[direction].includes(tile));
-            }
-        });
-
-        return validItems;
-    }
-
-    getDirection(neighbor) {
-        const currentIndex = grid.indexOf(this);
-        const neighborIndex = grid.indexOf(neighbor);
-
-        if (neighborIndex === currentIndex - DIM) return "down";
-        if (neighborIndex === currentIndex + DIM) return "up";
-        if (neighborIndex === currentIndex - 1) return "right";
-        if (neighborIndex === currentIndex + 1) return "left";
-
-        return null;
-    }
-
-    removeTileOptions() {
-        let optionsDiv = document.getElementById('cellOptions');
-        optionsDiv.innerHTML = '';
-    }
-
-    removeItemOptions() {
-        let optionsDiv = document.getElementById('itemOptions');
-        optionsDiv.innerHTML = '';
+    removeOptionsFromDiv(id) {
+        document.getElementById(id).innerHTML = '';
     }
 }
 

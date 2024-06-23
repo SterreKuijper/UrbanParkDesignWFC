@@ -141,7 +141,7 @@
             input.checked = category.used;
 
             let image = document.createElement('img');
-            image.src = imageToDataURL(cropImage(category.image, 0, -TILE_HEIGHT/2));
+            image.src = imageToDataURL(cropImage(category.image, 0, -TILE_HEIGHT / 2));
 
             categoryOption.appendChild(input);
             categoryOption.appendChild(image);
@@ -192,17 +192,18 @@
 
     }
 
-    function addElementToCellOptions(element, image, parent = 'cellOptions') {
-        const cellOptions = document.getElementById(parent);
+    function addOption(parentId, id, imagePath, onclick) {
+        const options = document.getElementById(parentId);
 
-        const elementDiv = document.createElement('div');
-        elementDiv.id = element;
-        const elementImg = document.createElement('img');
-        elementImg.src = image;
+        const option = document.createElement('div');
+        option.id = id;
+        option.onclick = onclick;
 
-        elementDiv.appendChild(elementImg);
-        cellOptions.appendChild(elementDiv);
-        return elementDiv;
+        const optionImg = document.createElement('img');
+        optionImg.src = imagePath;
+
+        option.appendChild(optionImg);
+        options.appendChild(option);
     }
 </script>
 </body>
