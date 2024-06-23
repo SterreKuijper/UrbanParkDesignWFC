@@ -1,14 +1,16 @@
 class Cell {
-    constructor(options, position, items) {
-        this.collapsed = false;
-        this.hasItem = false;
-        this.options = options;
-        this.position = position;
-        this.itemOptions = items;
+    constructor(position, tileOptions, itemOptions) {
+        this.collapsedTile = false;
+        this.collapsedItem = false;
+        this.tileOptions = tileOptions;
+        this.itemOptions = itemOptions;
 
+        this.position = position;
         this.offsetY = 0;
+
         this.hovered = false;
         this.selected = false;
+
         this.removed = false;
         this.locked = false;
         this.itemLocked = false;
@@ -21,7 +23,7 @@ class Cell {
         if (this.removed) {
             image(bottomCell, posX, posY + TILE_HEIGHT, TILE_WIDTH, TILE_WIDTH);
         } else {
-            if (this.collapsed) {
+            if (this.collapsedTile) {
                 if (this.locked) tint(223, 255);
                 image(bottomCell, posX, posY + 44);
                 image(this.image, posX, posY);
@@ -30,23 +32,23 @@ class Cell {
                 image(bottomCell, posX, posY + TILE_HEIGHT, TILE_WIDTH, TILE_WIDTH);
             }
         }
-        if (this.hasItem) image(this.item, posX, posY);
+        if (this.collapsedItem) image(this.item, posX, posY);
     }
 
 
     update() {
-        this.image = this.options[0] ? this.options[0].image : emptyCell;
+        this.image = this.tileOptions[0] ? this.tileOptions[0].image : emptyCell;
         this.item = this.itemOptions[0] ? this.itemOptions[0].image : emptyCell;
         this.offsetY = this.hovered || this.selected ? -TILE_HEIGHT / 4 : 0;
     }
 
     analyzeItems(items) {
-        if (this.collapsed) {
+        if (this.collapsedTile) {
             return items.filter(item => {
                 if (item.types.includes('empty')) return true;
 
                 return item.types.some(itemType => {
-                    return this.options[0].types.some(tileType => {
+                    return this.tileOptions[0].types.some(tileType => {
                         return tileType === itemType;
                     });
                 });
@@ -83,97 +85,97 @@ class Cell {
     }
 
     deselect() {
-        if (this.selected) this.removeOptionsFromDiv('cellOptions');
+        if (this.selected) this.removeOptionsFromDiv('tileOptions');
         if (this.selected) this.removeOptionsFromDiv('itemOptions');
         this.selected = false;
     }
 
     showTileOptions() {
-        const parentId = 'cellOptions';
-        this.removeOptionsFromDiv(parentId);
+        const tileOptions = 'tileOptions';
+        this.removeOptionsFromDiv(tileOptions);
 
         // Add the empty option
-        addOption(parentId, 'emptyOption', 'assets/images/empty.png', () => {
+        addOption(tileOptions, 'emptyOption', 'assets/images/empty.png', () => {
             this.removed = true;
             this.locked = true;
-            propagateConstraints(this, 'options', 'collapsed');
+            propagateConstraints(this, tileOptions, 'collapsedTile');
         });
 
         // Add the lock option
-        addOption(parentId, 'lockedOption', 'assets/images/lock.png', () => {
+        addOption(tileOptions, 'lockedOption', 'assets/images/lock.png', () => {
             this.locked = true;
             this.removed = false;
-            propagateConstraints(this, 'options', 'collapsed');
+            propagateConstraints(this, tileOptions, 'collapsedTile');
         });
 
         // Add the reset option
-        addOption(parentId, 'resetOption', 'assets/images/reset.png', () => {
+        addOption(tileOptions, 'resetOption', 'assets/images/reset.png', () => {
             this.removed = false;
             this.locked = false;
-            propagateConstraints(this, 'options', 'collapsed');
+            propagateConstraints(this, tileOptions, 'collapsedTile');
         });
 
         // Add the tile options
         const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles());
         validTiles.forEach((tile, index) => {
-            addOption(parentId, 'tile' + index, imageToDataURL(cropImage(tile.image)), () => {
+            addOption(tileOptions, 'tile' + index, imageToDataURL(cropImage(tile.image)), () => {
                 this.locked = true;
                 this.removed = false;
-                this.collapsed = true;
-                this.options = [tile];
+                this.collapsedTile = true;
+                this.tileOptions = [tile];
                 this.image = tile.image;
                 if (tile.type !== this.itemOptions[0].type) {
                     this.itemOptions = [emptyItem];
                     this.item = emptyItem.image;
                     this.itemLocked = false;
-                    this.hasItem = false;
+                    this.collapsedItem = false;
                 }
-                propagateConstraints(this, 'options', 'collapsed');
+                propagateConstraints(this, tileOptions, 'collapsedTile');
             });
         });
     }
 
     showItemOptions() {
-        const parentId = 'itemOptions';
-        this.removeOptionsFromDiv(parentId);
+        const itemOptions = 'itemOptions';
+        this.removeOptionsFromDiv(itemOptions);
 
         // Add the empty option
-        addOption(parentId, 'emptyItemOption', 'assets/images/empty.png', () => {
+        addOption(itemOptions, 'emptyItemOption', 'assets/images/empty.png', () => {
             this.itemOptions = [emptyItem];
             this.item = emptyItem.image;
             this.itemLocked = true;
-            // this.hasItem = true;
-            propagateConstraints(this, parentId, 'hasItem');
+            // this.collapsedItem = true;
+            propagateConstraints(this, itemOptions, 'collapsedItem');
 
         });
 
         // Add the lock option
-        addOption(parentId, 'lockedItemOption', 'assets/images/lock.png', () => {
+        addOption(itemOptions, 'lockedItemOption', 'assets/images/lock.png', () => {
             this.itemLocked = true;
-            propagateItemsConstraints(this);
+            propagateConstraints(this, itemOptions, 'collapsedItem');
             this.locked = true;
             this.removed = false;
-            propagateConstraints(this, parentId, 'hasItem');
+            propagateConstraints(this, itemOptions, 'collapsedItem');
         });
 
         // Add the reset option
-        addOption(parentId, 'resetItemOption', 'assets/images/reset.png', () => {
+        addOption(itemOptions, 'resetItemOption', 'assets/images/reset.png', () => {
             this.itemLocked = false;
-            propagateConstraints(this, parentId, 'hasItem');
+            propagateConstraints(this, itemOptions, 'collapsedItem');
         });
 
         // Add the tile options
         let validItems = this.analyzeItems(this.getValidBasedOnNeighbors(getFilteredItems()));
         validItems.forEach((tile, index) => {
-            addOption(parentId, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
+            addOption(itemOptions, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
                 this.itemLocked = true;
                 this.itemOptions = [tile];
                 this.item = tile.image;
-                propagateConstraints(this, parentId, 'hasItem');
+                propagateConstraints(this, itemOptions, 'collapsedItem');
                 this.locked = true;
                 this.removed = false;
-                this.collapsed = true;
-                propagateConstraints(this, parentId, 'hasItem');
+                this.collapsedTile = true;
+                propagateConstraints(this, itemOptions, 'collapsedItem');
             });
         });
     }

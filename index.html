@@ -38,7 +38,7 @@
         </div>
 
         <div class="content-right">
-            <div class="cell-options scrollbar" id="cellOptions"></div>
+            <div class="cell-options scrollbar" id="tileOptions"></div>
             <div class="cell-options scrollbar" id="itemOptions"></div>
         </div>
     </div>
@@ -85,7 +85,7 @@
         applyOptions();
         resetGrid();
         grid.forEach((cell, index) => {
-            grid[index] = new Cell([tiles[0]], cell.position, getFilteredItems());
+            grid[index] = new Cell(cell.position, [tiles[0]], getFilteredItems());
         });
     }
 

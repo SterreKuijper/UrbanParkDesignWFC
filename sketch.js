@@ -98,7 +98,7 @@ function initializeGrid() {
         let y = (indexX + indexY) * TILE_HEIGHT / 2 + height / 2;
 
         // Create the cell
-        grid[index] = new Cell(getFilteredTiles(), createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), getFilteredItems());
+        grid[index] = new Cell(createVector(x, y - (DIM + 1) * TILE_HEIGHT / 2), getFilteredTiles(), getFilteredItems());
     }
 }
 
@@ -112,23 +112,23 @@ function resetGrid() {
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
-                grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
+                grid[index] = new Cell(cell.position, getFilteredTiles(), getFilteredItems());
                 grid[index].removed = true;
             } else {
-                grid[index] = new Cell(cell.options, cell.position, cell.itemOptions);
+                grid[index] = new Cell(cell.position, cell.tileOptions, cell.itemOptions);
             }
             grid[index].locked = true;
-            grid[index].collapsed = true;
+            grid[index].collapsedTile = true;
             grid[index].itemLocked = true;
-            grid[index].hasItem = true;
+            grid[index].collapsedItem = true;
         } else {
-            grid[index] = new Cell(getFilteredTiles(), cell.position, getFilteredItems());
+            grid[index] = new Cell(cell.position, getFilteredTiles(), getFilteredItems());
         }
     });
 
     grid.forEach(cell => {
-        if (cell.locked) propagateConstraints(cell, 'options', 'collapsed');
-        if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'hasItem');
+        if (cell.locked) propagateConstraints(cell, 'tileOptions', 'collapsedTile');
+        if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'collapsedItem');
     });
 }
 
@@ -194,10 +194,10 @@ function mouseClicked() {
 }
 
 function collapseGrid() {
-    collapseCell('options', 'collapsed');
-    if (grid.every(cell => cell.collapsed)) {
+    collapseCell('tileOptions', 'collapsedTile');
+    if (grid.every(cell => cell.collapsedTile)) {
         grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
-        collapseCell('itemOptions', 'hasItem');
+        collapseCell('itemOptions', 'collapsedItem');
     }
 }
 
