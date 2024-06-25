@@ -174,11 +174,11 @@ class Cell {
             return item.category !== 'stone' && item.category !== 'wood' && item.category !== 'crops' && item.category !== 'none';
         });
         validItems = this.analyzeItems(validItems);
-        validItems.forEach((tile, index) => {
-            addOption(itemOptions, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
+        validItems.forEach((item, index) => {
+            addOption(itemOptions, 'item' + index, imageToDataURL(cropImage(item.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
                 this.itemLocked = true;
-                this.itemOptions = [tile];
-                this.item = tile.image;
+                this.itemOptions = [item];
+                this.item = item.image;
                 propagateConstraints(this, itemOptions, 'collapsedItem');
                 this.locked = true;
                 this.removed = false;
