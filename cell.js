@@ -184,15 +184,14 @@ class Cell {
         let neighbors = getNeighbors(this);
 
         neighbors.forEach(neighbor => {
-            if (neighbor.locked && neighbor.options.length === 1) {
-                const neighborTile = neighbor.options[0];
+            if (neighbor.locked && neighbor.tileOptions.length === 1) {
+                const neighborTile = neighbor.tileOptions[0];
                 const direction = getDirection(this, neighbor);
                 valid = valid.filter(tile => neighborTile[direction].includes(tile));
             }
         });
 
         return valid;
-
     }
 
     removeOptionsFromDiv(id) {
