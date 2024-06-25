@@ -121,6 +121,7 @@ function resetGrid() {
     let filteredTiles = getFilteredTiles();
     let filteredItems = getFilteredItems();
 
+    // Step 1: Reset the grid and lock existing cells as needed
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
@@ -138,8 +139,27 @@ function resetGrid() {
         }
     });
 
+    // Step 2: Analyze item options for all cells
     grid.forEach(cell => cell.analyzeItems(cell.itemOptions));
 
+    // Step 3: Place grass tiles next to locked cells with non-'AAA' edges
+    grid.forEach(cell => {
+        if (cell.locked && cell.itemOptions[0].edges.some(edge => edge !== 'AAA')) {
+            const neighbors = getNeighbors(cell);
+            neighbors.forEach(neighbor => {
+                if (!neighbor.locked && !neighbor.collapsedTile) {
+                    const grassTiles = tiles.filter(tile => tile.types.includes('grass'));
+                    const grassTile = getRandomElement(grassTiles);
+                    neighbor.tileOptions = [grassTile];
+                    neighbor.collapsedTile = true;
+                    neighbor.image = grassTile.image;
+                    propagateConstraints(neighbor, 'tileOptions', 'collapsedTile');
+                }
+            });
+        }
+    });
+
+    // Step 4: Propagate constraints for locked cells
     grid.forEach(cell => {
         if (cell.locked) propagateConstraints(cell, 'tileOptions', 'collapsedTile');
         if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'collapsedItem');
@@ -211,7 +231,14 @@ function mouseClicked() {
 
 function collapseGrid() {
     if (!grid.some(cell => !cell.collapsedTile)) {
-        grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
+        grid.forEach(cell => {
+            cell.itemOptions = cell.analyzeItems(cell.itemOptions);
+            if (cell.itemOptions.length === 1) {
+                cell.collapsedItem = true;
+                cell.itemOptions = [cell.itemOptions[0]];
+                propagateConstraints(cell, 'itemOptions', 'collapsedItem')
+            }
+        });
         collapseCell('itemOptions', 'collapsedItem');
     } else {
         collapseCell('tileOptions', 'collapsedTile');

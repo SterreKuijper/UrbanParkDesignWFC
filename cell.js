@@ -118,7 +118,16 @@ class Cell {
             'Reset the cell.');
 
         // Add the tile options
-        const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles(), 'tileOptions');
+        let validTiles = this.getValidBasedOnNeighbors(getFilteredTiles(), 'tileOptions');
+        let isFirst = true;
+        validTiles = validTiles.filter(tile => {
+            if (isFirst) {
+                isFirst = false;
+                return true;
+            } else {
+                return !tile.types.includes('grass');
+            }
+        });
         validTiles.forEach((tile, index) => {
             addOption(tileOptions, 'tile' + index, imageToDataURL(cropImage(tile.image)), () => {
                 this.locked = true;
@@ -146,7 +155,6 @@ class Cell {
                 this.itemOptions = [emptyItem];
                 this.item = emptyItem.image;
                 this.itemLocked = true;
-                // this.collapsedItem = true;
                 propagateConstraints(this, itemOptions, 'collapsedItem');
             },
             'Remove the item.');
@@ -169,9 +177,9 @@ class Cell {
             'Reset the item.');
 
         // Add the tile options
-        let possibleItems = this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions');
-        let validItems = possibleItems.filter(item => {
-            return item.category !== 'stone' && item.category !== 'wood' && item.category !== 'crops' && item.category !== 'none';
+        let validItems = this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions');
+        validItems = validItems.filter(item => {
+            return item.category !== 'none';
         });
         validItems = this.analyzeItems(validItems);
         validItems.forEach((item, index) => {
