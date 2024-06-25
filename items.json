@@ -820,36 +820,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/lily_large_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/lily_large_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/lily_large_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -867,36 +837,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/lily_small_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/lily_small_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/lily_small_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/lily_small_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -928,36 +868,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_purpleA_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_purpleA_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_purpleA_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -977,36 +887,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/flower_purpleB_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_purpleB_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_purpleB_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_purpleB_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1038,36 +918,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_purpleC_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_purpleC_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_purpleC_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1087,36 +937,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/flower_redA_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_redA_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_redA_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_redA_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1148,36 +968,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_redB_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_redB_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_redB_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1197,36 +987,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/flower_redC_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_redC_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_redC_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_redC_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1258,36 +1018,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_yellowA_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_yellowA_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_yellowA_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1307,36 +1037,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/flower_yellowB_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_yellowB_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_yellowB_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_yellowB_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1368,36 +1068,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/flower_yellowC_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/flower_yellowC_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/flower_yellowC_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1417,36 +1087,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/grass_large_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/grass_large_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/grass_large_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/grass_large_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1478,36 +1118,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/grass_leafs_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/grass_leafs_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/grass_leafs_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1533,36 +1143,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/grass_leafsLarge_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/grass_leafsLarge_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/grass_leafsLarge_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1582,36 +1162,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/grass_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/grass_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/grass_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/grass_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1863,36 +1413,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_tan_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_tan_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_tan_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -1912,36 +1432,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/mushroom_tanTall_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_tanTall_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_tanTall_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_tanTall_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -1973,36 +1463,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_tanGroup_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_tanGroup_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_tanGroup_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -2022,36 +1482,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/mushroom_red_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_red_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_red_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_red_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -2083,36 +1513,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_redTall_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_redTall_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_redTall_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -2132,36 +1532,6 @@
         {
           "direction": "NE",
           "imagePath": "/assets/items/mushroom_redGroup_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/mushroom_redGroup_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/mushroom_redGroup_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/mushroom_redGroup_SW.png",
           "edges": [
             "AAA",
             "AAA",
@@ -2248,36 +1618,6 @@
             "AAA",
             "AAA"
           ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/statue_obelisk_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/items/statue_obelisk_SE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/items/statue_obelisk_SW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
         }
       ]
     },
@@ -2294,26 +1634,6 @@
         "winter"
       ],
       "directions": [
-        {
-          "direction": "NE",
-          "imagePath": "/assets/items/statue_ring_NE.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/items/statue_ring_NW.png",
-          "edges": [
-            "AAA",
-            "AAA",
-            "AAA",
-            "AAA"
-          ]
-        },
         {
           "direction": "SE",
           "imagePath": "/assets/items/statue_ring_SE.png",
@@ -2382,6 +1702,261 @@
         {
           "direction": "SW",
           "imagePath": "/assets/items/statue_head_SW.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grass Platform",
+      "type": [
+        "grass"
+      ],
+      "category": "platform",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/platform_grass_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "NW",
+          "imagePath": "/assets/items/platform_grass_NW.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SE",
+          "imagePath": "/assets/items/platform_grass_SE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        },
+        {
+          "direction": "SW",
+          "imagePath": "/assets/items/platform_grass_SW.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bush_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bushDetailed_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bushLarge_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bushLargeTriangle_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bushSmall_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_bushTriangle_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_flatShort_NE.png",
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Plant",
+      "type": [
+        "grass"
+      ],
+      "category": "plant",
+      "seasons": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "directions": [
+        {
+          "direction": "NE",
+          "imagePath": "/assets/items/plant_flatTall_NE.png",
           "edges": [
             "AAA",
             "AAA",

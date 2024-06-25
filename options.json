@@ -81,7 +81,7 @@
         "imagePath": "/assets/items/mushroom_red_SE.png"
       },
       {
-        "name": "bush",
+        "name": "plant",
         "used": true,
         "imagePath": "/assets/items/plant_bush_SE.png"
       },
@@ -94,6 +94,11 @@
         "name": "statue",
         "used": true,
         "imagePath": "/assets/items/statue_head_SE.png"
+      },
+      {
+        "name": "platform",
+        "used": true,
+        "imagePath": "/assets/items/platform_grass_SE.png"
       },
       {
         "name": "stone",

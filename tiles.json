@@ -2,41 +2,13 @@
   "tiles": [
     {
       "name": "Grass",
-      "types": ["grass"],
+      "types": [
+        "grass"
+      ],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/tiles/ground_grass_NE.png",
-          "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/tiles/ground_grass_NW.png",
-          "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/tiles/ground_grass_SE.png",
-          "edges": [
-            "GGG",
-            "GGG",
-            "GGG",
-            "GGG"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/tiles/ground_grass_SW.png",
           "edges": [
             "GGG",
             "GGG",
@@ -48,7 +20,9 @@
     },
     {
       "name": "Path Bend",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -94,7 +68,9 @@
     },
     {
       "name": "Path Bend Bank",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -140,7 +116,9 @@
     },
     {
       "name": "Path Corner",
-      "types": ["ground"],
+      "types": [
+        "ground"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -186,7 +164,9 @@
     },
     {
       "name": "Path Corner Small",
-      "types": ["ground"],
+      "types": [
+        "ground"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -232,7 +212,9 @@
     },
     {
       "name": "Path Cross",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -278,7 +260,9 @@
     },
     {
       "name": "Path End",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -324,7 +308,9 @@
     },
     {
       "name": "Path End Closed",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -370,41 +356,13 @@
     },
     {
       "name": "Path Open",
-      "types": ["ground"],
+      "types": [
+        "ground"
+      ],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/tiles/ground_pathOpen_NE.png",
-          "edges": [
-            "PPP",
-            "PPP",
-            "PPP",
-            "PPP"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/tiles/ground_pathOpen_NW.png",
-          "edges": [
-            "PPP",
-            "PPP",
-            "PPP",
-            "PPP"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/tiles/ground_pathOpen_SE.png",
-          "edges": [
-            "PPP",
-            "PPP",
-            "PPP",
-            "PPP"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/tiles/ground_pathOpen_SW.png",
           "edges": [
             "PPP",
             "PPP",
@@ -416,7 +374,9 @@
     },
     {
       "name": "Path Rocks",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -462,7 +422,9 @@
     },
     {
       "name": "Path Side",
-      "types": ["ground"],
+      "types": [
+        "ground"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -508,7 +470,10 @@
     },
     {
       "name": "Path Side Open",
-      "types": ["path", "ground"],
+      "types": [
+        "path",
+        "ground"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -554,7 +519,9 @@
     },
     {
       "name": "Path Split",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -600,7 +567,9 @@
     },
     {
       "name": "Path Straight",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -646,7 +615,9 @@
     },
     {
       "name": "Path Tile",
-      "types": ["path"],
+      "types": [
+        "path"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -692,7 +663,9 @@
     },
     {
       "name": "River Bend",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -738,7 +711,9 @@
     },
     {
       "name": "River Bend Bank",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -784,7 +759,9 @@
     },
     {
       "name": "River Corner",
-      "types": ["water"],
+      "types": [
+        "water"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -830,7 +807,10 @@
     },
     {
       "name": "River Corner Small",
-      "types": ["water", "open"],
+      "types": [
+        "water",
+        "open"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -876,7 +856,9 @@
     },
     {
       "name": "River Cross",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -922,7 +904,9 @@
     },
     {
       "name": "River End",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -968,7 +952,9 @@
     },
     {
       "name": "River End Closed",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1014,41 +1000,14 @@
     },
     {
       "name": "River Open",
-      "types": ["water", "open"],
+      "types": [
+        "water",
+        "open"
+      ],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/tiles/ground_riverOpen_NE.png",
-          "edges": [
-            "RRR",
-            "RRR",
-            "RRR",
-            "RRR"
-          ]
-        },
-        {
-          "direction": "NW",
-          "imagePath": "/assets/tiles/ground_riverOpen_NW.png",
-          "edges": [
-            "RRR",
-            "RRR",
-            "RRR",
-            "RRR"
-          ]
-        },
-        {
-          "direction": "SE",
-          "imagePath": "/assets/tiles/ground_riverOpen_SE.png",
-          "edges": [
-            "RRR",
-            "RRR",
-            "RRR",
-            "RRR"
-          ]
-        },
-        {
-          "direction": "SW",
-          "imagePath": "/assets/tiles/ground_riverOpen_SW.png",
           "edges": [
             "RRR",
             "RRR",
@@ -1060,7 +1019,9 @@
     },
     {
       "name": "River Rocks",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1106,7 +1067,10 @@
     },
     {
       "name": "River Side",
-      "types": ["water", "open"],
+      "types": [
+        "water",
+        "open"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1152,7 +1116,10 @@
     },
     {
       "name": "River Side Open",
-      "types": ["river", "water"],
+      "types": [
+        "river",
+        "water"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1198,7 +1165,9 @@
     },
     {
       "name": "River Split",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1244,7 +1213,9 @@
     },
     {
       "name": "River Straight",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
@@ -1290,7 +1261,9 @@
     },
     {
       "name": "River Tile",
-      "types": ["river"],
+      "types": [
+        "river"
+      ],
       "directions": [
         {
           "direction": "NE",
