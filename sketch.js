@@ -54,13 +54,13 @@ function preload() {
     // Load the empty cell image
     emptyCell = loadImage('/assets/images/emptyTile.png');
 
-    //load the bottom cell image
+    // Load the bottom cell image
     bottomCell = loadImage('/assets/images/blockHalf.png');
 }
 
 function setup() {
     if (RESPONSIVE_WIDTH) createCanvas(TILE_WIDTH * DIM, TILE_HEIGHT * DIM + TILE_HEIGHT * 3);
-    else createCanvas(1024, 704) // perfect for DIM = 8
+    else createCanvas(1024, 704); // perfect for DIM = 8
     imageMode(CENTER);
     initializeTiles();
     initializeItems();
