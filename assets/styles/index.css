@@ -205,11 +205,11 @@ h3 {
   background-color: #397097;
   color: white; }
   .footer h1 {
-    width: 800px; }
+    width: 50%; }
   .footer h2 {
-    width: 800px; }
+    width: 50%; }
   .footer a {
-    width: 800px;
+    width: 50%;
     color: white; }
   .footer a:link {
     text-decoration: none; }
