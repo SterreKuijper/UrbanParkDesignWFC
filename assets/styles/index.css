@@ -22,7 +22,6 @@
 
 .bungee {
   font-family: "Bungee", sans-serif;
-  font-optical-sizing: auto;
   font-style: normal; }
 
 button {
@@ -120,6 +119,9 @@ h3 {
       align-items: center;
       gap: 16px;
       width: 50%; }
+      .container .content-center .buttons .generate {
+        font-size: 28px;
+        line-height: 32px; }
       .container .content-center .buttons .button-with-info {
         display: flex;
         width: 100%; }

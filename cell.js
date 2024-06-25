@@ -172,7 +172,7 @@ class Cell {
         // Add the tile options
         let possibleItems = this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions');
         let validItems = possibleItems.filter(item => {
-            return item.category !== 'stone' && item.category !== 'wood' && item.category !== 'crops';
+            return item.category !== 'stone' && item.category !== 'wood' && item.category !== 'crops' && item.category !== 'none';
         });
         validItems = this.analyzeItems(validItems);
         validItems.forEach((tile, index) => {

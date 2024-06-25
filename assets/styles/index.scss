@@ -27,7 +27,6 @@
 
 .bungee {
   font-family: "Bungee", sans-serif;
-  font-optical-sizing: auto;
   font-style: normal;
 }
 
@@ -154,6 +153,11 @@ h3 {
       align-items: center;
       gap: 16px;
       width: 50%;
+
+      .generate {
+        font-size: 28px;
+        line-height: 32px;
+      }
 
       .button-with-info {
         display: flex;
