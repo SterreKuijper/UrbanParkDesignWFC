@@ -35,7 +35,6 @@ class Cell {
         if (this.collapsedItem) image(this.item, posX, posY);
     }
 
-
     update() {
         this.image = this.tileOptions[0] ? this.tileOptions[0].image : emptyCell;
         this.item = this.itemOptions[0] ? this.itemOptions[0].image : emptyCell;
@@ -104,17 +103,17 @@ class Cell {
 
         // Add the lock option
         addOption(tileOptions, 'lockedOption', 'assets/images/lock.png', () => {
-            this.locked = true;
-            this.removed = false;
-            propagateConstraints(this, tileOptions, 'collapsedTile');
+                this.locked = true;
+                this.removed = false;
+                propagateConstraints(this, tileOptions, 'collapsedTile');
             },
             'Lock the cell.');
 
         // Add the reset option
         addOption(tileOptions, 'resetOption', 'assets/images/reset.png', () => {
-            this.removed = false;
-            this.locked = false;
-            propagateConstraints(this, tileOptions, 'collapsedTile');
+                this.removed = false;
+                this.locked = false;
+                propagateConstraints(this, tileOptions, 'collapsedTile');
             },
             'Reset the cell.');
 
@@ -144,28 +143,28 @@ class Cell {
 
         // Add the empty option
         addOption(itemOptions, 'emptyItemOption', 'assets/images/empty.png', () => {
-            this.itemOptions = [emptyItem];
-            this.item = emptyItem.image;
-            this.itemLocked = true;
-            // this.collapsedItem = true;
-            propagateConstraints(this, itemOptions, 'collapsedItem');
+                this.itemOptions = [emptyItem];
+                this.item = emptyItem.image;
+                this.itemLocked = true;
+                // this.collapsedItem = true;
+                propagateConstraints(this, itemOptions, 'collapsedItem');
             },
             'Remove the item.');
 
         // Add the lock option
         addOption(itemOptions, 'lockedItemOption', 'assets/images/lock.png', () => {
-            this.itemLocked = true;
-            propagateConstraints(this, itemOptions, 'collapsedItem');
-            this.locked = true;
-            this.removed = false;
-            propagateConstraints(this, itemOptions, 'collapsedItem');
+                this.itemLocked = true;
+                propagateConstraints(this, itemOptions, 'collapsedItem');
+                this.locked = true;
+                this.removed = false;
+                propagateConstraints(this, itemOptions, 'collapsedItem');
             },
             'Lock the item.');
 
         // Add the reset option
         addOption(itemOptions, 'resetItemOption', 'assets/images/reset.png', () => {
-            this.itemLocked = false;
-            propagateConstraints(this, itemOptions, 'collapsedItem');
+                this.itemLocked = false;
+                propagateConstraints(this, itemOptions, 'collapsedItem');
             },
             'Reset the item.');
 
@@ -219,5 +218,4 @@ function cropImage(image, offsetX = 0, offsetY = 0, w = TILE_WIDTH, h = TILE_HEI
 function imageToDataURL(image) {
     image.loadPixels();
     return image.canvas.toDataURL();
-
 }
