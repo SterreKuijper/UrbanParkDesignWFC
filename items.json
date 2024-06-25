@@ -2,7 +2,9 @@
   "items": [
     {
       "name": "Tree",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
       "category": "tree",
       "seasons": [
         "default"
@@ -52,10 +54,12 @@
     },
     {
       "name": "Tree",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
       "category": "tree",
       "seasons": [
-        "sping"
+        "spring"
       ],
       "directions": [
         {
@@ -102,7 +106,9 @@
     },
     {
       "name": "Tree",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
       "category": "tree",
       "seasons": [
         "fall"
@@ -152,57 +158,105 @@
     },
     {
       "name": "Tree",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
       "category": "tree",
-      "seasons": ["winter"],
+      "seasons": [
+        "winter"
+      ],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/items/tree_pineDefaultA_NE.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_pineDefaultA_NW.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_pineDefaultA_SE.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_pineDefaultA_SW.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         }
       ]
     },
     {
       "name": "Tree",
-      "type": ["grass"],
+      "type": [
+        "grass"
+      ],
       "category": "tree",
-      "seasons": ["summer"],
+      "seasons": [
+        "summer"
+      ],
       "directions": [
         {
           "direction": "NE",
           "imagePath": "/assets/items/tree_palm_NE.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "NW",
           "imagePath": "/assets/items/tree_palm_NW.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "SE",
           "imagePath": "/assets/items/tree_palm_SE.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         },
         {
           "direction": "SW",
           "imagePath": "/assets/items/tree_palm_SW.png",
-          "edges": ["AAA", "AAA", "AAA", "AAA"]
+          "edges": [
+            "AAA",
+            "AAA",
+            "AAA",
+            "AAA"
+          ]
         }
       ]
     },
