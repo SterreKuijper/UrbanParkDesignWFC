@@ -125,6 +125,7 @@ function resetGrid() {
             grid[index] = new Cell(cell.position, getFilteredTiles(), getFilteredItems());
         }
     });
+    grid.forEach(cell => cell.analyzeItems(cell.itemOptions));
 
     grid.forEach(cell => {
         if (cell.locked) propagateConstraints(cell, 'tileOptions', 'collapsedTile');
@@ -139,14 +140,15 @@ function getFilteredTiles() {
     tiles.forEach(tile => {
         let isUsed = true;
         jsonOptions.options.types.forEach(type => {
-            tile.types.forEach(itemType => {
-                if (itemType === type.name && !type.used) {
+            tile.types.forEach(tileType => {
+                if (tileType === type.name && !type.used) {
                     isUsed = false;
                 }
             });
         });
         if (isUsed) newTiles.push(tile);
     });
+    newTiles.forEach(tile => tile.analyze(newTiles));
     return newTiles;
 }
 
@@ -170,6 +172,7 @@ function getFilteredItems() {
         });
         if ((isUsedCategory && isUsedSeason) || item.types.includes("empty")) newItems.push(item);
     });
+    newItems.forEach(item => item.analyze(newItems));
     return newItems;
 }
 

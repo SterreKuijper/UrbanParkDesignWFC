@@ -1,3 +1,15 @@
+.scrollbar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px; }
+
+.scrollbar::-webkit-scrollbar {
+  width: 12px; }
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #397097; }
+
 .open-sans-700 {
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
@@ -26,6 +38,18 @@ button {
   border-radius: 100px;
   width: fit-content; }
 
+h1 {
+  font-size: 44px;
+  line-height: 48px; }
+
+h2 {
+  font-size: 28px;
+  line-height: 32px; }
+
+h3 {
+  font-size: 20px;
+  line-height: 24px; }
+
 * {
   margin: 0;
   box-sizing: border-box; }
@@ -47,63 +71,64 @@ button {
     display: flex;
     justify-content: space-between; }
     .container .content .content-left {
-      width: 100%; }
-      .container .content .content-left .options {
-        margin-left: 32px; }
-        .container .content .content-left .options h2 {
-          color: #397097; }
-        .container .content .content-left .options .types {
-          display: flex;
-          flex-wrap: wrap;
-          column-gap: 32px; }
-        .container .content .content-left .options .seasons {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          height: 336px;
-          overflow-y: scroll; }
-        .container .content .content-left .options .categories {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 16px;
-          overflow-y: scroll;
-          height: 272px; }
-        .container .content .content-left .options .option-input {
+      display: flex;
+      flex-direction: column;
+      padding-left: 32px;
+      width: calc(calc(100vw - 1024px) / 2);
+      height: 100vh; }
+      .container .content .content-left h3 {
+        color: #397097;
+        margin: 16px 0; }
+      .container .content .content-left #categories {
+        flex-grow: 1;
+        overflow-y: scroll; }
+      .container .content .content-left #seasons {
+        flex-grow: 2;
+        overflow-y: scroll; }
+      .container .content .content-left .option {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        width: 370px; }
+        .container .content .content-left .option .option-input {
           width: fit-content;
           display: flex;
           align-items: center;
           gap: 16px; }
-          .container .content .content-left .options .option-input input {
+          .container .content .content-left .option .option-input input {
             width: 24px;
             height: 24px;
             accent-color: #397097; }
-    .container .content .content-center {
-      width: 1152px;
-      justify-self: center; }
-      .container .content .content-center h1 {
-        text-align: center;
-        font-size: 48px;
-        line-height: 128px;
-        color: #397097; }
-      .container .content .content-center .buttons {
-        display: flex;
-        justify-content: center;
-        gap: 32px;
-        margin-top: 32px; }
-    .container .content .content-right {
-      width: 100%;
-      margin-left: 64px; }
-      .container .content .content-right .cell-options {
-        height: 50vh;
-        display: flex;
-        align-content: flex-start;
-        column-gap: 16px;
-        flex-wrap: wrap;
-        padding: 32px 0;
-        overflow: auto; }
-        .container .content .content-right .cell-options div {
-          width: 100px;
-          height: 100px;
-          cursor: pointer; }
-          .container .content .content-right .cell-options div img {
-            width: 100px; }
+  .container .content-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
+    .container .content-center h1 {
+      text-align: center;
+      margin: 32px 0;
+      color: #397097; }
+    .container .content-center .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px; }
+  .container .content-right {
+    width: calc(calc(100vw - 1024px) / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; }
+    .container .content-right .cell-options {
+      width: 348px;
+      height: 50vh;
+      display: flex;
+      align-content: flex-start;
+      column-gap: 16px;
+      flex-wrap: wrap;
+      padding: 32px 0;
+      overflow: auto; }
+      .container .content-right .cell-options div {
+        width: 100px;
+        height: 100px;
+        cursor: pointer; }
+        .container .content-right .cell-options div img {
+          width: 100px; }
