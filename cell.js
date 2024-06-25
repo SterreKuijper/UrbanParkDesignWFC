@@ -116,7 +116,7 @@ class Cell {
         });
 
         // Add the tile options
-        const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles());
+        const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles(), 'tileOptions');
         validTiles.forEach((tile, index) => {
             addOption(tileOptions, 'tile' + index, imageToDataURL(cropImage(tile.image)), () => {
                 this.locked = true;
@@ -165,7 +165,7 @@ class Cell {
         });
 
         // Add the tile options
-        let validItems = this.analyzeItems(this.getValidBasedOnNeighbors(getFilteredItems()));
+        let validItems = this.analyzeItems(this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions'));
         validItems.forEach((tile, index) => {
             addOption(itemOptions, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
                 this.itemLocked = true;
@@ -180,12 +180,12 @@ class Cell {
         });
     }
 
-    getValidBasedOnNeighbors(valid) {
+    getValidBasedOnNeighbors(valid, options) {
         let neighbors = getNeighbors(this);
 
         neighbors.forEach(neighbor => {
-            if (neighbor.locked && neighbor.tileOptions.length === 1) {
-                const neighborTile = neighbor.tileOptions[0];
+            if (neighbor.locked && neighbor[options].length === 1) {
+                const neighborTile = neighbor[options][0];
                 const direction = getDirection(this, neighbor);
                 valid = valid.filter(tile => neighborTile[direction].includes(tile));
             }

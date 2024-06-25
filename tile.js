@@ -21,6 +21,11 @@ class Tile {
     }
 
     analyze(tiles) {
+        this.up = [];
+        this.right = [];
+        this.down = [];
+        this.left = [];
+
         for (let i = 0; i < tiles.length; i++) {
             let tile = tiles[i];
             if (compareEdge(tile.edges[2], this.edges[0])) {

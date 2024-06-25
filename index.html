@@ -154,7 +154,7 @@
             // Release the tiles that are being unchecked
             grid.forEach(cell => {
                 if (cell.locked) {
-                    if (cell.options[0].type === jsonOptions.options.types[index].name && !input.checked) {
+                    if (cell.itemOptions[0].type === jsonOptions.options.types[index].name && !input.checked) {
                         cell.locked = false;
                         cell.removed = false;
                     }
