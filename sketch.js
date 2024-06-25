@@ -85,7 +85,7 @@ function initializeTiles() {
 function initializeItems() {
     emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"], "none");
     // Quick fix to have more empty cells
-    for (let i = 0; i <= 10; i++){
+    for (let i = 0; i <= 10; i++) {
         items.push(emptyItem);
     }
     jsonItems.items.forEach(item => {
@@ -145,7 +145,6 @@ function resetGrid() {
         if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'collapsedItem');
     });
 }
-
 
 // Function to filter options
 function getFilteredTiles() {
