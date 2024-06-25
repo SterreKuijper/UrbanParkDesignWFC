@@ -12,13 +12,11 @@
 
 .open-sans-700 {
   font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal; }
 
 .open-sans-500 {
   font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal; }
 
@@ -29,6 +27,7 @@
 
 button {
   font-size: 20px;
+  line-height: 24px;
   background-color: #397097;
   border: none;
   color: white;
@@ -36,7 +35,8 @@ button {
   text-align: center;
   text-decoration: none;
   border-radius: 100px;
-  width: fit-content; }
+  width: fit-content;
+  height: fit-content; }
 
 h1 {
   font-size: 44px;
@@ -68,6 +68,7 @@ h3 {
   width: 100%;
   height: 100vh; }
   .container .content {
+    height: 100vh;
     display: flex;
     justify-content: space-between; }
     .container .content .content-left {
@@ -102,16 +103,65 @@ h3 {
   .container .content-center {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); }
+    transform: translateX(-50%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0; }
     .container .content-center h1 {
       text-align: center;
-      margin: 32px 0;
       color: #397097; }
     .container .content-center .buttons {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 32px;
-      margin-top: 32px; }
+      align-items: center;
+      gap: 16px;
+      width: 50%; }
+      .container .content-center .buttons .button-with-info {
+        display: flex;
+        width: 100%; }
+        .container .content-center .buttons .button-with-info button {
+          width: 100%; }
+          .container .content-center .buttons .button-with-info button img {
+            width: 24px;
+            height: 24px; }
+        .container .content-center .buttons .button-with-info span {
+          width: 48px;
+          height: 48px; }
+          .container .content-center .buttons .button-with-info span img {
+            width: 40px;
+            height: 40px;
+            margin: 4px; }
+      .container .content-center .buttons .sub-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        width: 80%; }
+        .container .content-center .buttons .sub-buttons .tooltip {
+          position: relative; }
+        .container .content-center .buttons .sub-buttons .tooltip .tooltip-text {
+          visibility: hidden;
+          width: 240px;
+          height: fit-content;
+          background-color: white;
+          color: #397097;
+          border: 1px solid #397097;
+          text-align: center;
+          border-radius: 4px;
+          padding: 8px 4px;
+          font-size: 20px;
+          line-height: 24px;
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+          top: 50%;
+          transform: translateY(-50%); }
+        .container .content-center .buttons .sub-buttons .tooltip:hover .tooltip-text {
+          visibility: visible; }
   .container .content-right {
     width: calc(calc(100vw - 1024px) / 2);
     display: flex;
@@ -132,3 +182,22 @@ h3 {
         cursor: pointer; }
         .container .content-right .cell-options div img {
           width: 100px; }
+      .container .content-right .cell-options .tooltip {
+        position: relative; }
+      .container .content-right .cell-options .tooltip .tooltip-text {
+        visibility: hidden;
+        width: 100px;
+        background-color: white;
+        color: #397097;
+        border: 1px solid #397097;
+        text-align: center;
+        border-radius: 4px;
+        padding: 8px 4px;
+        font-size: 20px;
+        line-height: 24px;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 100%; }
+      .container .content-right .cell-options .tooltip:hover .tooltip-text {
+        visibility: visible; }

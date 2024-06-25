@@ -15,14 +15,12 @@
 
 .open-sans-700 {
   font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 700;
   font-style: normal;
 }
 
 .open-sans-500 {
   font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
@@ -35,6 +33,7 @@
 
 button {
   font-size: 20px;
+  line-height: 24px;
   background-color: #397097;
   border: none;
   color: white;
@@ -43,6 +42,7 @@ button {
   text-decoration: none;
   border-radius: 100px;
   width: fit-content;
+  height: fit-content;
 }
 
 h1 {
@@ -82,6 +82,7 @@ h3 {
 
 
   .content {
+    height: 100vh;
     display: flex;
     justify-content: space-between;
 
@@ -133,18 +134,88 @@ h3 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0;
 
     h1 {
       text-align: center;
-      margin: 32px 0;
       color: #397097;
     }
 
     .buttons {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 32px;
-      margin-top: 32px;
+      align-items: center;
+      gap: 16px;
+      width: 50%;
+
+      .button-with-info {
+        display: flex;
+        width: 100%;
+
+        button {
+          width: 100%;
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        span {
+          width: 48px;
+          height: 48px;
+
+          img {
+            width: 40px;
+            height: 40px;
+            margin: 4px;
+          }
+        }
+      }
+
+      .sub-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 16px;
+        width: 80%;
+
+        .tooltip{
+          position: relative;
+        }
+
+        .tooltip .tooltip-text {
+          visibility: hidden;
+          width: 240px;
+          height: fit-content;
+          background-color: white;
+          color: #397097;
+          border: 1px solid #397097;
+          text-align: center;
+          border-radius: 4px;
+          padding: 8px 4px;
+
+          font-size: 20px;
+          line-height: 24px;
+
+          /* Position the tooltip */
+          position: absolute;
+          z-index: 1;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .tooltip:hover .tooltip-text {
+          visibility: visible;
+        }
+      }
     }
   }
 
@@ -172,6 +243,33 @@ h3 {
         img {
           width: 100px;
         }
+      }
+
+      .tooltip{
+        position: relative;
+      }
+
+      .tooltip .tooltip-text {
+        visibility: hidden;
+        width: 100px;
+        background-color: white;
+        color: #397097;
+        border: 1px solid #397097;
+        text-align: center;
+        border-radius: 4px;
+        padding: 8px 4px;
+
+        font-size: 20px;
+        line-height: 24px;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+      }
+
+      .tooltip:hover .tooltip-text {
+        visibility: visible;
       }
     }
   }

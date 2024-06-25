@@ -29,9 +29,31 @@
             <h1 class="bungee">ISOMETRIC PARK DESIGN</h1>
             <main></main>
             <div class="buttons">
-                <button class="button open-sans-500" onclick="resetFunction()">Reset Function</button>
-                <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
-                <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
+                <div class="button-with-info">
+                    <button class="button open-sans-500" onclick="resetFunction()">Generate</button>
+                </div>
+                <div class="sub-buttons">
+                    <div class="button-with-info">
+                        <span><img src="assets/images/emptyTile.png"></span>
+                        <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
+                        <span class="tooltip">
+                            <img src="assets/images/info.png">
+                            <span class="tooltip-text open-sans-500">
+                                Reset all the rules of the grid.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="button-with-info">
+                        <span><img src="assets/images/emptyTile.png"></span>
+                        <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
+                        <span class="tooltip">
+                            <img src="assets/images/info.png">
+                            <span class="tooltip-text open-sans-500">
+                                Create an empty grid with no items.
+                            </span>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -195,12 +217,20 @@
 
     }
 
-    function addOption(parentId, id, imagePath, onclick) {
+    function addOption(parentId, id, imagePath, onclick, tooltipText) {
         const options = document.getElementById(parentId);
 
         const option = document.createElement('div');
         option.id = id;
         option.onclick = onclick;
+        option.className = 'tooltip';
+
+        if (tooltipText) {
+            const tooltip = document.createElement('span');
+            tooltip.className = 'tooltip-text open-sans-500';
+            tooltip.innerText = tooltipText;
+            option.appendChild(tooltip);
+        }
 
         const optionImg = document.createElement('img');
         optionImg.src = imagePath;

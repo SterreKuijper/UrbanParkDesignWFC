@@ -96,24 +96,27 @@ class Cell {
 
         // Add the empty option
         addOption(tileOptions, 'emptyOption', 'assets/images/empty.png', () => {
-            this.removed = true;
-            this.locked = true;
-            propagateConstraints(this, tileOptions, 'collapsedTile');
-        });
+                this.removed = true;
+                this.locked = true;
+                propagateConstraints(this, tileOptions, 'collapsedTile');
+            },
+            'Remove the entire cell.');
 
         // Add the lock option
         addOption(tileOptions, 'lockedOption', 'assets/images/lock.png', () => {
             this.locked = true;
             this.removed = false;
             propagateConstraints(this, tileOptions, 'collapsedTile');
-        });
+            },
+            'Lock the cell.');
 
         // Add the reset option
         addOption(tileOptions, 'resetOption', 'assets/images/reset.png', () => {
             this.removed = false;
             this.locked = false;
             propagateConstraints(this, tileOptions, 'collapsedTile');
-        });
+            },
+            'Reset the cell.');
 
         // Add the tile options
         const validTiles = this.getValidBasedOnNeighbors(getFilteredTiles(), 'tileOptions');
@@ -146,8 +149,8 @@ class Cell {
             this.itemLocked = true;
             // this.collapsedItem = true;
             propagateConstraints(this, itemOptions, 'collapsedItem');
-
-        });
+            },
+            'Remove the item.');
 
         // Add the lock option
         addOption(itemOptions, 'lockedItemOption', 'assets/images/lock.png', () => {
@@ -156,16 +159,22 @@ class Cell {
             this.locked = true;
             this.removed = false;
             propagateConstraints(this, itemOptions, 'collapsedItem');
-        });
+            },
+            'Lock the item.');
 
         // Add the reset option
         addOption(itemOptions, 'resetItemOption', 'assets/images/reset.png', () => {
             this.itemLocked = false;
             propagateConstraints(this, itemOptions, 'collapsedItem');
-        });
+            },
+            'Reset the item.');
 
         // Add the tile options
-        let validItems = this.analyzeItems(this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions'));
+        let possibleItems = this.getValidBasedOnNeighbors(getFilteredItems(), 'itemOptions');
+        let validItems = possibleItems.filter(item => {
+            return item.category !== 'stone' && item.category !== 'wood' && item.category !== 'crops';
+        });
+        validItems = this.analyzeItems(validItems);
         validItems.forEach((tile, index) => {
             addOption(itemOptions, 'tile' + index, imageToDataURL(cropImage(tile.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
                 this.itemLocked = true;
