@@ -67,7 +67,6 @@
         }
     });
 
-
     function resetEntireGrid() {
         applyOptions();
         initializeGrid();
@@ -89,6 +88,8 @@
 
     function initializeTypeOptions() {
         let typesContainer = document.getElementById('types');
+        typesContainer.innerHTML = '';
+
         jsonOptions.options.types.forEach(type => {
 
             let typeOption = document.createElement('label');
@@ -109,6 +110,8 @@
 
     function initializeSeasonOptions() {
         let seasonsContainer = document.getElementById('seasons');
+        seasonsContainer.innerHTML = '';
+
         jsonOptions.options.seasons.forEach(type => {
 
             let seasonOption = document.createElement('label');
@@ -129,6 +132,8 @@
 
     function initializeCategoryOptions() {
         let categoriesContainer = document.getElementById('categories');
+        categoriesContainer.innerHTML = '';
+
         jsonOptions.options.categories.forEach(category => {
 
             let categoryOption = document.createElement('label');

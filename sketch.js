@@ -109,10 +109,13 @@ function draw() {
 }
 
 function resetGrid() {
+    let filteredTiles = getFilteredTiles();
+    let filteredItems = getFilteredItems();
+
     grid.forEach((cell, index) => {
         if (cell.locked) {
             if (cell.removed) {
-                grid[index] = new Cell(cell.position, getFilteredTiles(), getFilteredItems());
+                grid[index] = new Cell(cell.position, filteredTiles, filteredItems);
                 grid[index].removed = true;
             } else {
                 grid[index] = new Cell(cell.position, cell.tileOptions, cell.itemOptions);
@@ -122,9 +125,10 @@ function resetGrid() {
             grid[index].itemLocked = true;
             grid[index].collapsedItem = true;
         } else {
-            grid[index] = new Cell(cell.position, getFilteredTiles(), getFilteredItems());
+            grid[index] = new Cell(cell.position, filteredTiles, filteredItems);
         }
     });
+
     grid.forEach(cell => cell.analyzeItems(cell.itemOptions));
 
     grid.forEach(cell => {
@@ -132,6 +136,7 @@ function resetGrid() {
         if (cell.itemLocked) propagateConstraints(cell, 'itemOptions', 'collapsedItem');
     });
 }
+
 
 // Function to filter options
 function getFilteredTiles() {
@@ -197,10 +202,11 @@ function mouseClicked() {
 }
 
 function collapseGrid() {
-    collapseCell('tileOptions', 'collapsedTile');
-    if (grid.every(cell => cell.collapsedTile)) {
+    if (!grid.some(cell => !cell.collapsedTile)) {
         grid.forEach(cell => cell.itemOptions = cell.analyzeItems(cell.itemOptions));
         collapseCell('itemOptions', 'collapsedItem');
+    } else {
+        collapseCell('tileOptions', 'collapsedTile');
     }
 }
 
