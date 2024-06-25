@@ -71,19 +71,28 @@ function initializeTiles() {
     jsonTiles.tiles.forEach(tile => {
         tile.directions.forEach(direction => {
             tiles.push(new Tile(direction.image, direction.edges, tile.types));
+            // Quick fix to have more grass tiles
+            if (tile.types.includes('grass')) {
+                for (let i = 0; i < 10; i++) {
+                    tiles.push(new Tile(direction.image, direction.edges, tile.types));
+                }
+            }
         });
     });
     tiles.forEach(tile => tile.analyze(tiles));
 }
 
 function initializeItems() {
+    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"], "none");
+    // Quick fix to have more empty cells
+    for (let i = 0; i <= 10; i++){
+        items.push(emptyItem);
+    }
     jsonItems.items.forEach(item => {
         item.directions.forEach(direction => {
             items.push(new Tile(direction.image, direction.edges, item.type, item.seasons, item.category));
         });
     });
-    emptyItem = new Tile(emptyCell, ["AAA", "AAA", "AAA", "AAA"], ['empty'], ["spring", "summer", "fall", "winter"], "none");
-    items.push(emptyItem);
     items.forEach(item => item.analyze(items));
 }
 

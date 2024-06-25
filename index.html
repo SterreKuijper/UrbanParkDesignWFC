@@ -82,7 +82,7 @@
         applyOptions();
         resetGrid();
         grid.forEach((cell, index) => {
-            grid[index] = new Cell(cell.position, [tiles[0]], getFilteredItems());
+            grid[index] = new Cell(cell.position, [tiles[0]], [items[0]]);
         });
     }
 
@@ -153,13 +153,13 @@
     }
 
     function applyOptions() {
+        // Update the types options
         const inputs = document.querySelectorAll('.types input');
-
         inputs.forEach((input, index) => {
-            // Release the tiles that are being unchecked
+            // // Release the tiles that are being unchecked
             grid.forEach(cell => {
                 if (cell.locked) {
-                    if (cell.itemOptions[0].type === jsonOptions.options.types[index].name && !input.checked) {
+                    if (cell.tileOptions[0].types === jsonOptions.options.types[index].name && !input.checked) {
                         cell.locked = false;
                         cell.removed = false;
                     }
@@ -169,12 +169,11 @@
             jsonOptions.options.types[index].used = input.checked;
         });
 
-        // Update the global jsonOptions object with the modified copy
         jsonOptions.options.types.forEach((type, index) => {
             type.used = jsonOptions.options.types[index].used;
         });
 
-
+        // Update the seasons options
         const seasonInputs = document.querySelectorAll('.seasons input');
         seasonInputs.forEach((input, index) => {
             jsonOptions.options.seasons[index].used = input.checked;
@@ -184,6 +183,7 @@
             season.used = jsonOptions.options.seasons[index].used;
         });
 
+        // Update the categories options
         const categoryInputs = document.querySelectorAll('.categories input');
         categoryInputs.forEach((input, index) => {
             jsonOptions.options.categories[index].used = input.checked;
