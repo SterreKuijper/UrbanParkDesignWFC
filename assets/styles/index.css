@@ -102,6 +102,9 @@ h3 {
     .container .content-center h1 {
       text-align: center;
       color: #397097; }
+    .container .content-center canvas {
+      width: 768px !important;
+      height: 528px !important; }
     .container .content-center .buttons {
       display: flex;
       flex-direction: column;

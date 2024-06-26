@@ -1,3 +1,6 @@
+$grid-width: 768px; // default 1024px
+$grid-height: 528px; // default 704px
+
 .scrollbar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -133,6 +136,11 @@ h3 {
     h1 {
       text-align: center;
       color: #397097;
+    }
+
+    canvas {
+      width: $grid-width !important;
+      height: $grid-height !important;
     }
 
     .buttons {
