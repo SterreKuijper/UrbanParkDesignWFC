@@ -183,16 +183,18 @@ class Cell {
         });
         validItems = this.analyzeItems(validItems);
         validItems.forEach((item, index) => {
-            addOption(itemOptions, 'item' + index, imageToDataURL(cropImage(item.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
-                this.itemLocked = true;
-                this.itemOptions = [item];
-                this.item = item.image;
-                propagateConstraints(this, itemOptions, 'collapsedItem');
-                this.locked = true;
-                this.removed = false;
-                this.collapsedTile = true;
-                propagateConstraints(this, itemOptions, 'collapsedItem');
-            });
+            if (!this.removed) {
+                addOption(itemOptions, 'item' + index, imageToDataURL(cropImage(item.image, 0, -TILE_HEIGHT * 1.25, TILE_WIDTH, TILE_HEIGHT * 2.5)), () => {
+                    this.itemLocked = true;
+                    this.itemOptions = [item];
+                    this.item = item.image;
+                    propagateConstraints(this, itemOptions, 'collapsedItem');
+                    this.locked = true;
+                    this.removed = false;
+                    this.collapsedTile = true;
+                    propagateConstraints(this, itemOptions, 'collapsedItem');
+                });
+            }
         });
     }
 
