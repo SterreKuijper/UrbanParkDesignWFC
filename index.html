@@ -27,7 +27,10 @@
         </div>
 
         <div class="content-center">
-            <h1 class="bungee">ISOMETRIC PARK DESIGN</h1>
+            <div class="title">
+                <h1 class="bungee">ISOMETRIC PARK DESIGN</h1>
+                <img src="assets/images/info.png" alt="info" id="myBtn">
+            </div>
             <main></main>
             <div class="buttons">
                 <div class="button-with-info">
@@ -65,6 +68,43 @@
     </div>
 </div>
 
+<div class="instructions modal" id="myModal">
+
+    <div class="modal-content">
+        <img src="assets/images/close.png" class="close" alt="close">
+        <h1 class="bungee">Instructions</h1>
+        <p class="open-sans-500">Welcome to the Urban Park Design Tool! This tool allows you to create urban park designs using a wave function collapse algorithm. You can choose from a variety of ground types, seasons, and categories to create unique and visually appealing park designs. Here are some instructions on how to use the tool:</p>
+
+        <h3 class="open-sans-700">Ground Types</h3>
+        <p class="open-sans-500">Ground types are the base tiles of the park. They are the foundation of the park design and set the tone for the rest of the elements. You can choose from a variety of ground types, such as grass, sand, and water. Each ground type has its own unique characteristics and can be combined to create interesting patterns and designs.</p>
+
+        <h3 class="open-sans-700">Seasons</h3>
+        <p class="open-sans-500">Seasons are the different time periods in which the park design can be viewed. You can choose from a variety of seasons, such as spring, summer, fall, and winter. Each season has its own unique color palette and weather effects, which can dramatically change the look and feel of the park design.</p>
+
+        <h3 class="open-sans-700">Categories</h3>
+        <p class="open-sans-500">Categories are the different types of items that can be placed in the park. You can choose from a variety of categories, such as trees, flowers, benches, and paths. Each category has its own unique items that can be placed in the park design. You can mix and match items from different categories to create a unique and interesting park design.</p>
+
+        <h3 class="open-sans-700">Generate Button</h3>
+        <p class="open-sans-500">The Generate button creates a new park design based on the selected ground types, seasons, and categories. It uses a wave function collapse algorithm to generate a park design that is visually appealing and cohesive. You can click the Generate button multiple times to create different park designs.</p>
+
+        <h3 class="open-sans-700">Reset Grid Button</h3>
+        <p class="open-sans-500">The Reset Grid button resets all the rules of the grid, allowing you to start fresh with a clean slate. It removes all the items from the grid and resets the ground types, seasons, and categories to their default settings. You can use this button to clear the grid and start over with a new park design.</p>
+
+        <h3 class="open-sans-700">Empty Grid Button</h3>
+        <p class="open-sans-500">The Empty Grid button creates an empty grid with no items. It removes all the items from the grid but keeps the ground types, seasons, and categories the same. You can use this button to clear the grid and start over with a blank canvas to create your own park design.</p>
+
+        <h3 class="open-sans-700">Selecting Cell</h3>
+        <p class="open-sans-500">To select a cell, click on it. The cell will be highlighted with a blue border, indicating that it is selected. You can then choose an item from the item options on the right and place it in the selected cell. You can also change the ground type of the cell by selecting a ground type from the tile options on the right.</p>
+
+        <h3 class="open-sans-700">Tile options</h3>
+        <p class="open-sans-500">Tile options are the different ground types that can be placed in the park. You can choose from a variety of ground types, such as grass, sand, and water. Each ground type has its own unique characteristics and can be used to create interesting patterns and designs in the park.</p>
+
+        <h3 class="open-sans-700">Item options</h3>
+        <p class="open-sans-500">Item options are the different items that can be placed in the park. You can choose from a variety of items, such as trees, flowers, benches, and paths. Each item has its own unique characteristics and can be used to add detail and interest to the park design. You can mix and match items from different categories to create a unique and visually appealing park design.</p>
+
+    </div>
+</div>
+
 <div class="footer">
     <h1 class="bungee">Urban Park Design<br>
         Using Wave Function Collapse</h1>
@@ -82,7 +122,7 @@
         innovative tool!
     </h2>
     <h2 class="open-sans-500">
-        <a target="_blank" href="https://forms.gle/DJDFybWh9nHbjx8r8" >Feedback Form</a>
+        <a target="_blank" href="https://forms.gle/DJDFybWh9nHbjx8r8">Feedback Form</a>
     </h2>
 </div>
 
@@ -255,6 +295,33 @@
         option.appendChild(optionImg);
         options.appendChild(option);
     }
+
+    // Get the modal
+    const modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    const btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+
 </script>
 </body>
 </html>
