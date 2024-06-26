@@ -31,29 +31,27 @@
         <div class="content-center">
             <div class="title">
                 <h1 class="bungee">ISOMETRIC PARK DESIGN</h1>
-                <img src="assets/images/info.png" alt="info" id="myBtn">
+                <span id="myBtn" class="material-icons">info_outlined</span>
             </div>
             <main></main>
             <div class="buttons">
-                <div class="button-with-info">
-                    <button class="button open-sans-500 generate" onclick="resetFunction()">Generate</button>
-                </div>
+                <button class="button open-sans-500 generate" onclick="resetFunction()">Generate</button>
                 <div class="sub-buttons">
                     <div class="button-with-info">
-                        <span><img src="assets/images/emptyTile.png" alt="empty"></span>
+                        <span style="width: 48px"></span>
                         <button class="button open-sans-500" onclick="resetEntireGrid()">Reset Grid</button>
-                        <span class="tooltip">
-                            <img src="assets/images/info.png" alt="info">
+                        <span class="tooltip material-icons">
+                            help_outline
                             <span class="tooltip-text open-sans-500">
                                 Reset all the rules of the grid.
                             </span>
                         </span>
                     </div>
                     <div class="button-with-info">
-                        <span><img src="assets/images/emptyTile.png" alt="empty"></span>
+                        <div style="width: 48px"></div>
                         <button class="button open-sans-500" onclick="emptyGrid()">Empty Grid</button>
-                        <span class="tooltip">
-                            <img src="assets/images/info.png" alt="info">
+                        <span class="tooltip material-icons">
+                            help_outline
                             <span class="tooltip-text open-sans-500">
                                 Create an empty grid with no items.
                             </span>
@@ -63,9 +61,13 @@
             </div>
         </div>
 
-        <div class="content-right">
+        <div class="content-right" id="optionsContainer">
+            <h3 class="open-sans-700" id="tileTitle"></h3>
             <div class="cell-options scrollbar" id="tileOptions"></div>
-            <div class="cell-options scrollbar" id="itemOptions"></div>
+            <h3 class="open-sans-700" id="itemTitle"></h3>
+            <div class="cell-options scrollbar" id="itemOptions">
+                <h2 class="open-sans-700"><span style="margin-right: 8px;" class="material-icons">ads_click</span>Select a cell to edit it.</h2>
+            </div>
         </div>
     </div>
 </div>

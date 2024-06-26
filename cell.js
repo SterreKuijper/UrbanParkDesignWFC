@@ -84,14 +84,20 @@ class Cell {
     }
 
     deselect() {
-        if (this.selected) this.removeOptionsFromDiv('tileOptions');
-        if (this.selected) this.removeOptionsFromDiv('itemOptions');
+        if (this.selected) {
+            this.removeOptionsFromDiv('tileOptions');
+            this.removeOptionsFromDiv('itemOptions');
+            document.getElementById('itemOptions').innerHTML = '<h2 class="open-sans-700">Select a cell to edit the tile or the item</h2>'
+        }
         this.selected = false;
     }
 
     showTileOptions() {
         const tileOptions = 'tileOptions';
         this.removeOptionsFromDiv(tileOptions);
+
+        document.getElementById('itemTitle').innerHTML = 'Item Options:';
+        document.getElementById('tileTitle').innerHTML = 'Tile Options:';
 
         // Add the empty option
         addOption(tileOptions, 'emptyOption', 'assets/images/empty.png', () => {
@@ -149,6 +155,9 @@ class Cell {
     showItemOptions() {
         const itemOptions = 'itemOptions';
         this.removeOptionsFromDiv(itemOptions);
+
+        document.getElementById('itemTitle').innerHTML = 'Item Options:';
+        document.getElementById('tileTitle').innerHTML = 'Tile Options:';
 
         // Add the empty option
         addOption(itemOptions, 'emptyItemOption', 'assets/images/empty.png', () => {
@@ -214,6 +223,8 @@ class Cell {
 
     removeOptionsFromDiv(id) {
         document.getElementById(id).innerHTML = '';
+        document.getElementById('tileTitle').innerHTML = '';
+        document.getElementById('itemTitle').innerHTML = '';
     }
 }
 

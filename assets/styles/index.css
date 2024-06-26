@@ -36,6 +36,9 @@ button {
   border-radius: 100px;
   width: fit-content;
   height: fit-content; }
+  button:hover {
+    cursor: pointer;
+    background-color: #38858a; }
 
 h1 {
   font-size: 44px;
@@ -89,6 +92,8 @@ h3 {
             width: 24px;
             height: 24px;
             accent-color: #397097; }
+          .container .content .content-left .option .option-input:hover {
+            cursor: pointer; }
   .container .content-center {
     position: absolute;
     left: 50%;
@@ -102,15 +107,14 @@ h3 {
     .container .content-center .title {
       display: flex;
       align-items: center;
-      gap: 16px; }
-      .container .content-center .title img {
-        width: 48px;
-        height: 48px; }
-        .container .content-center .title img:hover {
-          cursor: pointer; }
+      gap: 16px;
+      color: #397097; }
       .container .content-center .title h1 {
-        text-align: center;
-        color: #397097; }
+        text-align: center; }
+      .container .content-center .title .material-icons {
+        font-size: 48px; }
+        .container .content-center .title .material-icons:hover {
+          cursor: pointer; }
     .container .content-center canvas {
       width: 768px !important;
       height: 528px !important; }
@@ -123,33 +127,31 @@ h3 {
       width: 50%; }
       .container .content-center .buttons .generate {
         font-size: 28px;
-        line-height: 32px; }
-      .container .content-center .buttons .button-with-info {
-        display: flex;
+        line-height: 32px;
         width: 100%; }
-        .container .content-center .buttons .button-with-info button {
-          width: 100%; }
-          .container .content-center .buttons .button-with-info button img {
-            width: 24px;
-            height: 24px; }
-        .container .content-center .buttons .button-with-info span {
-          width: 48px;
-          height: 48px; }
-          .container .content-center .buttons .button-with-info span img {
-            width: 40px;
-            height: 40px;
-            margin: 4px; }
       .container .content-center .buttons .sub-buttons {
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 16px;
-        width: 80%; }
+        width: 100%; }
+        .container .content-center .buttons .sub-buttons .button-with-info {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          gap: 16px; }
+          .container .content-center .buttons .sub-buttons .button-with-info button {
+            width: 100%; }
+          .container .content-center .buttons .sub-buttons .button-with-info .material-icons {
+            color: #397097;
+            font-size: 32px; }
         .container .content-center .buttons .sub-buttons .tooltip {
           position: relative; }
+          .container .content-center .buttons .sub-buttons .tooltip:hover {
+            cursor: default; }
         .container .content-center .buttons .sub-buttons .tooltip .tooltip-text {
           visibility: hidden;
-          width: 240px;
+          width: fit-content;
           height: fit-content;
           background-color: white;
           color: #397097;
@@ -162,6 +164,7 @@ h3 {
           /* Position the tooltip */
           position: absolute;
           z-index: 1;
+          left: 40px;
           top: 50%;
           transform: translateY(-50%); }
         .container .content-center .buttons .sub-buttons .tooltip:hover .tooltip-text {
@@ -171,6 +174,10 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: flex-end; }
+    .container .content-right h3 {
+      color: #397097;
+      width: 348px;
+      margin: 16px 0; }
     .container .content-right .cell-options {
       width: 348px;
       height: 50vh;
@@ -178,7 +185,6 @@ h3 {
       align-content: flex-start;
       column-gap: 16px;
       flex-wrap: wrap;
-      padding: 32px 0;
       overflow: auto; }
       .container .content-right .cell-options #tileOptions {
         width: 100px;
@@ -186,6 +192,8 @@ h3 {
       .container .content-right .cell-options #itemOptions {
         width: 100px;
         height: 125px; }
+      .container .content-right .cell-options h2 {
+        color: #397097; }
       .container .content-right .cell-options div {
         cursor: pointer; }
         .container .content-right .cell-options div img {
@@ -230,7 +238,8 @@ h3 {
   .footer a:link {
     text-decoration: none; }
   .footer a:visited {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #ba4949; }
   .footer a:hover {
     text-decoration: underline; }
   .footer a:active {
@@ -274,9 +283,9 @@ h3 {
       margin-top: 16px; }
   .modal-content .close {
     position: absolute;
-    top: 32px;
-    right: 32px;
-    font-size: 32px; }
+    top: 24px;
+    right: 24px;
+    font-size: 48px; }
     .modal-content .close:hover, .modal-content .close:focus {
       cursor: pointer;
       color: #ba4949; }

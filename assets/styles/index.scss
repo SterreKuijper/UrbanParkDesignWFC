@@ -45,6 +45,11 @@ button {
   border-radius: 100px;
   width: fit-content;
   height: fit-content;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #38858a;
+  }
 }
 
 h1 {
@@ -116,6 +121,10 @@ h3 {
             height: 24px;
             accent-color: #397097;
           }
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
     }
@@ -137,19 +146,18 @@ h3 {
       display: flex;
       align-items: center;
       gap: 16px;
+      color: #397097;
 
-      img {
-        width: 48px;
-        height: 48px;
+      h1 {
+        text-align: center;
+      }
+
+      .material-icons {
+        font-size: 48px;
 
         &:hover {
           cursor: pointer;
         }
-      }
-
-      h1 {
-        text-align: center;
-        color: #397097;
       }
     }
 
@@ -169,31 +177,8 @@ h3 {
       .generate {
         font-size: 28px;
         line-height: 32px;
-      }
 
-      .button-with-info {
-        display: flex;
         width: 100%;
-
-        button {
-          width: 100%;
-
-          img {
-            width: 24px;
-            height: 24px;
-          }
-        }
-
-        span {
-          width: 48px;
-          height: 48px;
-
-          img {
-            width: 40px;
-            height: 40px;
-            margin: 4px;
-          }
-        }
       }
 
       .sub-buttons {
@@ -201,15 +186,35 @@ h3 {
         flex-direction: column;
         justify-content: center;
         gap: 16px;
-        width: 80%;
+        width: 100%;
+
+        .button-with-info {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          gap: 16px;
+
+          button {
+            width: 100%;
+          }
+
+          .material-icons {
+            color: #397097;
+            font-size: 32px;
+          }
+        }
 
         .tooltip {
           position: relative;
+
+          &:hover {
+            cursor: default;
+          }
         }
 
         .tooltip .tooltip-text {
           visibility: hidden;
-          width: 240px;
+          width: fit-content;
           height: fit-content;
           background-color: white;
           color: #397097;
@@ -224,6 +229,7 @@ h3 {
           /* Position the tooltip */
           position: absolute;
           z-index: 1;
+          left: 40px;
           top: 50%;
           transform: translateY(-50%);
         }
@@ -241,6 +247,12 @@ h3 {
     flex-direction: column;
     align-items: flex-end;
 
+    h3 {
+      color: #397097;
+      width: 348px;
+      margin: 16px 0;
+    }
+
     .cell-options {
       width: 348px;
       height: 50vh;
@@ -248,7 +260,6 @@ h3 {
       align-content: flex-start;
       column-gap: 16px;
       flex-wrap: wrap;
-      padding: 32px 0;
       overflow: auto;
 
       #tileOptions {
@@ -259,6 +270,10 @@ h3 {
       #itemOptions {
         width: 100px;
         height: 125px;
+      }
+
+      h2 {
+        color: #397097;
       }
 
       div {
@@ -334,6 +349,7 @@ h3 {
 
   a:visited {
     text-decoration: none;
+    color: #ba4949;
   }
 
   a:hover {
@@ -386,9 +402,9 @@ h3 {
 
   .close {
     position: absolute;
-    top: 32px;
-    right: 32px;
-    font-size: 32px;
+    top: 24px;
+    right: 24px;
+    font-size: 48px;
 
     &:hover, &:focus {
       cursor: pointer;
