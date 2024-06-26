@@ -171,9 +171,13 @@ h3 {
       flex-wrap: wrap;
       padding: 32px 0;
       overflow: auto; }
-      .container .content-right .cell-options div {
+      .container .content-right .cell-options #tileOptions {
         width: 100px;
-        height: 100px;
+        height: 100px; }
+      .container .content-right .cell-options #itemOptions {
+        width: 100px;
+        height: 125px; }
+      .container .content-right .cell-options div {
         cursor: pointer; }
         .container .content-right .cell-options div img {
           width: 100px; }
