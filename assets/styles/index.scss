@@ -380,7 +380,7 @@ h3 {
 
 /* Modal Content */
 .modal-content {
-  width: 60%;
+  width: 40%;
   height: 80%;
 
   background-color: #ffffff;
@@ -397,6 +397,11 @@ h3 {
 
     h3 {
       margin-top: 16px;
+      color: #38858a;
+    }
+
+    p {
+      color: black;
     }
   }
 
